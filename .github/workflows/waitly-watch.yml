@@ -1,0 +1,55 @@
+name: Waitly Watch
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # hver 15. minut
+  workflow_dispatch:        # manuel kørsel (knap i UI)
+
+jobs:
+  run-watch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Cache Python packages for speed (optional, but nice)
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # Persist the runtime state file between runs
+      - name: Restore state file
+        uses: actions/cache@v4
+        with:
+          path: waitly_watch_state.json
+          key: waitly-watch-state-v1
+
+      - name: Run Waitly Watch
+        env:
+          WAITLY_SMTP_HOST: smtp.gmail.com
+          WAITLY_SMTP_PORT: "587"
+          WAITLY_SMTP_USER: ${{ secrets.WAITLY_SMTP_USER }}
+          WAITLY_SMTP_PASS: ${{ secrets.WAITLY_SMTP_PASS }}
+          WAITLY_MAIL_FROM: ${{ secrets.WAITLY_SMTP_USER }}
+        run: |
+          python waitly_watch_all.py
+
+      - name: Save state file
+        uses: actions/cache@v4
+        with:
+          path: waitly_watch_state.json
+          key: waitly-watch-state-v1
