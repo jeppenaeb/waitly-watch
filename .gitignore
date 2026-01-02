@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local runtime state (DO NOT COMMIT)
+waitly_watch_state.json
+
+# Logs
+*.log
+
+# OS junk
+.DS_Store
+Thumbs.db
