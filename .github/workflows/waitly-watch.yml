@@ -2,7 +2,7 @@ name: Waitly Watch
 
 on:
   schedule:
-    - cron: "*/15 * * * *"   # hver 15. minut
+    - cron: "0 * * * *"   # en gang i timen
   workflow_dispatch:        # manuel kørsel (knap i UI)
 
 jobs:
