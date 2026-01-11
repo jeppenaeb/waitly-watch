@@ -10,9 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1) Checkout waitly-watch (det repo vi kører workflow fra)
       - name: Checkout waitly-watch
         uses: actions/checkout@v4
 
+      # 2) Checkout venteliste-dashboard (det repo vi vil opdatere)
+      - name: Checkout venteliste-dashboard
+        uses: actions/checkout@v4
+        with:
+          repository: jeppenaeb/venteliste-dashboard
+          token: ${{ secrets.DASHBOARD_PUSH_TOKEN }}
+          path: dashboard
+
+      # 3) Python setup
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -31,6 +41,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # 4) Kør dit eksisterende script (sitemap + openings + mail)
       - name: Run Waitly Watch
         env:
           WAITLY_SMTP_HOST: smtp.gmail.com
@@ -38,28 +49,26 @@ jobs:
           WAITLY_SMTP_USER: ${{ secrets.WAITLY_SMTP_USER }}
           WAITLY_SMTP_PASS: ${{ secrets.WAITLY_SMTP_PASS }}
           WAITLY_MAIL_FROM: ${{ secrets.WAITLY_SMTP_USER }}
-          # Hvis/ når vi tilføjer login-scrape senere:
-          # WAITLY_LOGIN_EMAIL: ${{ secrets.WAITLY_LOGIN_EMAIL }}
-          # WAITLY_LOGIN_PASSWORD: ${{ secrets.WAITLY_LOGIN_PASSWORD }}
         run: |
           python waitly_watch_all.py
 
-      - name: Verify current.json exists
+      # 5) Opdatér updated_at i dashboardets data/current.json (heartbeat)
+      - name: Update dashboard data/current.json updated_at
         run: |
-          test -f current.json && echo "Found current.json" || (echo "ERROR: current.json not found" && exit 1)
+          python - <<'PY'
+          import json
+          from datetime import datetime, timezone
+          path = "dashboard/data/current.json"
+          with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+          data["updated_at"] = datetime.now(timezone.utc).date().isoformat()
+          with open(path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+            f.write("\n")
+          print("Updated updated_at in", path, "->", data["updated_at"])
+          PY
 
-      - name: Checkout venteliste-dashboard
-        uses: actions/checkout@v4
-        with:
-          repository: jeppenaeb/venteliste-dashboard
-          token: ${{ secrets.DASHBOARD_PUSH_TOKEN }}
-          path: dashboard
-
-      - name: Copy current.json into dashboard repo
-        run: |
-          mkdir -p dashboard/data
-          cp -f current.json dashboard/data/current.json
-
+      # 6) Commit + push ændringen til venteliste-dashboard (kun hvis der er ændringer)
       - name: Commit and push dashboard update
         run: |
           cd dashboard
