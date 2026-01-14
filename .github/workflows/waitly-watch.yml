@@ -21,6 +21,7 @@ jobs:
           repository: jeppenaeb/venteliste-dashboard
           token: ${{ secrets.DASHBOARD_PUSH_TOKEN }}
           path: dashboard
+          persist-credentials: false
 
       # 3) Python setup
       - name: Set up Python
@@ -69,7 +70,7 @@ jobs:
           PY
 
       # 6) Commit + push ændringen til venteliste-dashboard (kun hvis der er ændringer)
-        - name: Commit and push dashboard update
+              - name: Commit and push dashboard update
         env:
           DASHBOARD_PUSH_TOKEN: ${{ secrets.DASHBOARD_PUSH_TOKEN }}
         run: |
@@ -82,10 +83,12 @@ jobs:
             git add data/current.json
             git commit -m "Update data/current.json (Waitly Watch)"
 
-            # Force git to push using the PAT (fine-grained token)
+            # Remove any auth header that checkout might have configured
+            git config --local --unset-all http.https://github.com/.extraheader || true
+
+            # Push using PAT explicitly
             git remote set-url origin "https://x-access-token:${DASHBOARD_PUSH_TOKEN}@github.com/jeppenaeb/venteliste-dashboard.git"
             git push origin HEAD:main
           else
             echo "No changes to commit"
           fi
-
