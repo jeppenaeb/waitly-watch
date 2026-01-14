@@ -69,15 +69,23 @@ jobs:
           PY
 
       # 6) Commit + push ændringen til venteliste-dashboard (kun hvis der er ændringer)
-      - name: Commit and push dashboard update
+        - name: Commit and push dashboard update
+        env:
+          DASHBOARD_PUSH_TOKEN: ${{ secrets.DASHBOARD_PUSH_TOKEN }}
         run: |
           cd dashboard
+
           if git status --porcelain | grep -q 'data/current.json'; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
+
             git add data/current.json
             git commit -m "Update data/current.json (Waitly Watch)"
-            git push
+
+            # Force git to push using the PAT (fine-grained token)
+            git remote set-url origin "https://x-access-token:${DASHBOARD_PUSH_TOKEN}@github.com/jeppenaeb/venteliste-dashboard.git"
+            git push origin HEAD:main
           else
             echo "No changes to commit"
           fi
+
