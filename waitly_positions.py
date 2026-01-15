@@ -46,22 +46,6 @@ async def accept_cookies_if_present(page: Page) -> None:
         except Exception:
             pass
 
-    for sel in [
-        "button#onetrust-accept-btn-handler",
-        "button[aria-label*='accept' i]",
-        "button:has-text('Accept')",
-        "button:has-text('Accepter')",
-    ]:
-        try:
-            loc = page.locator(sel)
-            if await loc.count() > 0:
-                await loc.first.click(timeout=3000)
-                log(f"Cookie banner accepted via selector: {sel}")
-                await page.wait_for_timeout(400)
-                return
-        except Exception:
-            pass
-
 
 async def click_login(page: Page) -> None:
     for name in ["Login", "Log ind", "Sign in"]:
@@ -89,7 +73,7 @@ async def click_login(page: Page) -> None:
 
 async def choose_private_account_if_prompted(page: Page) -> None:
     """
-    User confirmed the button text is: "Gå til privatkonto".
+    Your exact button text: "Gå til privatkonto"
     Best-effort; no failure if prompt not present.
     """
     candidates = [
@@ -149,36 +133,24 @@ async def find_visible_selector(page: Page, selectors: List[str]) -> Optional[st
     return None
 
 
-async def try_navigate_to_waitlists(page: Page) -> None:
+async def capture_nuxt_public_config(page: Page) -> None:
     """
-    After login, try to click into the section where waitlists are shown.
-    This often triggers the API calls we actually need.
-    Best-effort.
+    Best-effort: may be null/empty on my.waitly.dk. Still useful when present.
     """
-    candidates = ["Ventelister", "Mine ventelister", "Waitlists", "Queues", "Mine køer", "Mine lister"]
+    try:
+        nuxt_public = await page.evaluate("() => window.__NUXT__?.config?.public || null")
+    except Exception:
+        nuxt_public = None
 
-    for name in candidates:
-        try:
-            link = page.get_by_role("link", name=name)
-            if await link.count() > 0:
-                await link.first.click(timeout=5000)
-                log(f"Navigated via link: {name}")
-                await page.wait_for_timeout(1200)
-                return
-        except Exception:
-            pass
+    os.makedirs("state", exist_ok=True)
+    with open("state/nuxt_public_config.json", "w", encoding="utf-8") as f:
+        json.dump(nuxt_public, f, ensure_ascii=False, indent=2)
 
-        try:
-            btn = page.get_by_role("button", name=name)
-            if await btn.count() > 0:
-                await btn.first.click(timeout=5000)
-                log(f"Navigated via button: {name}")
-                await page.wait_for_timeout(1200)
-                return
-        except Exception:
-            pass
-
-    log("Did not find a waitlists/queues navigation item (best-effort).")
+    if isinstance(nuxt_public, dict):
+        subset = {k: nuxt_public.get(k) for k in ["baseApiUrl", "baseUrl", "consumerSiteUrl", "businessSiteUrl"] if k in nuxt_public}
+        log("NUXT public config (subset): " + json.dumps(subset, ensure_ascii=False))
+    else:
+        log("NUXT public config not found (window.__NUXT__ missing?)")
 
 
 def summarize_json_samples(samples: List[Dict[str, Any]]) -> None:
@@ -195,105 +167,112 @@ def summarize_json_samples(samples: List[Dict[str, Any]]) -> None:
             log(f"  - {url} | type: {type(data).__name__}")
 
 
-def _walk_json(obj: Any, max_nodes: int = 20000):
-    stack = [([], obj)]
-    seen = 0
-    while stack:
-        path, cur = stack.pop()
-        seen += 1
-        if seen > max_nodes:
-            return
-        yield path, cur
-        if isinstance(cur, dict):
-            for k, v in cur.items():
-                stack.append((path + [str(k)], v))
-        elif isinstance(cur, list):
-            for i, v in enumerate(cur):
-                stack.append((path + [str(i)], v))
-
-
-def guess_queues_from_json(data: Any) -> List[Dict]:
+def parse_subscriptions_payload(payload: Any) -> List[Dict]:
     """
-    Loose heuristic: look for list[dict] where dicts include name/title-ish fields
-    and numeric-ish fields (position/rank/total/etc).
-    Returns normalized dicts, best-effort.
+    Input: JSON from https://app.waitly.dk/api/v2/consumer/users/<id>/subscriptions
+    Output: list of {id, name, position, total}
+
+    Mapping:
+      - position = item["placement"]
+      - total:
+          prefer list.template.lists match on list.id -> active_subscribers if present
+          else list.subscribers
+      - name:
+          prefer list.company.name + " - " + list.name
+          fallback list.full_name
     """
-    candidates: List[Dict] = []
-    name_like = ("name", "title", "queue", "waitlist", "venteliste")
-    num_like = ("position", "rank", "place", "number", "total", "count", "size", "members")
+    if not isinstance(payload, dict):
+        return []
+    data = payload.get("data")
+    if not isinstance(data, list):
+        return []
 
-    for _, cur in _walk_json(data):
-        if isinstance(cur, list) and cur and all(isinstance(x, dict) for x in cur[:5]):
-            for item in cur[:150]:
-                lowkeys = [str(k).lower() for k in item.keys()]
-                has_name = any(any(n in k for n in name_like) for k in lowkeys)
-                has_num = any(any(n in k for n in num_like) for k in lowkeys)
-                if not (has_name and has_num):
-                    continue
+    out: List[Dict] = []
 
-                def pick(preds):
-                    for k in item.keys():
-                        kl = str(k).lower()
-                        if any(p in kl for p in preds):
-                            return item.get(k)
-                    return None
+    for item in data:
+        if not isinstance(item, dict):
+            continue
 
-                name = pick(("name", "title", "queue", "waitlist", "venteliste"))
-                pos = pick(("position", "rank", "place", "number"))
-                tot = pick(("total", "count", "size", "members"))
+        placement = item.get("placement", None)
+        list_obj = item.get("list") or {}
+        if not isinstance(list_obj, dict):
+            list_obj = {}
 
-                rec = {"name": str(name).strip() if name is not None else "UNKNOWN"}
-                if pos is not None:
-                    rec["position"] = pos
-                if tot is not None:
-                    rec["total"] = tot
-                candidates.append(rec)
+        list_id = list_obj.get("id")
+        list_name = list_obj.get("name")
+        full_name = list_obj.get("full_name")
 
-            if len(candidates) >= 3:
-                break
+        company_name = None
+        company = list_obj.get("company")
+        if isinstance(company, dict):
+            company_name = company.get("name")
 
-    # de-dupe by name
-    out = []
+        # total calculation
+        total = None
+
+        # Try to find matching list stats inside template.lists
+        template = list_obj.get("template")
+        if isinstance(template, dict):
+            lists = template.get("lists")
+            if isinstance(lists, list) and list_id is not None:
+                for l in lists:
+                    if isinstance(l, dict) and l.get("id") == list_id:
+                        # Prefer active_subscribers (often equals "people ahead" universe)
+                        if "active_subscribers" in l and l.get("active_subscribers") is not None:
+                            total = l.get("active_subscribers")
+                        elif "subscribers" in l and l.get("subscribers") is not None:
+                            total = l.get("subscribers")
+                        break
+
+        # Fallback: list.subscribers
+        if total is None:
+            total = list_obj.get("subscribers")
+
+        # name
+        name = None
+        if company_name and list_name:
+            name = f"{company_name} - {list_name}"
+        elif full_name:
+            name = full_name
+        elif list_name:
+            name = list_name
+        else:
+            name = "Unknown waitlist"
+
+        rec = {
+            "id": str(list_id) if list_id is not None else str(item.get("id", "")),
+            "name": name,
+        }
+        if placement is not None:
+            rec["position"] = placement
+        if total is not None:
+            rec["total"] = total
+
+        out.append(rec)
+
+    # Remove obvious duplicates by id
+    dedup = []
     seen = set()
-    for c in candidates:
-        n = c.get("name")
-        if n and n not in seen:
-            out.append(c)
-            seen.add(n)
-    return out
+    for r in out:
+        key = r.get("id") or r.get("name")
+        if key and key not in seen:
+            dedup.append(r)
+            seen.add(key)
+
+    return dedup
 
 
-async def dump_dom_links(page: Page) -> None:
-    links = await page.evaluate(
-        """() => Array.from(document.querySelectorAll('a'))
-          .map(a => ({ href: a.getAttribute('href') || '', text: (a.innerText||'').trim() }))
-          .filter(x => x.href || x.text)"""
-    )
-    os.makedirs("state", exist_ok=True)
-    with open("state/dom_links.json", "w", encoding="utf-8") as f:
-        json.dump(links[:3000], f, ensure_ascii=False, indent=2)
-    log(f"DOM links dumped: state/dom_links.json (count={len(links)})")
-
-
-async def capture_nuxt_public_config(page: Page) -> None:
+def find_subscriptions_json(api_json_samples: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
     """
-    If the app is Nuxt, window.__NUXT__.config.public often holds useful endpoints.
-    We'll dump it for debugging.
+    Find the subscriptions payload among captured JSON responses.
     """
-    try:
-        nuxt_public = await page.evaluate("() => window.__NUXT__?.config?.public || null")
-    except Exception:
-        nuxt_public = None
-
-    os.makedirs("state", exist_ok=True)
-    with open("state/nuxt_public_config.json", "w", encoding="utf-8") as f:
-        json.dump(nuxt_public, f, ensure_ascii=False, indent=2)
-
-    if isinstance(nuxt_public, dict):
-        subset = {k: nuxt_public.get(k) for k in ["baseApiUrl", "baseUrl", "consumerSiteUrl", "businessSiteUrl"] if k in nuxt_public}
-        log("NUXT public config (subset): " + json.dumps(subset, ensure_ascii=False))
-    else:
-        log("NUXT public config not found (window.__NUXT__ missing?)")
+    for s in api_json_samples:
+        url = s.get("url", "")
+        if "/api/v2/consumer/users/" in url and url.endswith("/subscriptions"):
+            j = s.get("json")
+            if isinstance(j, dict) and "data" in j:
+                return j
+    return None
 
 
 async def fetch_positions(email: str, password: str) -> List[Dict]:
@@ -316,7 +295,7 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
                     return
                 data = await resp.json()
                 dumped = json.dumps(data, ensure_ascii=False)
-                if len(dumped) > 500_000:
+                if len(dumped) > 600_000:
                     return
                 api_json_samples.append({"url": resp.url, "json": data})
             except Exception:
@@ -331,17 +310,15 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
 
         await accept_cookies_if_present(page)
 
-        # Click login
+        # Login flow
         await click_login(page)
         await accept_cookies_if_present(page)
         await debug_dump(page, "02_after_login_click")
 
-        # Choose private account if prompted
         await choose_private_account_if_prompted(page)
         await accept_cookies_if_present(page)
         await debug_dump(page, "03_after_private_account_choice")
 
-        # Find login form fields
         email_sel = await find_visible_selector(
             page,
             [
@@ -366,11 +343,9 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
             await debug_dump(page, "04_login_form_not_found")
             await browser.close()
             raise RuntimeError(
-                "Could not find login form fields after choosing private account. "
-                "Inspect state/debug_04_login_form_not_found.html/png"
+                "Could not find login form fields. Inspect state/debug_04_login_form_not_found.html/png"
             )
 
-        # Fill & submit
         log(f"Filling login form ({email_sel}, {pwd_sel})")
         await page.fill(email_sel, email)
         await page.fill(pwd_sel, password)
@@ -403,9 +378,9 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
             await browser.close()
             raise RuntimeError("Could not find submit/login button")
 
-        # Wait for app to settle
+        # Let SPA load
         try:
-            await page.wait_for_load_state("networkidle", timeout=20000)
+            await page.wait_for_load_state("networkidle", timeout=25000)
         except Exception:
             pass
         await page.wait_for_timeout(1200)
@@ -420,39 +395,40 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
 
         log("Login succeeded")
 
-        # Capture Nuxt config (very useful for endpoints)
+        # Optional: Nuxt config snapshot
         await capture_nuxt_public_config(page)
 
-        # Attempt to navigate to waitlists section (if not already visible)
-        await try_navigate_to_waitlists(page)
-        await debug_dump(page, "08_after_navigation_attempt")
-
-        # Let SPA fetch data
+        # Give a bit more time for API calls
         await page.wait_for_timeout(2000)
         try:
-            await page.wait_for_load_state("networkidle", timeout=20000)
+            await page.wait_for_load_state("networkidle", timeout=25000)
         except Exception:
             pass
 
-        await debug_dump(page, "09_dashboard_loaded")
+        await debug_dump(page, "08_dashboard_loaded")
 
-        # Save JSON samples + summary
+        # Save captured JSON responses for debugging
         os.makedirs("state", exist_ok=True)
         with open("state/api_json_samples.json", "w", encoding="utf-8") as f:
-            json.dump(api_json_samples[:60], f, ensure_ascii=False, indent=2)
+            json.dump(api_json_samples[:80], f, ensure_ascii=False, indent=2)
 
         log(f"Captured JSON responses: {len(api_json_samples)} (saved state/api_json_samples.json)")
         summarize_json_samples(api_json_samples)
 
-        # Try to infer queues from JSON
-        for s in api_json_samples:
-            guessed = guess_queues_from_json(s["json"])
-            if guessed:
-                log(f"Inferred {len(guessed)} queue-like records from: {s['url']}")
-                await browser.close()
-                return guessed
+        # --- NEW: parse subscriptions deterministically ---
+        subs_json = find_subscriptions_json(api_json_samples)
+        if subs_json:
+            queues = parse_subscriptions_payload(subs_json)
+            log(f"Parsed subscriptions -> {len(queues)} queues")
+            if DEBUG:
+                log("Queues sample: " + json.dumps(queues[:3], ensure_ascii=False))
+            await browser.close()
+            return queues
 
-        # Fallback: dump DOM links to help refine selectors
-        await dump_dom_links(page)
+        # If we didn't see subscriptions in captured responses, fail loudly with debug
+        await debug_dump(page, "09_subscriptions_not_found")
         await browser.close()
-        return []
+        raise RuntimeError(
+            "Did not capture subscriptions endpoint in this run. "
+            "See state/api_json_samples.json and state/debug_09_subscriptions_not_found.html/png"
+        )
