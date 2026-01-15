@@ -1,501 +1,94 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+name: Waitly Watch
 
-"""
-Waitly Watch (sitemap + openings) + dashboard export
+on:
+  schedule:
+    - cron: "0 * * * *"   # en gang i timen (UTC)
+  workflow_dispatch:
 
-Funktioner:
-1) NYE SIDER:
-   - Henter https://waitly.eu/da/sitemap (HTML)
-   - Finder nye links der matcher områder (Kbh K/V/N/Ø/S + Frederiksberg (+ -c))
-   - Notifier via mail med 🆕 [Waitly] NY SIDE
+jobs:
+  run-watch:
+    runs-on: ubuntu-latest
 
-2) ÅBNINGER:
-   - Læser watch_urls.txt (én Waitly-URL pr linje)
-   - Checker om siden er åben ved at finde et "Tilmeld"-link til app.waitly.*
-   - Notifier KUN ved transition lukket -> åben (ingen spam på første run)
-   - Notifier via mail med 🚨 [Waitly] ÅBNING
-   - Auto-fjerner URL'er fra watch_urls.txt ved HTTP 404/410 (fjernet hos Waitly)
+    steps:
+      - name: Checkout waitly-watch
+        uses: actions/checkout@v4
 
-3) DASHBOARD EXPORT (A):
-   - Logger ind på my.waitly.dk med WAITLY_LOGIN_EMAIL/PASSWORD (GitHub Secrets)
-   - Henter dine venteliste-positioner (via waitly_positions.py)
-   - Skriver current.json i repo-roden (workflow kopierer den til dashboard-repo)
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-State:
-- Gemmer baseline + sidestatus i waitly_watch_state.json
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
-Afhængigheder:
-  pip install requests beautifulsoup4
-  (A): pip install playwright  (+ workflow install chromium)
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-- name: Run Waitly Watch
+      - name: Install Playwright browsers
+        run: |
+          python -m playwright install --with-deps chromium
+
+      - name: Run Waitly Watch
         env:
           WAITLY_SMTP_HOST: smtp.gmail.com
           WAITLY_SMTP_PORT: "587"
           WAITLY_SMTP_USER: ${{ secrets.WAITLY_SMTP_USER }}
           WAITLY_SMTP_PASS: ${{ secrets.WAITLY_SMTP_PASS }}
           WAITLY_MAIL_FROM: ${{ secrets.WAITLY_SMTP_USER }}
+
+          # A) Login til my.waitly.dk (positions-scrape)
           WAITLY_LOGIN_EMAIL: ${{ secrets.WAITLY_LOGIN_EMAIL }}
           WAITLY_LOGIN_PASSWORD: ${{ secrets.WAITLY_LOGIN_PASSWORD }}
         run: |
           echo "LOGIN EMAIL SET? -> $([ -n "$WAITLY_LOGIN_EMAIL" ] && echo YES || echo NO)"
           echo "LOGIN PASS  SET? -> $([ -n "$WAITLY_LOGIN_PASSWORD" ] && echo YES || echo NO)"
           python waitly_watch_all.py
-
-Login (via env vars / secrets):
-  WAITLY_LOGIN_EMAIL=...
-  WAITLY_LOGIN_PASSWORD=...
-
-Kør:
-  python waitly_watch_all.py
-"""
-
-from __future__ import annotations
-
-import json
-import os
-import re
-import sys
-import time
-import traceback
-from datetime import datetime, timezone
-from pathlib import Path
-from typing import Dict, List, Optional, Set
-from urllib.parse import urljoin, urlparse, urlunparse
-
-import requests
-from requests.exceptions import HTTPError
-from bs4 import BeautifulSoup
-import smtplib
-from email.message import EmailMessage
-
-
-# ----------------------------
-# Config
-# ----------------------------
-
-SITEMAP_URL = "https://waitly.eu/da/sitemap"
-
-WATCHLIST_FILE = Path("watch_urls.txt")            # known pages to watch for opening
-STATE_FILE = Path("waitly_watch_state.json")       # persisted state for sitemap+pages
-
-NOTIFY_TO = "jeppe.kurland@gmail.com"
-
-REQUEST_TIMEOUT = 25
-SLEEP_BETWEEN_PAGE_FETCHES_SEC = 1.2
-
-# SMTP via env vars
-ENV_SMTP_HOST = "WAITLY_SMTP_HOST"
-ENV_SMTP_PORT = "WAITLY_SMTP_PORT"
-ENV_SMTP_USER = "WAITLY_SMTP_USER"
-ENV_SMTP_PASS = "WAITLY_SMTP_PASS"
-ENV_MAIL_FROM = "WAITLY_MAIL_FROM"
-
-# Login env vars (A)
-ENV_WAITLY_LOGIN_EMAIL = "WAITLY_LOGIN_EMAIL"
-ENV_WAITLY_LOGIN_PASSWORD = "WAITLY_LOGIN_PASSWORD"
-
-# Area matching for NEW sitemap URLs
-AREA_TOKENS = (
-    # København (inkl. alternative stavninger)
-    "koebenhavn-k", "kobenhavn-k",
-    "koebenhavn-v", "kobenhavn-v",
-    "koebenhavn-o", "kobenhavn-o",   # Østerbro (ø→o)
-    "koebenhavn-n", "kobenhavn-n",
-    "koebenhavn-s", "kobenhavn-s",
-
-    # Frederiksberg
-    "frederiksberg",
-    "frederiksberg-c",
-)
-
-# Accept:
-#   /<token>/...
-#   /####-<token>/...
-# where #### is exactly 4 digits
-AREA_SEGMENT_RE = re.compile(
-    r"/(?:\d{4}-)?(" + "|".join(re.escape(t) for t in AREA_TOKENS) + r")(/|$)",
-    re.IGNORECASE
-)
-
-
-# ----------------------------
-# Helpers
-# ----------------------------
-
-def now_iso() -> str:
-    return datetime.now(timezone.utc).isoformat()
-
-
-def normalize_url(url: str) -> str:
-    url = (url or "").strip()
-    if not url:
-        return ""
-    p = urlparse(url)
-    if not p.scheme or not p.netloc:
-        return ""
-    # drop fragment
-    p2 = p._replace(fragment="")
-    return urlunparse(p2)
-
-
-def fetch_text(url: str) -> str:
-    r = requests.get(url, timeout=REQUEST_TIMEOUT, headers={"User-Agent": "waitly-watch/3.1"})
-    r.raise_for_status()
-    return r.text
-
-
-def smtp_config_present() -> bool:
-    return all(os.getenv(k) for k in (ENV_SMTP_HOST, ENV_SMTP_PORT, ENV_SMTP_USER, ENV_SMTP_PASS))
-
-
-def send_email(subject: str, body: str, to_addr: str) -> None:
-    if not smtp_config_present():
-        print("SMTP env vars mangler -> sender ikke email. (Detection kører stadig.)")
-        return
-
-    host = os.getenv(ENV_SMTP_HOST)
-    port = int(os.getenv(ENV_SMTP_PORT, "587"))
-    user = os.getenv(ENV_SMTP_USER)
-    password = os.getenv(ENV_SMTP_PASS)
-    mail_from = os.getenv(ENV_MAIL_FROM) or user
-
-    msg = EmailMessage()
-    msg["Subject"] = subject
-    msg["From"] = mail_from
-    msg["To"] = to_addr
-    msg.set_content(body)
-
-    with smtplib.SMTP(host, port) as s:
-        s.starttls()
-        s.login(user, password)
-        s.send_message(msg)
-
-
-# ----------------------------
-# State
-# ----------------------------
-
-def load_state(path: Path) -> dict:
-    if not path.exists():
-        return {
-            "last_run": None,
-            "sitemap": {"count": 0, "urls": []},
-            "pages": {},  # url -> {"open": bool, "last_seen": iso, "reason_text": str, "reason_href": str}
-        }
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-        if isinstance(data, dict):
-            data.setdefault("last_run", None)
-            data.setdefault("sitemap", {"count": 0, "urls": []})
-            data.setdefault("pages", {})
-            if not isinstance(data["pages"], dict):
-                data["pages"] = {}
-            return data
-    except Exception:
-        pass
-    return {
-        "last_run": None,
-        "sitemap": {"count": 0, "urls": []},
-        "pages": {},
-    }
-
-
-def save_state(path: Path, state: dict) -> None:
-    state["last_run"] = now_iso()
-    path.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
-
-
-# ----------------------------
-# Part 1: Discover NEW relevant URLs from sitemap
-# ----------------------------
-
-def extract_links_from_html(html: str, base_url: str) -> Set[str]:
-    soup = BeautifulSoup(html, "html.parser")
-    out: Set[str] = set()
-    for a in soup.find_all("a", href=True):
-        abs_url = urljoin(base_url, a.get("href", ""))
-        norm = normalize_url(abs_url)
-        if norm:
-            out.add(norm)
-    return out
-
-
-def matches_area_rule(url: str) -> bool:
-    p = urlparse(url)
-    if p.netloc.lower() != "waitly.eu":
-        return False
-    return bool(AREA_SEGMENT_RE.search(p.path))
-
-
-def sitemap_check(state: dict) -> List[str]:
-    """
-    Returns list of NEW relevant URLs compared to stored baseline.
-    Updates sitemap baseline in state if changed.
-    """
-    prev_urls = set(normalize_url(u) for u in state["sitemap"].get("urls", []) if isinstance(u, str))
-    prev_count = int(state["sitemap"].get("count", 0) or 0)
-
-    html = fetch_text(SITEMAP_URL)
-    all_links = extract_links_from_html(html, SITEMAP_URL)
-
-    relevant = {u for u in all_links if matches_area_rule(u)}
-    current_count = len(relevant)
-
-    # init baseline if empty (no email)
-    if prev_count == 0 and not prev_urls:
-        state["sitemap"] = {"count": current_count, "urls": sorted(relevant)}
-        return []
-
-    if current_count == prev_count:
-        return []
-
-    new_urls = sorted(relevant - prev_urls)
-    state["sitemap"] = {"count": current_count, "urls": sorted(relevant)}
-    return new_urls
-
-
-# ----------------------------
-# Part 2: Watch known pages for OPEN transitions (Tilmeld-link)
-# ----------------------------
-
-def load_watch_urls(path: Path) -> List[str]:
-    if not path.exists():
-        return []
-    urls: List[str] = []
-    for line in path.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if not line or line.startswith("#"):
-            continue
-        u = normalize_url(line)
-        if u:
-            urls.append(u)
-    # de-dup preserve order
-    seen = set()
-    out = []
-    for u in urls:
-        if u not in seen:
-            seen.add(u)
-            out.append(u)
-    return out
-
-
-def detect_open_signal(html: str) -> tuple[bool, Optional[str], Optional[str]]:
-    """
-    Returns: (is_open, reason_text, reason_href)
-
-    Strong signal:
-      <a href="...app.waitly.dk|app.waitly.eu..."> ... Tilmeld ... </a>
-    Fallback:
-      page text contains "tilmeld dig listen"
-    """
-    soup = BeautifulSoup(html, "html.parser")
-
-    # Strong signal: "tilmeld" + app.waitly.*
-    for a in soup.find_all("a", href=True):
-        href = (a.get("href") or "").strip()
-        text = (a.get_text(" ", strip=True) or "").strip()
-        if not href or not text:
-            continue
-        href_l = href.lower()
-        text_l = text.lower()
-        if "tilmeld" in text_l and ("app.waitly.dk" in href_l or "app.waitly.eu" in href_l):
-            return True, text, href
-
-    # Fallback: plain text
-    page_text = soup.get_text(" ", strip=True).lower()
-    if "tilmeld dig listen" in page_text:
-        return True, "Tilmeld dig listen (fallback tekstmatch)", None
-
-    return False, None, None
-
-
-def _remove_dead_urls_from_watchlist(dead_urls: List[str]) -> None:
-    if not dead_urls:
-        return
-    if not WATCHLIST_FILE.exists():
-        return
-
-    dead_set = set(dead_urls)
-    existing_lines = WATCHLIST_FILE.read_text(encoding="utf-8").splitlines()
-
-    kept_lines: List[str] = []
-    removed_count = 0
-
-    for ln in existing_lines:
-        raw = ln.strip()
-        if not raw or raw.startswith("#"):
-            kept_lines.append(ln)
-            continue
-
-        norm = normalize_url(raw)
-        if norm and norm in dead_set:
-            removed_count += 1
-            continue
-
-        kept_lines.append(ln)
-
-    if removed_count:
-        print(f"[watchlist] Removing {removed_count} dead URL(s) from {WATCHLIST_FILE}")
-        WATCHLIST_FILE.write_text("\n".join(kept_lines).rstrip() + "\n", encoding="utf-8")
-
-
-def watch_pages_for_openings(state: dict, urls: List[str]) -> List[dict]:
-    """
-    Returns list of events for URLs that transitioned closed -> open.
-    Does NOT alert the first time a URL is seen (baseline learning).
-    Auto-removes watchlist URLs that return 404/410.
-    """
-    opened_events: List[dict] = []
-    dead_urls: List[str] = []
-
-    pages_state: Dict[str, dict] = state.get("pages", {})
-    if not isinstance(pages_state, dict):
-        pages_state = {}
-        state["pages"] = pages_state
-
-    for i, url in enumerate(urls, start=1):
-        try:
-            html = fetch_text(url)
-            is_open, reason_text, reason_href = detect_open_signal(html)
-
-            prev = pages_state.get(url) if isinstance(pages_state.get(url), dict) else None
-            seen_before = prev is not None
-            prev_open = bool(prev.get("open")) if prev else False
-
-            # Notify only if we have a previous observation AND it flips closed -> open
-            if seen_before and (not prev_open) and is_open:
-                opened_events.append({
-                    "url": url,
-                    "reason_text": reason_text,
-                    "reason_href": reason_href,
-                })
-
-            pages_state[url] = {
-                "open": is_open,
-                "last_seen": now_iso(),
-                "reason_text": reason_text,
-                "reason_href": reason_href,
-            }
-
-        except HTTPError as e:
-            status = getattr(e.response, "status_code", None)
-            if status in (404, 410):
-                print(f"[watchlist] URL removed at source (HTTP {status}): {url}")
-                dead_urls.append(url)
-                pages_state[url] = {
-                    "open": False,
-                    "last_seen": now_iso(),
-                    "reason_text": f"HTTP {status}",
-                    "reason_href": None,
-                }
-            else:
-                pages_state.setdefault(url, {"open": False, "last_seen": None})
-                print(f"Fejl ved hentning: {url} -> {e}")
-
-        except Exception as e:
-            pages_state.setdefault(url, {"open": False, "last_seen": None})
-            print(f"Netværksfejl ved hentning: {url} -> {e}")
-
-        if i < len(urls):
-            time.sleep(SLEEP_BETWEEN_PAGE_FETCHES_SEC)
-
-    state["pages"] = pages_state
-
-    # Remove dead URLs from watchlist file (404/410 only)
-    _remove_dead_urls_from_watchlist(dead_urls)
-
-    return opened_events
-
-
-# ----------------------------
-# Main
-# ----------------------------
-
-def build_email(opened_events: List[dict], new_urls: List[str]) -> tuple[str, str]:
-    # Subject severity: ÅBNING trumfer NY SIDE
-    if opened_events:
-        subject = f"🚨 [Waitly] ÅBNING: {len(opened_events)} liste(r) åbnede"
-    else:
-        subject = f"🆕 [Waitly] NY SIDE: {len(new_urls)} nye relevante sider"
-
-    sections: List[str] = [
-        f"Tidspunkt (UTC): {now_iso()}",
-        f"Sitemap: {SITEMAP_URL}",
-    ]
-
-    if opened_events:
-        lines = ["", "🚨 ÅBNINGER (lukket → åben):"]
-        for ev in opened_events:
-            lines.append(f"- {ev['url']}")
-            if ev.get("reason_text"):
-                lines.append(f"  tekst: {ev['reason_text']}")
-            if ev.get("reason_href"):
-                lines.append(f"  link:  {ev['reason_href']}")
-        sections.append("\n".join(lines))
-
-    if new_urls:
-        lines = ["", "🆕 NYE SIDER (sitemap):"]
-        for u in new_urls:
-            lines.append(f"- {u}")
-        sections.append("\n".join(lines))
-
-    sections.append("")
-    sections.append(f"State: {STATE_FILE.resolve()}")
-
-    body = "\n".join(sections)
-    return subject, body
-
-
-def main() -> int:
-    state = load_state(STATE_FILE)
-
-    # 1) Discover new relevant URLs from sitemap
-    new_urls = sitemap_check(state)
-
-    # 2) Watch known pages for openings
-    watch_urls = load_watch_urls(WATCHLIST_FILE)
-    opened_events = watch_pages_for_openings(state, watch_urls) if watch_urls else []
-
-    # Save state BEFORE email so we don't spam if email fails
-    save_state(STATE_FILE, state)
-
-    if opened_events or new_urls:
-        subject, body = build_email(opened_events, new_urls)
-        print(body)
-        send_email(subject, body, NOTIFY_TO)
-    else:
-        print("Ingen nye relevante sitemap-links og ingen åbninger i watchlisten.")
-
-    if not watch_urls:
-        print(f"Tip: Opret {WATCHLIST_FILE} med én Waitly-URL pr. linje for åbningsovervågning.")
-
-    # 3) Export waitlist positions for dashboard (requires login)
-    try:
-        waitly_email = os.environ.get(ENV_WAITLY_LOGIN_EMAIL, "").strip()
-        waitly_pass = os.environ.get(ENV_WAITLY_LOGIN_PASSWORD, "").strip()
-
-        if waitly_email and waitly_pass:
-            from waitly_positions import fetch_positions_via_login, write_current_json
-            snapshot = fetch_positions_via_login(waitly_email, waitly_pass, headless=True)
-            write_current_json(snapshot, "current.json")
-            print(f"[dashboard] Wrote current.json with {len(snapshot.get('queues', []))} queues.")
-        else:
-            print("[dashboard] WAITLY_LOGIN_EMAIL/PASSWORD not set; skipping position export.")
-    except Exception as e:
-        print(f"[dashboard] Failed to export positions: {e}")
-
-    return 0
-
-
-# ----------------------------
-# Debug-wrapper (din præference)
-# ----------------------------
-if __name__ == "__main__":
-    try:
-        sys.exit(main())
-    except Exception:
-        print("\nCRASH:\n" + traceback.format_exc())
-        input("Tryk Enter for at afslutte...")
-        raise
+          echo "Repo root files after run:"
+          ls -la
+          echo "current.json exists?"
+          test -f current.json && (echo "YES"; head -n 60 current.json) || echo "NO"
+
+      - name: Checkout venteliste-dashboard
+        uses: actions/checkout@v4
+        with:
+          repository: jeppenaeb/venteliste-dashboard
+          token: ${{ secrets.DASHBOARD_PUSH_TOKEN }}
+          path: dashboard
+          persist-credentials: false
+
+      - name: Copy current.json into dashboard repo (fallback to keep existing if missing)
+        run: |
+          mkdir -p dashboard/data
+          if test -f current.json; then
+            cp -f current.json dashboard/data/current.json
+            echo "Copied current.json -> dashboard/data/current.json"
+          else
+            echo "WARNING: current.json missing; leaving dashboard/data/current.json unchanged"
+          fi
+
+      - name: Commit and push dashboard update
+        env:
+          DASHBOARD_PUSH_TOKEN: ${{ secrets.DASHBOARD_PUSH_TOKEN }}
+        run: |
+          cd dashboard
+
+          # Ensure pushes use the PAT (classic token)
+          git config --local --unset-all http.https://github.com/.extraheader || true
+          git remote set-url origin "https://x-access-token:${DASHBOARD_PUSH_TOKEN}@github.com/jeppenaeb/venteliste-dashboard.git"
+
+          if git status --porcelain | grep -q 'data/current.json'; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add data/current.json
+            git commit -m "Update data/current.json (Waitly Watch)"
+            git push origin HEAD:main
+          else
+            echo "No changes to commit"
+          fi
