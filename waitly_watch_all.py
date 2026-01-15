@@ -29,12 +29,19 @@ Afhængigheder:
   pip install requests beautifulsoup4
   (A): pip install playwright  (+ workflow install chromium)
 
-SMTP (via env vars):
-  WAITLY_SMTP_HOST=smtp.gmail.com
-  WAITLY_SMTP_PORT=587
-  WAITLY_SMTP_USER=din_gmail@gmail.com
-  WAITLY_SMTP_PASS=din_app_password
-  WAITLY_MAIL_FROM=din_gmail@gmail.com  (optional; ellers SMTP_USER)
+- name: Run Waitly Watch
+        env:
+          WAITLY_SMTP_HOST: smtp.gmail.com
+          WAITLY_SMTP_PORT: "587"
+          WAITLY_SMTP_USER: ${{ secrets.WAITLY_SMTP_USER }}
+          WAITLY_SMTP_PASS: ${{ secrets.WAITLY_SMTP_PASS }}
+          WAITLY_MAIL_FROM: ${{ secrets.WAITLY_SMTP_USER }}
+          WAITLY_LOGIN_EMAIL: ${{ secrets.WAITLY_LOGIN_EMAIL }}
+          WAITLY_LOGIN_PASSWORD: ${{ secrets.WAITLY_LOGIN_PASSWORD }}
+        run: |
+          echo "LOGIN EMAIL SET? -> $([ -n "$WAITLY_LOGIN_EMAIL" ] && echo YES || echo NO)"
+          echo "LOGIN PASS  SET? -> $([ -n "$WAITLY_LOGIN_PASSWORD" ] && echo YES || echo NO)"
+          python waitly_watch_all.py
 
 Login (via env vars / secrets):
   WAITLY_LOGIN_EMAIL=...
