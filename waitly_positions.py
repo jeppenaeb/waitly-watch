@@ -1,127 +1,94 @@
-# -*- coding: utf-8 -*-
-from __future__ import annotations
-
+import os
 import json
-import re
+import traceback
 from datetime import datetime, timezone
-from typing import Any, Iterable, List, Optional, Dict
+from typing import List, Dict
 
-from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
+from playwright.async_api import async_playwright
 
 
-def _iso_date_utc() -> str:
-    return datetime.now(timezone.utc).date().isoformat()
+DEBUG = os.getenv("WAITLY_DEBUG", "1") == "1"
 
-def _slugify(s: str) -> str:
-    s = s.strip().lower()
-    s = re.sub(r"[^a-z0-9]+", "-", s)
-    return s.strip("-")
 
-def _walk_json(obj: Any) -> Iterable[Any]:
-    stack = [obj]
-    while stack:
-        cur = stack.pop()
-        yield cur
-        if isinstance(cur, dict):
-            stack.extend(cur.values())
-        elif isinstance(cur, list):
-            stack.extend(cur)
+def log(msg: str) -> None:
+    ts = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    print(f"[waitly_positions {ts}] {msg}", flush=True)
 
-def _extract_queue_objects(obj: Any) -> List[Dict[str, Any]]:
-    candidates: List[Dict[str, Any]] = []
-    for node in _walk_json(obj):
-        if not isinstance(node, dict):
-            continue
 
-        keys = set(node.keys())
-        has_pos = any(k in keys for k in ("position", "spot", "rank", "place"))
-        has_total = any(k in keys for k in ("total", "size", "capacity", "spots", "waitlistSize"))
-        has_name = any(k in keys for k in ("name", "title", "waitlistName", "listName"))
-        if has_pos and has_total and has_name:
-            candidates.append(node)
-    return candidates
+async def debug_dump(page, label: str) -> None:
+    if not DEBUG:
+        return
 
-def _best_int(d: Dict[str, Any], keys: List[str]) -> Optional[int]:
-    for k in keys:
-        v = d.get(k)
-        if isinstance(v, bool):
-            continue
-        if isinstance(v, (int, float)):
-            return int(v)
-        if isinstance(v, str) and v.strip().isdigit():
-            return int(v.strip())
-    return None
+    os.makedirs("state", exist_ok=True)
+    safe = "".join(c if c.isalnum() or c in "-_." else "_" for c in label)[:80]
 
-def _best_str(d: Dict[str, Any], keys: List[str]) -> Optional[str]:
-    for k in keys:
-        v = d.get(k)
-        if isinstance(v, str) and v.strip():
-            return v.strip()
-    return None
+    try:
+        png = f"state/debug_{safe}.png"
+        html = f"state/debug_{safe}.html"
+        await page.screenshot(path=png, full_page=True)
+        with open(html, "w", encoding="utf-8") as f:
+            f.write(await page.content())
+        log(f"DEBUG dump written: {png}, {html}")
+    except Exception as e:
+        log(f"DEBUG dump failed: {e}")
 
-def fetch_positions_via_login(email: str, password: str, headless: bool = True) -> Dict[str, Any]:
-    json_payloads: List[Any] = []
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=headless)
-        page = browser.new_page()
+async def fetch_positions(email: str, password: str) -> List[Dict]:
+    if not email or not password:
+        raise RuntimeError("WAITLY_LOGIN_EMAIL / WAITLY_LOGIN_PASSWORD not set")
 
-        def on_response(resp):
-            try:
-                ct = (resp.headers.get("content-type") or "").lower()
-                if "application/json" in ct:
-                    json_payloads.append(resp.json())
-            except Exception:
-                pass
+    log("Starting Playwright")
+    queues: List[Dict] = []
 
-        page.on("response", on_response)
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=True)
+        context = await browser.new_context()
+        page = await context.new_page()
 
-        page.goto("https://my.waitly.dk/login", wait_until="domcontentloaded")
+        log("Opening https://my.waitly.dk/")
+        await page.goto("https://my.waitly.dk/", wait_until="domcontentloaded")
+        await debug_dump(page, "01_landing")
 
-        page.get_by_label("Email address").fill(email)
-        page.get_by_label("Password").fill(password)
-        page.get_by_role("button", name=re.compile(r"login", re.I)).click()
+        log("Filling login form")
+        await page.fill("input[type='email']", email)
+        await page.fill("input[type='password']", password)
+        await page.click("button[type='submit']")
 
+        await page.wait_for_timeout(2000)
+        await debug_dump(page, "02_after_submit")
+
+        log(f"URL after submit: {page.url}")
+
+        # --- login sanity check ---
         try:
-            page.wait_for_load_state("networkidle", timeout=30_000)
-        except PlaywrightTimeoutError:
-            pass
+            await page.wait_for_selector("text=Ventelister", timeout=15000)
+            log("Login check PASSED")
+        except Exception:
+            await debug_dump(page, "03_login_failed")
+            raise RuntimeError("Login FAILED – did not reach dashboard")
 
-        page.wait_for_timeout(3_000)
+        # --- scrape queues ---
+        log("Scraping queue cards")
+        await debug_dump(page, "04_before_scrape")
 
-        for url in ("https://my.waitly.dk/", "https://my.waitly.dk/profile", "https://my.waitly.dk/offers"):
+        cards = await page.query_selector_all("a[href*='/queues/']")
+        log(f"Queue links found: {len(cards)}")
+
+        for card in cards:
             try:
-                page.goto(url, wait_until="domcontentloaded")
-                page.wait_for_timeout(2_000)
+                name = (await card.inner_text()).strip()
+                href = await card.get_attribute("href")
+                queues.append({
+                    "name": name,
+                    "url": href,
+                })
             except Exception:
-                pass
-
-        browser.close()
-
-    queues: List[Dict[str, Any]] = []
-    seen = set()
-
-    for payload in json_payloads:
-        for obj in _extract_queue_objects(payload):
-            name = _best_str(obj, ["name", "title", "waitlistName", "listName"]) or "Unknown list"
-            position = _best_int(obj, ["position", "spot", "rank", "place"])
-            total = _best_int(obj, ["total", "size", "capacity", "spots", "waitlistSize"])
-            if position is None or total is None:
                 continue
 
-            qid = _slugify(name)
-            key = (qid, int(position), int(total))
-            if key in seen:
-                continue
-            seen.add(key)
+        log(f"Scrape complete. Queues found: {len(queues)}")
+        if DEBUG:
+            log("Queues sample: " + json.dumps(queues[:3], ensure_ascii=False))
 
-            queues.append({"id": qid, "name": name, "position": int(position), "total": int(total)})
+        await browser.close()
 
-    queues.sort(key=lambda x: x["name"].lower())
-
-    return {"updated_at": _iso_date_utc(), "queues": queues}
-
-def write_current_json(data: Dict[str, Any], out_path: str) -> None:
-    with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-        f.write("\n")
+    return queues
