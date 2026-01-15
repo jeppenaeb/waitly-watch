@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Waitly Watch (sitemap + openings + dashboard export)
+Waitly Watch (sitemap + openings) + dashboard export
 
 Funktioner:
 1) NYE SIDER:
@@ -15,20 +15,19 @@ Funktioner:
    - Checker om siden er åben ved at finde et "Tilmeld"-link til app.waitly.*
    - Notifier KUN ved transition lukket -> åben (ingen spam på første run)
    - Notifier via mail med 🚨 [Waitly] ÅBNING
+   - Auto-fjerner URL'er fra watch_urls.txt ved HTTP 404/410 (fjernet hos Waitly)
 
-3) DASHBOARD-EXPORT (A):
-   - Logger ind på https://my.waitly.dk/login med email+password (env)
-   - Sniffer JSON-responses og udtrækker (name, position, total)
-   - Skriver snapshot til current.json (repo-root), som workflowet kopierer til dashboard
-
-Robusthed:
-- Hvis en watch-URL giver 404/410, fjernes den automatisk fra watch_urls.txt
+3) DASHBOARD EXPORT (A):
+   - Logger ind på my.waitly.dk med WAITLY_LOGIN_EMAIL/PASSWORD (GitHub Secrets)
+   - Henter dine venteliste-positioner (via waitly_positions.py)
+   - Skriver current.json i repo-roden (workflow kopierer den til dashboard-repo)
 
 State:
 - Gemmer baseline + sidestatus i waitly_watch_state.json
 
 Afhængigheder:
-  pip install requests beautifulsoup4 playwright
+  pip install requests beautifulsoup4
+  (A): pip install playwright  (+ workflow install chromium)
 
 SMTP (via env vars):
   WAITLY_SMTP_HOST=smtp.gmail.com
@@ -37,7 +36,7 @@ SMTP (via env vars):
   WAITLY_SMTP_PASS=din_app_password
   WAITLY_MAIL_FROM=din_gmail@gmail.com  (optional; ellers SMTP_USER)
 
-Login (via env vars):
+Login (via env vars / secrets):
   WAITLY_LOGIN_EMAIL=...
   WAITLY_LOGIN_PASSWORD=...
 
@@ -59,6 +58,7 @@ from typing import Dict, List, Optional, Set
 from urllib.parse import urljoin, urlparse, urlunparse
 
 import requests
+from requests.exceptions import HTTPError
 from bs4 import BeautifulSoup
 import smtplib
 from email.message import EmailMessage
@@ -85,9 +85,9 @@ ENV_SMTP_USER = "WAITLY_SMTP_USER"
 ENV_SMTP_PASS = "WAITLY_SMTP_PASS"
 ENV_MAIL_FROM = "WAITLY_MAIL_FROM"
 
-# Login via env vars (for dashboard export)
-ENV_LOGIN_EMAIL = "WAITLY_LOGIN_EMAIL"
-ENV_LOGIN_PASSWORD = "WAITLY_LOGIN_PASSWORD"
+# Login env vars (A)
+ENV_WAITLY_LOGIN_EMAIL = "WAITLY_LOGIN_EMAIL"
+ENV_WAITLY_LOGIN_PASSWORD = "WAITLY_LOGIN_PASSWORD"
 
 # Area matching for NEW sitemap URLs
 AREA_TOKENS = (
@@ -134,7 +134,7 @@ def normalize_url(url: str) -> str:
 
 
 def fetch_text(url: str) -> str:
-    r = requests.get(url, timeout=REQUEST_TIMEOUT, headers={"User-Agent": "waitly-watch/4.0"})
+    r = requests.get(url, timeout=REQUEST_TIMEOUT, headers={"User-Agent": "waitly-watch/3.1"})
     r.raise_for_status()
     return r.text
 
@@ -305,7 +305,6 @@ def detect_open_signal(html: str) -> tuple[bool, Optional[str], Optional[str]]:
 
 
 def _remove_dead_urls_from_watchlist(dead_urls: List[str]) -> None:
-    """Remove only exact URL lines (normalized) from watch_urls.txt; keep comments/blank lines."""
     if not dead_urls:
         return
     if not WATCHLIST_FILE.exists():
@@ -315,29 +314,31 @@ def _remove_dead_urls_from_watchlist(dead_urls: List[str]) -> None:
     existing_lines = WATCHLIST_FILE.read_text(encoding="utf-8").splitlines()
 
     kept_lines: List[str] = []
-    removed = 0
+    removed_count = 0
+
     for ln in existing_lines:
         raw = ln.strip()
         if not raw or raw.startswith("#"):
             kept_lines.append(ln)
             continue
+
         norm = normalize_url(raw)
         if norm and norm in dead_set:
-            removed += 1
+            removed_count += 1
             continue
+
         kept_lines.append(ln)
 
-    if removed:
+    if removed_count:
+        print(f"[watchlist] Removing {removed_count} dead URL(s) from {WATCHLIST_FILE}")
         WATCHLIST_FILE.write_text("\n".join(kept_lines).rstrip() + "\n", encoding="utf-8")
-        print(f"[watchlist] Removed {removed} dead URL(s) from {WATCHLIST_FILE}")
 
 
 def watch_pages_for_openings(state: dict, urls: List[str]) -> List[dict]:
     """
     Returns list of events for URLs that transitioned closed -> open.
     Does NOT alert the first time a URL is seen (baseline learning).
-
-    Also auto-removes 404/410 URLs from watch_urls.txt.
+    Auto-removes watchlist URLs that return 404/410.
     """
     opened_events: List[dict] = []
     dead_urls: List[str] = []
@@ -371,7 +372,7 @@ def watch_pages_for_openings(state: dict, urls: List[str]) -> List[dict]:
                 "reason_href": reason_href,
             }
 
-        except requests.exceptions.HTTPError as e:
+        except HTTPError as e:
             status = getattr(e.response, "status_code", None)
             if status in (404, 410):
                 print(f"[watchlist] URL removed at source (HTTP {status}): {url}")
@@ -395,7 +396,7 @@ def watch_pages_for_openings(state: dict, urls: List[str]) -> List[dict]:
 
     state["pages"] = pages_state
 
-    # Remove dead URLs (404/410 only)
+    # Remove dead URLs from watchlist file (404/410 only)
     _remove_dead_urls_from_watchlist(dead_urls)
 
     return opened_events
@@ -465,13 +466,11 @@ def main() -> int:
 
     # 3) Export waitlist positions for dashboard (requires login)
     try:
-        waitly_email = os.environ.get(ENV_LOGIN_EMAIL, "").strip()
-        waitly_pass = os.environ.get(ENV_LOGIN_PASSWORD, "").strip()
+        waitly_email = os.environ.get(ENV_WAITLY_LOGIN_EMAIL, "").strip()
+        waitly_pass = os.environ.get(ENV_WAITLY_LOGIN_PASSWORD, "").strip()
 
         if waitly_email and waitly_pass:
-            # Provided by waitly_positions.py (Playwright login + JSON sniff)
             from waitly_positions import fetch_positions_via_login, write_current_json
-
             snapshot = fetch_positions_via_login(waitly_email, waitly_pass, headless=True)
             write_current_json(snapshot, "current.json")
             print(f"[dashboard] Wrote current.json with {len(snapshot.get('queues', []))} queues.")
