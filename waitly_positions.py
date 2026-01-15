@@ -1,14 +1,22 @@
 import os
 import json
-from datetime import datetime, timezone
-from typing import List, Dict, Optional, Any
+import csv
+from datetime import datetime, timezone, timedelta
+from typing import List, Dict, Optional, Any, Tuple
 
 from playwright.async_api import async_playwright, Page
 
 
 DEBUG = os.getenv("WAITLY_DEBUG", "1") == "1"
 
+HISTORY_PATH = "state/history.json"
+HISTORY_CSV_PATH = "state/history_flat.csv"
+START_POSITIONS_PATH = "state/start_positions.json"
 
+
+# -----------------------------
+# Utilities
+# -----------------------------
 def log(msg: str) -> None:
     ts = datetime.now(timezone.utc).isoformat(timespec="seconds")
     print(f"[waitly_positions {ts}] {msg}", flush=True)
@@ -16,6 +24,18 @@ def log(msg: str) -> None:
 
 def _safe(label: str) -> str:
     return "".join(c if c.isalnum() or c in "-_." else "_" for c in label)[:80]
+
+
+def _now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+def _parse_iso(ts: str) -> Optional[datetime]:
+    try:
+        # expected like 2026-01-15T20:47:24+00:00
+        return datetime.fromisoformat(ts)
+    except Exception:
+        return None
 
 
 async def debug_dump(page: Page, label: str) -> None:
@@ -34,6 +54,9 @@ async def debug_dump(page: Page, label: str) -> None:
         log(f"DEBUG dump failed: {e}")
 
 
+# -----------------------------
+# Cookie & login flow helpers
+# -----------------------------
 async def accept_cookies_if_present(page: Page) -> None:
     for name in ["Tillad alle", "Accepter", "Accept", "Allow all", "OK"]:
         try:
@@ -73,7 +96,7 @@ async def click_login(page: Page) -> None:
 
 async def choose_private_account_if_prompted(page: Page) -> None:
     """
-    Your exact button text seen in UI: "Gå til privatkonto"
+    UI sometimes asks account type; user's exact button text: "Gå til privatkonto"
     Best-effort; no failure if prompt not present.
     """
     candidates = [
@@ -167,20 +190,10 @@ def summarize_json_samples(samples: List[Dict[str, Any]]) -> None:
             log(f"  - {url} | type: {type(data).__name__}")
 
 
-def find_subscriptions_json(api_json_samples: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
-    for s in api_json_samples:
-        url = s.get("url", "") or ""
-        if "/api/v2/consumer/users/" in url and url.endswith("/subscriptions"):
-            j = s.get("json")
-            if isinstance(j, dict) and isinstance(j.get("data"), list):
-                return j
-    return None
-
-
+# -----------------------------
+# Start positions (optional bonus)
+# -----------------------------
 def load_start_positions(path: str) -> Dict[str, int]:
-    """
-    Returns mapping: list_id(str) -> start_position(int)
-    """
     try:
         with open(path, "r", encoding="utf-8") as f:
             obj = json.load(f)
@@ -201,12 +214,7 @@ def load_start_positions(path: str) -> Dict[str, int]:
 
 
 def write_start_positions_template(path: str, queues: List[Dict]) -> None:
-    """
-    Creates/updates a template file. If it exists, we DO NOT overwrite user values.
-    If it doesn't exist, we create it with current positions as initial values.
-    """
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
-
     if os.path.exists(path):
         return
 
@@ -222,7 +230,7 @@ def write_start_positions_template(path: str, queues: List[Dict]) -> None:
             pass
 
     obj = {
-        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "generated_at": _now_iso(),
         "note": "Edit start_positions values to the TRUE starting placement from signup.",
         "start_positions": start_positions,
     }
@@ -231,7 +239,7 @@ def write_start_positions_template(path: str, queues: List[Dict]) -> None:
     log(f"Start positions template created: {path}")
 
 
-def compute_progress(current_position: Optional[int], start_position: Optional[int]) -> Dict[str, Any]:
+def compute_progress_from_start(current_position: Optional[int], start_position: Optional[int]) -> Dict[str, Any]:
     if current_position is None or start_position is None:
         return {}
     try:
@@ -250,13 +258,21 @@ def compute_progress(current_position: Optional[int], start_position: Optional[i
         return {}
 
 
+# -----------------------------
+# Subscriptions parsing
+# -----------------------------
+def find_subscriptions_json(api_json_samples: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
+    for s in api_json_samples:
+        url = s.get("url", "") or ""
+        if "/api/v2/consumer/users/" in url and url.endswith("/subscriptions"):
+            j = s.get("json")
+            if isinstance(j, dict) and isinstance(j.get("data"), list):
+                return j
+    return None
+
+
 def _normalized_name(company_name: Optional[str], list_name: Optional[str], full_name: Optional[str]) -> str:
-    """
-    Avoid double names.
-    Prefer list_name if it already contains company_name.
-    Else company - list.
-    Fallback full_name then list_name.
-    """
+    # Avoid double names: if list_name already contains company_name, use list_name only.
     if list_name and company_name:
         if company_name.strip().lower() in list_name.strip().lower():
             return list_name.strip()
@@ -273,16 +289,8 @@ def _normalized_name(company_name: Optional[str], list_name: Optional[str], full
 
 def parse_subscriptions_payload(payload: Any, start_positions: Dict[str, int]) -> List[Dict]:
     """
-    Deterministic parser for:
-      https://app.waitly.dk/api/v2/consumer/users/<id>/subscriptions
-
-    Output per queue:
-      - id (list id)
-      - name
-      - position (placement)
-      - total (prefers list.subscribers)
-      - optional: start_position, moved, moved_pct
-      - optional: passive/active flags from subscription
+    Deterministic parser for subscriptions endpoint.
+    Uses total = list.subscribers (matches UI "X of Y").
     """
     if not isinstance(payload, dict):
         return []
@@ -308,29 +316,12 @@ def parse_subscriptions_payload(payload: Any, start_positions: Dict[str, int]) -
         list_id = list_obj.get("id")
         list_name = list_obj.get("name")
         full_name = list_obj.get("full_name")
+        total = list_obj.get("subscribers")  # canonical total (UI)
 
         company_name = None
         company = list_obj.get("company")
         if isinstance(company, dict):
             company_name = company.get("name")
-
-        # --- total: prefer allowing "X of Y" to match UI ---
-        # Use list.subscribers as the canonical "Y"
-        total = list_obj.get("subscribers")
-
-        # Fallback if subscribers missing
-        if total is None:
-            template = list_obj.get("template")
-            if isinstance(template, dict):
-                lists = template.get("lists")
-                if isinstance(lists, list) and list_id is not None:
-                    for l in lists:
-                        if isinstance(l, dict) and l.get("id") == list_id:
-                            if l.get("subscribers") is not None:
-                                total = l.get("subscribers")
-                            elif l.get("active_subscribers") is not None:
-                                total = l.get("active_subscribers")
-                            break
 
         name = _normalized_name(company_name, list_name, full_name)
 
@@ -351,7 +342,7 @@ def parse_subscriptions_payload(payload: Any, start_positions: Dict[str, int]) -
             except Exception:
                 rec["total"] = total
 
-        # include status (useful for debugging/UI)
+        # Status flags (nice for debug / future filtering)
         if active is not None:
             rec["active"] = bool(active)
         if completed is not None:
@@ -359,10 +350,9 @@ def parse_subscriptions_payload(payload: Any, start_positions: Dict[str, int]) -
         if approved is not None:
             rec["approved"] = bool(approved)
 
-        # progress (start placement tracking)
+        # Start progress (optional)
         sp = start_positions.get(rec["id"])
-        prog = compute_progress(rec.get("position"), sp)
-        rec.update(prog)
+        rec.update(compute_progress_from_start(rec.get("position"), sp))
 
         out.append(rec)
 
@@ -374,10 +364,163 @@ def parse_subscriptions_payload(payload: Any, start_positions: Dict[str, int]) -
         if key and key not in seen:
             dedup.append(r)
             seen.add(key)
-
     return dedup
 
 
+# -----------------------------
+# History + "this week/month/year" progress
+# -----------------------------
+def _load_history(path: str) -> Dict[str, Any]:
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            obj = json.load(f)
+        if isinstance(obj, dict) and isinstance(obj.get("lists"), dict):
+            return obj
+    except FileNotFoundError:
+        pass
+    except Exception:
+        pass
+    return {"version": 1, "lists": {}}
+
+
+def _save_history(path: str, obj: Dict[str, Any]) -> None:
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(obj, f, ensure_ascii=False, indent=2)
+
+
+def _append_history_snapshot(history: Dict[str, Any], ts: str, queues: List[Dict]) -> None:
+    lists = history.setdefault("lists", {})
+    if not isinstance(lists, dict):
+        history["lists"] = {}
+        lists = history["lists"]
+
+    for q in queues:
+        list_id = q.get("id")
+        pos = q.get("position")
+        tot = q.get("total")
+        if not list_id or pos is None or tot is None:
+            continue
+
+        series = lists.get(str(list_id))
+        if not isinstance(series, list):
+            series = []
+            lists[str(list_id)] = series
+
+        # Avoid duplicates if the same timestamp is written twice
+        if series and isinstance(series[-1], dict) and series[-1].get("ts") == ts:
+            continue
+
+        series.append({"ts": ts, "position": int(pos), "total": int(tot)})
+
+
+def _nearest_at_or_before(series: List[Dict[str, Any]], target: datetime) -> Optional[Dict[str, Any]]:
+    """
+    Find point with ts <= target, closest to target (i.e., latest before target).
+    series is expected roughly chronological.
+    """
+    best = None
+    best_t = None
+
+    for p in series:
+        ts = p.get("ts")
+        if not isinstance(ts, str):
+            continue
+        dt = _parse_iso(ts)
+        if not dt:
+            continue
+        if dt <= target:
+            if best_t is None or dt > best_t:
+                best = p
+                best_t = dt
+
+    return best
+
+
+def compute_window_progress(history: Dict[str, Any], list_id: str, now_ts: str) -> Dict[str, Any]:
+    """
+    Returns:
+      progress: {week: int|null, month: int|null, year: int|null}
+    where values are "positions moved forward" (positive means improvement).
+    """
+    lists = history.get("lists")
+    if not isinstance(lists, dict):
+        return {}
+
+    series = lists.get(str(list_id))
+    if not isinstance(series, list) or len(series) < 2:
+        return {}
+
+    now_dt = _parse_iso(now_ts)
+    if not now_dt:
+        return {}
+
+    latest = series[-1] if isinstance(series[-1], dict) else None
+    if not latest:
+        return {}
+
+    try:
+        now_pos = int(latest.get("position"))
+    except Exception:
+        return {}
+
+    def delta_for(days: int) -> Optional[int]:
+        target = now_dt - timedelta(days=days)
+        past = _nearest_at_or_before(series, target)
+        if not past:
+            return None
+        try:
+            past_pos = int(past.get("position"))
+        except Exception:
+            return None
+        return past_pos - now_pos  # positive = moved forward
+
+    week = delta_for(7)
+    month = delta_for(30)
+    year = delta_for(365)
+
+    out = {}
+    if week is not None:
+        out["week"] = week
+    if month is not None:
+        out["month"] = month
+    if year is not None:
+        out["year"] = year
+
+    return out
+
+
+def export_history_csv(history: Dict[str, Any], queues_by_id: Dict[str, str], path: str) -> None:
+    """
+    Writes a flat CSV 'sheet' for long-term analysis.
+    queues_by_id: list_id -> name (for readability in Excel)
+    """
+    lists = history.get("lists")
+    if not isinstance(lists, dict):
+        return
+
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+
+    with open(path, "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["timestamp", "list_id", "name", "position", "total"])
+        for list_id, series in lists.items():
+            if not isinstance(series, list):
+                continue
+            name = queues_by_id.get(str(list_id), "")
+            for p in series:
+                if not isinstance(p, dict):
+                    continue
+                ts = p.get("ts")
+                pos = p.get("position")
+                tot = p.get("total")
+                if isinstance(ts, str) and pos is not None and tot is not None:
+                    w.writerow([ts, list_id, name, pos, tot])
+
+
+# -----------------------------
+# Main entry used by waitly_watch_all.py
+# -----------------------------
 async def fetch_positions(email: str, password: str) -> List[Dict]:
     if not email or not password:
         raise RuntimeError("WAITLY_LOGIN_EMAIL / WAITLY_LOGIN_PASSWORD not set")
@@ -406,12 +549,14 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
 
         page.on("response", on_response)
 
+        # Landing
         log("Opening https://my.waitly.dk/")
         await page.goto("https://my.waitly.dk/", wait_until="domcontentloaded")
         await debug_dump(page, "01_landing")
 
         await accept_cookies_if_present(page)
 
+        # Login flow
         await click_login(page)
         await accept_cookies_if_present(page)
         await debug_dump(page, "02_after_login_click")
@@ -460,12 +605,6 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
             try:
                 btn = page.locator(sel)
                 if await btn.count() > 0 and await btn.first.is_visible():
-                    try:
-                        disabled = await btn.first.get_attribute("disabled")
-                        aria_disabled = await btn.first.get_attribute("aria-disabled")
-                        log(f"Submit button attrs disabled={disabled} aria-disabled={aria_disabled}")
-                    except Exception:
-                        pass
                     await btn.first.click()
                     submitted = True
                     break
@@ -477,6 +616,7 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
             await browser.close()
             raise RuntimeError("Could not find submit/login button")
 
+        # Let SPA load
         try:
             await page.wait_for_load_state("networkidle", timeout=25000)
         except Exception:
@@ -493,20 +633,21 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
 
         log("Login succeeded")
 
+        # Optional debug
         await capture_nuxt_public_config(page)
 
+        # extra time for API calls to settle
         await page.wait_for_timeout(2000)
         try:
             await page.wait_for_load_state("networkidle", timeout=25000)
         except Exception:
             pass
-
         await debug_dump(page, "08_dashboard_loaded")
 
+        # Save captured JSON samples for debugging
         os.makedirs("state", exist_ok=True)
         with open("state/api_json_samples.json", "w", encoding="utf-8") as f:
             json.dump(api_json_samples[:80], f, ensure_ascii=False, indent=2)
-
         log(f"Captured JSON responses: {len(api_json_samples)} (saved state/api_json_samples.json)")
         summarize_json_samples(api_json_samples)
 
@@ -519,15 +660,38 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
                 "See state/api_json_samples.json and state/debug_09_subscriptions_not_found.html/png"
             )
 
-        # start positions file (user-editable)
-        start_path = "state/start_positions.json"
-        start_positions = load_start_positions(start_path)
+        # Start positions (optional file)
+        start_positions = load_start_positions(START_POSITIONS_PATH)
 
-        # parse queues
+        # Parse queues
         queues = parse_subscriptions_payload(subs_json, start_positions)
 
-        # If start_positions file missing, create a template with CURRENT positions
-        write_start_positions_template(start_path, queues)
+        # If start positions file missing: create template with current values
+        write_start_positions_template(START_POSITIONS_PATH, queues)
+
+        # -----------------------------
+        # NEW: history + window progress
+        # -----------------------------
+        ts_now = _now_iso()
+        history = _load_history(HISTORY_PATH)
+        _append_history_snapshot(history, ts_now, queues)
+        _save_history(HISTORY_PATH, history)
+        log(f"History updated: {HISTORY_PATH}")
+
+        # Compute progress for each queue and attach to output
+        # progress = positions moved forward over windows
+        for q in queues:
+            lid = str(q.get("id", ""))
+            if not lid:
+                continue
+            win = compute_window_progress(history, lid, ts_now)
+            if win:
+                q["progress"] = win
+
+        # Export flat CSV "sheet" for Excel/Sheets
+        queues_by_id = {str(q.get("id")): str(q.get("name", "")) for q in queues if q.get("id") is not None}
+        export_history_csv(history, queues_by_id, HISTORY_CSV_PATH)
+        log(f"History CSV written: {HISTORY_CSV_PATH}")
 
         log(f"Parsed subscriptions -> {len(queues)} queues")
         if DEBUG:
