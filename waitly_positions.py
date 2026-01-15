@@ -73,7 +73,7 @@ async def click_login(page: Page) -> None:
 
 async def choose_private_account_if_prompted(page: Page) -> None:
     """
-    Your exact button text: "Gå til privatkonto"
+    Your exact button text seen in UI: "Gå til privatkonto"
     Best-effort; no failure if prompt not present.
     """
     candidates = [
@@ -167,19 +167,122 @@ def summarize_json_samples(samples: List[Dict[str, Any]]) -> None:
             log(f"  - {url} | type: {type(data).__name__}")
 
 
-def parse_subscriptions_payload(payload: Any) -> List[Dict]:
-    """
-    Input: JSON from https://app.waitly.dk/api/v2/consumer/users/<id>/subscriptions
-    Output: list of {id, name, position, total}
+def find_subscriptions_json(api_json_samples: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
+    for s in api_json_samples:
+        url = s.get("url", "") or ""
+        if "/api/v2/consumer/users/" in url and url.endswith("/subscriptions"):
+            j = s.get("json")
+            if isinstance(j, dict) and isinstance(j.get("data"), list):
+                return j
+    return None
 
-    Mapping:
-      - position = item["placement"]
-      - total:
-          prefer list.template.lists match on list.id -> active_subscribers if present
-          else list.subscribers
-      - name:
-          prefer list.company.name + " - " + list.name
-          fallback list.full_name
+
+def load_start_positions(path: str) -> Dict[str, int]:
+    """
+    Returns mapping: list_id(str) -> start_position(int)
+    """
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            obj = json.load(f)
+        if isinstance(obj, dict) and isinstance(obj.get("start_positions"), dict):
+            sp = obj["start_positions"]
+            out = {}
+            for k, v in sp.items():
+                try:
+                    out[str(k)] = int(v)
+                except Exception:
+                    pass
+            return out
+    except FileNotFoundError:
+        return {}
+    except Exception:
+        return {}
+    return {}
+
+
+def write_start_positions_template(path: str, queues: List[Dict]) -> None:
+    """
+    Creates/updates a template file. If it exists, we DO NOT overwrite user values.
+    If it doesn't exist, we create it with current positions as initial values.
+    """
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+
+    if os.path.exists(path):
+        return
+
+    start_positions = {}
+    for q in queues:
+        list_id = q.get("id")
+        pos = q.get("position")
+        if list_id is None or pos is None:
+            continue
+        try:
+            start_positions[str(list_id)] = int(pos)
+        except Exception:
+            pass
+
+    obj = {
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "note": "Edit start_positions values to the TRUE starting placement from signup.",
+        "start_positions": start_positions,
+    }
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(obj, f, ensure_ascii=False, indent=2)
+    log(f"Start positions template created: {path}")
+
+
+def compute_progress(current_position: Optional[int], start_position: Optional[int]) -> Dict[str, Any]:
+    if current_position is None or start_position is None:
+        return {}
+    try:
+        cur = int(current_position)
+        start = int(start_position)
+        if start <= 0:
+            return {}
+        moved = start - cur
+        moved_pct = (moved / start) * 100.0
+        return {
+            "start_position": start,
+            "moved": moved,
+            "moved_pct": round(moved_pct, 2),
+        }
+    except Exception:
+        return {}
+
+
+def _normalized_name(company_name: Optional[str], list_name: Optional[str], full_name: Optional[str]) -> str:
+    """
+    Avoid double names.
+    Prefer list_name if it already contains company_name.
+    Else company - list.
+    Fallback full_name then list_name.
+    """
+    if list_name and company_name:
+        if company_name.strip().lower() in list_name.strip().lower():
+            return list_name.strip()
+        return f"{company_name.strip()} - {list_name.strip()}"
+
+    if full_name:
+        return str(full_name).strip()
+    if list_name:
+        return str(list_name).strip()
+    if company_name:
+        return str(company_name).strip()
+    return "Unknown waitlist"
+
+
+def parse_subscriptions_payload(payload: Any, start_positions: Dict[str, int]) -> List[Dict]:
+    """
+    Deterministic parser for:
+      https://app.waitly.dk/api/v2/consumer/users/<id>/subscriptions
+
+    Output per queue:
+      - id (list id)
+      - name
+      - position (placement)
+      - total (prefers list.subscribers)
+      - optional: start_position, moved, moved_pct
+      - optional: passive/active flags from subscription
     """
     if not isinstance(payload, dict):
         return []
@@ -194,6 +297,10 @@ def parse_subscriptions_payload(payload: Any) -> List[Dict]:
             continue
 
         placement = item.get("placement", None)
+        active = item.get("active")
+        completed = item.get("completed")
+        approved = item.get("approved")
+
         list_obj = item.get("list") or {}
         if not isinstance(list_obj, dict):
             list_obj = {}
@@ -207,50 +314,59 @@ def parse_subscriptions_payload(payload: Any) -> List[Dict]:
         if isinstance(company, dict):
             company_name = company.get("name")
 
-        # total calculation
-        total = None
+        # --- total: prefer allowing "X of Y" to match UI ---
+        # Use list.subscribers as the canonical "Y"
+        total = list_obj.get("subscribers")
 
-        # Try to find matching list stats inside template.lists
-        template = list_obj.get("template")
-        if isinstance(template, dict):
-            lists = template.get("lists")
-            if isinstance(lists, list) and list_id is not None:
-                for l in lists:
-                    if isinstance(l, dict) and l.get("id") == list_id:
-                        # Prefer active_subscribers (often equals "people ahead" universe)
-                        if "active_subscribers" in l and l.get("active_subscribers") is not None:
-                            total = l.get("active_subscribers")
-                        elif "subscribers" in l and l.get("subscribers") is not None:
-                            total = l.get("subscribers")
-                        break
-
-        # Fallback: list.subscribers
+        # Fallback if subscribers missing
         if total is None:
-            total = list_obj.get("subscribers")
+            template = list_obj.get("template")
+            if isinstance(template, dict):
+                lists = template.get("lists")
+                if isinstance(lists, list) and list_id is not None:
+                    for l in lists:
+                        if isinstance(l, dict) and l.get("id") == list_id:
+                            if l.get("subscribers") is not None:
+                                total = l.get("subscribers")
+                            elif l.get("active_subscribers") is not None:
+                                total = l.get("active_subscribers")
+                            break
 
-        # name
-        name = None
-        if company_name and list_name:
-            name = f"{company_name} - {list_name}"
-        elif full_name:
-            name = full_name
-        elif list_name:
-            name = list_name
-        else:
-            name = "Unknown waitlist"
+        name = _normalized_name(company_name, list_name, full_name)
 
-        rec = {
+        rec: Dict[str, Any] = {
             "id": str(list_id) if list_id is not None else str(item.get("id", "")),
             "name": name,
         }
+
         if placement is not None:
-            rec["position"] = placement
+            try:
+                rec["position"] = int(placement)
+            except Exception:
+                rec["position"] = placement
+
         if total is not None:
-            rec["total"] = total
+            try:
+                rec["total"] = int(total)
+            except Exception:
+                rec["total"] = total
+
+        # include status (useful for debugging/UI)
+        if active is not None:
+            rec["active"] = bool(active)
+        if completed is not None:
+            rec["completed"] = bool(completed)
+        if approved is not None:
+            rec["approved"] = bool(approved)
+
+        # progress (start placement tracking)
+        sp = start_positions.get(rec["id"])
+        prog = compute_progress(rec.get("position"), sp)
+        rec.update(prog)
 
         out.append(rec)
 
-    # Remove obvious duplicates by id
+    # de-dupe by id
     dedup = []
     seen = set()
     for r in out:
@@ -260,19 +376,6 @@ def parse_subscriptions_payload(payload: Any) -> List[Dict]:
             seen.add(key)
 
     return dedup
-
-
-def find_subscriptions_json(api_json_samples: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
-    """
-    Find the subscriptions payload among captured JSON responses.
-    """
-    for s in api_json_samples:
-        url = s.get("url", "")
-        if "/api/v2/consumer/users/" in url and url.endswith("/subscriptions"):
-            j = s.get("json")
-            if isinstance(j, dict) and "data" in j:
-                return j
-    return None
 
 
 async def fetch_positions(email: str, password: str) -> List[Dict]:
@@ -303,14 +406,12 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
 
         page.on("response", on_response)
 
-        # Landing
         log("Opening https://my.waitly.dk/")
         await page.goto("https://my.waitly.dk/", wait_until="domcontentloaded")
         await debug_dump(page, "01_landing")
 
         await accept_cookies_if_present(page)
 
-        # Login flow
         await click_login(page)
         await accept_cookies_if_present(page)
         await debug_dump(page, "02_after_login_click")
@@ -342,9 +443,7 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
         if not email_sel or not pwd_sel:
             await debug_dump(page, "04_login_form_not_found")
             await browser.close()
-            raise RuntimeError(
-                "Could not find login form fields. Inspect state/debug_04_login_form_not_found.html/png"
-            )
+            raise RuntimeError("Could not find login form fields. Inspect state/debug_04_login_form_not_found.html/png")
 
         log(f"Filling login form ({email_sel}, {pwd_sel})")
         await page.fill(email_sel, email)
@@ -378,7 +477,6 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
             await browser.close()
             raise RuntimeError("Could not find submit/login button")
 
-        # Let SPA load
         try:
             await page.wait_for_load_state("networkidle", timeout=25000)
         except Exception:
@@ -395,10 +493,8 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
 
         log("Login succeeded")
 
-        # Optional: Nuxt config snapshot
         await capture_nuxt_public_config(page)
 
-        # Give a bit more time for API calls
         await page.wait_for_timeout(2000)
         try:
             await page.wait_for_load_state("networkidle", timeout=25000)
@@ -407,7 +503,6 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
 
         await debug_dump(page, "08_dashboard_loaded")
 
-        # Save captured JSON responses for debugging
         os.makedirs("state", exist_ok=True)
         with open("state/api_json_samples.json", "w", encoding="utf-8") as f:
             json.dump(api_json_samples[:80], f, ensure_ascii=False, indent=2)
@@ -415,20 +510,28 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
         log(f"Captured JSON responses: {len(api_json_samples)} (saved state/api_json_samples.json)")
         summarize_json_samples(api_json_samples)
 
-        # --- NEW: parse subscriptions deterministically ---
         subs_json = find_subscriptions_json(api_json_samples)
-        if subs_json:
-            queues = parse_subscriptions_payload(subs_json)
-            log(f"Parsed subscriptions -> {len(queues)} queues")
-            if DEBUG:
-                log("Queues sample: " + json.dumps(queues[:3], ensure_ascii=False))
+        if not subs_json:
+            await debug_dump(page, "09_subscriptions_not_found")
             await browser.close()
-            return queues
+            raise RuntimeError(
+                "Did not capture subscriptions endpoint in this run. "
+                "See state/api_json_samples.json and state/debug_09_subscriptions_not_found.html/png"
+            )
 
-        # If we didn't see subscriptions in captured responses, fail loudly with debug
-        await debug_dump(page, "09_subscriptions_not_found")
+        # start positions file (user-editable)
+        start_path = "state/start_positions.json"
+        start_positions = load_start_positions(start_path)
+
+        # parse queues
+        queues = parse_subscriptions_payload(subs_json, start_positions)
+
+        # If start_positions file missing, create a template with CURRENT positions
+        write_start_positions_template(start_path, queues)
+
+        log(f"Parsed subscriptions -> {len(queues)} queues")
+        if DEBUG:
+            log("Queues sample: " + json.dumps(queues[:3], ensure_ascii=False))
+
         await browser.close()
-        raise RuntimeError(
-            "Did not capture subscriptions endpoint in this run. "
-            "See state/api_json_samples.json and state/debug_09_subscriptions_not_found.html/png"
-        )
+        return queues
