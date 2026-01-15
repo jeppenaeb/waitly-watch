@@ -1,0 +1,58 @@
+{
+  "APP_NAME": "Waitly",
+  "PLATFORM_API_URL": "/api/v2/consumer",
+  "BASE_API_URL": "https://app.waitly.dk",
+  "SITE_URL": "https://my.waitly.dk",
+  "BUSINESS_URL": "https://app.waitly.dk",
+  "datoCmsToken": "53eb7af968ac957d4539ccaec7733b",
+  "WAITLY_PLUS_LIST_ID": "20b643ce-e09b-4161-a5b6-a83b643046fb",
+  "WAITLY_PLUS_INFO_PAGE": "https://waitly.dk/waitlyplus",
+  "WEBSITE_URL": "https://waitly.eu",
+  "gtm": {
+    "devtools": false,
+    "id": "GTM-5KVJQ9N5",
+    "defer": false,
+    "compatibility": false,
+    "enabled": true,
+    "debug": false,
+    "loadScript": true,
+    "enableRouterSync": true,
+    "ignoredViews": [],
+    "trackOnNextTick": true
+  },
+  "i18n": {
+    "baseUrl": "",
+    "defaultLocale": "",
+    "defaultDirection": "ltr",
+    "strategy": "prefix_except_default",
+    "lazy": true,
+    "rootRedirect": "",
+    "routesNameSeparator": "___",
+    "defaultLocaleRouteNameSuffix": "default",
+    "skipSettingLocaleOnNavigate": false,
+    "differentDomains": false,
+    "trailingSlash": false,
+    "locales": [],
+    "detectBrowserLanguage": {
+      "alwaysRedirect": false,
+      "cookieCrossOrigin": false,
+      "cookieDomain": "",
+      "cookieKey": "i18n_redirected",
+      "cookieSecure": false,
+      "fallbackLocale": "",
+      "redirectOn": "root",
+      "useCookie": true
+    },
+    "experimental": {
+      "localeDetector": "",
+      "switchLocalePathLinkSSR": false,
+      "autoImportTranslationFunctions": false,
+      "typedPages": true,
+      "typedOptionsAndMessages": false,
+      "generatedLocaleFilePathFormat": "absolute",
+      "alternateLinkCanonicalQueries": false,
+      "hmr": true
+    },
+    "multiDomainLocales": false
+  }
+}
