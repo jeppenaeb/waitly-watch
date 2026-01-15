@@ -398,6 +398,23 @@ def main() -> int:
     if not watch_urls:
         print(f"Tip: Opret {WATCHLIST_FILE} med én Waitly-URL pr. linje for åbningsovervågning.")
 
+    # 3) Export waitlist positions for dashboard (requires login)
+    try:
+        waitly_email = os.environ.get("WAITLY_LOGIN_EMAIL", "").strip()
+        waitly_pass = os.environ.get("WAITLY_LOGIN_PASSWORD", "").strip()
+
+        if waitly_email and waitly_pass:
+            from waitly_positions import fetch_positions_via_login, write_current_json
+
+            snapshot = fetch_positions_via_login(waitly_email, waitly_pass, headless=True)
+            write_current_json(snapshot, "current.json")
+            print(f"[dashboard] Wrote current.json with {len(snapshot.get('queues', []))} queues.")
+        else:
+            print("[dashboard] WAITLY_LOGIN_EMAIL/PASSWORD not set; skipping position export.")
+    except Exception as e:
+        print(f"[dashboard] Failed to export positions: {e}")
+
+   
     return 0
 
 
@@ -412,18 +429,4 @@ if __name__ == "__main__":
         input("Tryk Enter for at afslutte...")
         raise
 
-    # --- Export waitlist positions for dashboard (requires login) ---
-    try:
-        import os
-        waitly_email = os.environ.get("WAITLY_LOGIN_EMAIL", "").strip()
-        waitly_pass = os.environ.get("WAITLY_LOGIN_PASSWORD", "").strip()
-
-        if waitly_email and waitly_pass:
-            from waitly_positions import fetch_positions_via_login, write_current_json
-            snapshot = fetch_positions_via_login(waitly_email, waitly_pass, headless=True)
-            write_current_json(snapshot, "current.json")
-            print(f"[dashboard] Wrote current.json with {len(snapshot.get('queues', []))} queues.")
-        else:
-            print("[dashboard] WAITLY_LOGIN_EMAIL/PASSWORD not set; skipping position export.")
-    except Exception as e:
-        print(f"[dashboard] Failed to export positions: {e}")
+   
