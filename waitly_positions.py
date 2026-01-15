@@ -2,7 +2,7 @@ import os
 import json
 import csv
 from datetime import datetime, timezone, timedelta
-from typing import List, Dict, Optional, Any, Tuple
+from typing import List, Dict, Optional, Any
 
 from playwright.async_api import async_playwright, Page
 
@@ -11,7 +11,9 @@ DEBUG = os.getenv("WAITLY_DEBUG", "1") == "1"
 
 HISTORY_PATH = "state/history.json"
 HISTORY_CSV_PATH = "state/history_flat.csv"
+
 START_POSITIONS_PATH = "state/start_positions.json"
+START_POSITIONS_OVERRIDE_PATH = "state/start_positions_override.json"
 
 
 # -----------------------------
@@ -32,7 +34,6 @@ def _now_iso() -> str:
 
 def _parse_iso(ts: str) -> Optional[datetime]:
     try:
-        # expected like 2026-01-15T20:47:24+00:00
         return datetime.fromisoformat(ts)
     except Exception:
         return None
@@ -191,15 +192,19 @@ def summarize_json_samples(samples: List[Dict[str, Any]]) -> None:
 
 
 # -----------------------------
-# Start positions (optional bonus)
+# Start positions (with OVERRIDE)
 # -----------------------------
-def load_start_positions(path: str) -> Dict[str, int]:
+def _load_start_positions_file(path: str) -> Dict[str, int]:
+    """
+    Reads {"start_positions": {"1853": 431, ...}}
+    Returns dict(list_id_str -> int)
+    """
     try:
         with open(path, "r", encoding="utf-8") as f:
             obj = json.load(f)
         if isinstance(obj, dict) and isinstance(obj.get("start_positions"), dict):
             sp = obj["start_positions"]
-            out = {}
+            out: Dict[str, int] = {}
             for k, v in sp.items():
                 try:
                     out[str(k)] = int(v)
@@ -213,7 +218,30 @@ def load_start_positions(path: str) -> Dict[str, int]:
     return {}
 
 
-def write_start_positions_template(path: str, queues: List[Dict]) -> None:
+def load_start_positions_with_override() -> Dict[str, int]:
+    """
+    Priority:
+      1) state/start_positions_override.json  (your canonical truth)
+      2) state/start_positions.json           (fallback/template)
+    """
+    override = _load_start_positions_file(START_POSITIONS_OVERRIDE_PATH)
+    if override:
+        log(f"Using start positions OVERRIDE: {START_POSITIONS_OVERRIDE_PATH}")
+        return override
+
+    normal = _load_start_positions_file(START_POSITIONS_PATH)
+    if normal:
+        log(f"Using start positions: {START_POSITIONS_PATH}")
+    else:
+        log("No start positions file found (override or normal).")
+    return normal
+
+
+def write_start_positions_template_if_missing(path: str, queues: List[Dict]) -> None:
+    """
+    Creates a template file ONLY if missing.
+    (We never overwrite user files.)
+    """
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     if os.path.exists(path):
         return
@@ -231,7 +259,7 @@ def write_start_positions_template(path: str, queues: List[Dict]) -> None:
 
     obj = {
         "generated_at": _now_iso(),
-        "note": "Edit start_positions values to the TRUE starting placement from signup.",
+        "note": "Template. Prefer using start_positions_override.json for the real baseline.",
         "start_positions": start_positions,
     }
     with open(path, "w", encoding="utf-8") as f:
@@ -272,7 +300,6 @@ def find_subscriptions_json(api_json_samples: List[Dict[str, Any]]) -> Optional[
 
 
 def _normalized_name(company_name: Optional[str], list_name: Optional[str], full_name: Optional[str]) -> str:
-    # Avoid double names: if list_name already contains company_name, use list_name only.
     if list_name and company_name:
         if company_name.strip().lower() in list_name.strip().lower():
             return list_name.strip()
@@ -316,7 +343,7 @@ def parse_subscriptions_payload(payload: Any, start_positions: Dict[str, int]) -
         list_id = list_obj.get("id")
         list_name = list_obj.get("name")
         full_name = list_obj.get("full_name")
-        total = list_obj.get("subscribers")  # canonical total (UI)
+        total = list_obj.get("subscribers")
 
         company_name = None
         company = list_obj.get("company")
@@ -342,7 +369,6 @@ def parse_subscriptions_payload(payload: Any, start_positions: Dict[str, int]) -
             except Exception:
                 rec["total"] = total
 
-        # Status flags (nice for debug / future filtering)
         if active is not None:
             rec["active"] = bool(active)
         if completed is not None:
@@ -350,7 +376,6 @@ def parse_subscriptions_payload(payload: Any, start_positions: Dict[str, int]) -
         if approved is not None:
             rec["approved"] = bool(approved)
 
-        # Start progress (optional)
         sp = start_positions.get(rec["id"])
         rec.update(compute_progress_from_start(rec.get("position"), sp))
 
@@ -415,10 +440,6 @@ def _append_history_snapshot(history: Dict[str, Any], ts: str, queues: List[Dict
 
 
 def _nearest_at_or_before(series: List[Dict[str, Any]], target: datetime) -> Optional[Dict[str, Any]]:
-    """
-    Find point with ts <= target, closest to target (i.e., latest before target).
-    series is expected roughly chronological.
-    """
     best = None
     best_t = None
 
@@ -438,11 +459,6 @@ def _nearest_at_or_before(series: List[Dict[str, Any]], target: datetime) -> Opt
 
 
 def compute_window_progress(history: Dict[str, Any], list_id: str, now_ts: str) -> Dict[str, Any]:
-    """
-    Returns:
-      progress: {week: int|null, month: int|null, year: int|null}
-    where values are "positions moved forward" (positive means improvement).
-    """
     lists = history.get("lists")
     if not isinstance(lists, dict):
         return {}
@@ -491,10 +507,6 @@ def compute_window_progress(history: Dict[str, Any], list_id: str, now_ts: str) 
 
 
 def export_history_csv(history: Dict[str, Any], queues_by_id: Dict[str, str], path: str) -> None:
-    """
-    Writes a flat CSV 'sheet' for long-term analysis.
-    queues_by_id: list_id -> name (for readability in Excel)
-    """
     lists = history.get("lists")
     if not isinstance(lists, dict):
         return
@@ -660,17 +672,17 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
                 "See state/api_json_samples.json and state/debug_09_subscriptions_not_found.html/png"
             )
 
-        # Start positions (optional file)
-        start_positions = load_start_positions(START_POSITIONS_PATH)
+        # Start positions: OVERRIDE wins
+        start_positions = load_start_positions_with_override()
 
         # Parse queues
         queues = parse_subscriptions_payload(subs_json, start_positions)
 
-        # If start positions file missing: create template with current values
-        write_start_positions_template(START_POSITIONS_PATH, queues)
+        # If template missing, create (harmless). But override is preferred.
+        write_start_positions_template_if_missing(START_POSITIONS_PATH, queues)
 
         # -----------------------------
-        # NEW: history + window progress
+        # History + window progress
         # -----------------------------
         ts_now = _now_iso()
         history = _load_history(HISTORY_PATH)
@@ -678,8 +690,6 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
         _save_history(HISTORY_PATH, history)
         log(f"History updated: {HISTORY_PATH}")
 
-        # Compute progress for each queue and attach to output
-        # progress = positions moved forward over windows
         for q in queues:
             lid = str(q.get("id", ""))
             if not lid:
@@ -688,7 +698,6 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
             if win:
                 q["progress"] = win
 
-        # Export flat CSV "sheet" for Excel/Sheets
         queues_by_id = {str(q.get("id")): str(q.get("name", "")) for q in queues if q.get("id") is not None}
         export_history_csv(history, queues_by_id, HISTORY_CSV_PATH)
         log(f"History CSV written: {HISTORY_CSV_PATH}")
