@@ -54,7 +54,8 @@ jobs:
           WAITLY_SMTP_USER: ${{ secrets.WAITLY_SMTP_USER }}
           WAITLY_SMTP_PASS: ${{ secrets.WAITLY_SMTP_PASS }}
           WAITLY_MAIL_FROM: ${{ secrets.WAITLY_SMTP_USER }}
-          # NEW: login til waitly.dk (til positions-eksport)
+
+          # NEW (A): login til my.waitly.dk
           WAITLY_LOGIN_EMAIL: ${{ secrets.WAITLY_LOGIN_EMAIL }}
           WAITLY_LOGIN_PASSWORD: ${{ secrets.WAITLY_LOGIN_PASSWORD }}
         run: |
