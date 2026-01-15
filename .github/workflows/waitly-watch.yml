@@ -1,41 +1,33 @@
 name: Waitly Watch
 
 on:
-  schedule:
-    - cron: "0 * * * *"   # en gang i timen (UTC)
   workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"  # every hour (UTC)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: waitly-watch
+  cancel-in-progress: false
 
 jobs:
   run-watch:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
-      # 1) Checkout waitly-watch (det repo vi kører workflow fra)
       - name: Checkout waitly-watch
         uses: actions/checkout@v4
-
-      # 2) Checkout venteliste-dashboard (det repo vi vil opdatere)
-      - name: Checkout venteliste-dashboard
-        uses: actions/checkout@v4
         with:
-          repository: jeppenaeb/venteliste-dashboard
-          token: ${{ secrets.DASHBOARD_PUSH_TOKEN }}
-          path: dashboard
-          persist-credentials: false
+          fetch-depth: 0
 
-      # 3) Python setup
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
-      - name: Cache pip
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+          cache: "pip"
 
       - name: Install dependencies
         run: |
@@ -46,64 +38,58 @@ jobs:
         run: |
           python -m playwright install --with-deps chromium
 
-      # 4) Kør dit eksisterende script (sitemap + openings + mail + dashboard export)
       - name: Run Waitly Watch
         env:
-          WAITLY_SMTP_HOST: smtp.gmail.com
-          WAITLY_SMTP_PORT: "587"
+          # SMTP
+          WAITLY_SMTP_HOST: ${{ secrets.WAITLY_SMTP_HOST }}
+          WAITLY_SMTP_PORT: ${{ secrets.WAITLY_SMTP_PORT }}
           WAITLY_SMTP_USER: ${{ secrets.WAITLY_SMTP_USER }}
           WAITLY_SMTP_PASS: ${{ secrets.WAITLY_SMTP_PASS }}
-          WAITLY_MAIL_FROM: ${{ secrets.WAITLY_SMTP_USER }}
+          WAITLY_MAIL_FROM: ${{ secrets.WAITLY_MAIL_FROM }}
 
-          # A) Login til my.waitly.dk (positions-scrape)
+          # Waitly login
           WAITLY_LOGIN_EMAIL: ${{ secrets.WAITLY_LOGIN_EMAIL }}
           WAITLY_LOGIN_PASSWORD: ${{ secrets.WAITLY_LOGIN_PASSWORD }}
         run: |
           python waitly_watch_all.py
 
-          # NEW (A): login til my.waitly.dk
-          WAITLY_LOGIN_EMAIL: ${{ secrets.WAITLY_LOGIN_EMAIL }}
-          WAITLY_LOGIN_PASSWORD: ${{ secrets.WAITLY_LOGIN_PASSWORD }}
+      - name: Commit & push state changes to waitly-watch (if any)
         run: |
-          python waitly_watch_all.py
+          set -e
+          if git status --porcelain | grep -q .; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Waitly Watch: update state and/or watchlist"
+            git push
+          else
+            echo "No changes to commit in waitly-watch."
+          fi
 
+      - name: Checkout venteliste-dashboard
+        uses: actions/checkout@v4
+        with:
+          repository: jeppenaeb/venteliste-dashboard
+          token: ${{ secrets.DASHBOARD_PUSH_TOKEN }}
+          path: dashboard
+          fetch-depth: 0
 
-      # 5) Opdatér updated_at i dashboardets data/current.json (heartbeat)
-      - name: Update dashboard data/current.json updated_at
+      - name: Copy current.json to dashboard
         run: |
-          python - <<'PY'
-          import json
-          from datetime import datetime, timezone
-          path = "dashboard/data/current.json"
-          with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-          data["updated_at"] = datetime.now(timezone.utc).date().isoformat()
-          with open(path, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-            f.write("\n")
-          print("Updated updated_at in", path, "->", data["updated_at"])
-          PY
+          test -f current.json
+          mkdir -p dashboard/data
+          cp -f current.json dashboard/data/current.json
 
-      # 6) Commit + push ændringen til venteliste-dashboard (kun hvis der er ændringer)
-              - name: Commit and push dashboard update
-        env:
-          DASHBOARD_PUSH_TOKEN: ${{ secrets.DASHBOARD_PUSH_TOKEN }}
+      - name: Commit & push dashboard update (if changed)
+        working-directory: dashboard
         run: |
-          cd dashboard
-
+          set -e
           if git status --porcelain | grep -q 'data/current.json'; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-
             git add data/current.json
             git commit -m "Update data/current.json (Waitly Watch)"
-
-            # Remove any auth header that checkout might have configured
-            git config --local --unset-all http.https://github.com/.extraheader || true
-
-            # Push using PAT explicitly
-            git remote set-url origin "https://x-access-token:${DASHBOARD_PUSH_TOKEN}@github.com/jeppenaeb/venteliste-dashboard.git"
-            git push origin HEAD:main
+            git push
           else
-            echo "No changes to commit"
+            echo "No dashboard changes to commit."
           fi
