@@ -3,7 +3,7 @@ name: Waitly Watch
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 * * * *"  # every hour (UTC)
+    - cron: "0 * * * *" # every hour (UTC)
 
 permissions:
   contents: write
@@ -13,9 +13,29 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  run-watch:
+  watch:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+
+    env:
+      # SMTP (mail)
+      WAITLY_SMTP_HOST: ${{ secrets.WAITLY_SMTP_HOST }}
+      WAITLY_SMTP_PORT: ${{ secrets.WAITLY_SMTP_PORT }}
+      WAITLY_SMTP_USER: ${{ secrets.WAITLY_SMTP_USER }}
+      WAITLY_SMTP_PASS: ${{ secrets.WAITLY_SMTP_PASS }}
+      WAITLY_MAIL_FROM: ${{ secrets.WAITLY_MAIL_FROM }}
+
+      # Waitly login (Playwright)
+      WAITLY_LOGIN_EMAIL: ${{ secrets.WAITLY_LOGIN_EMAIL }}
+      WAITLY_LOGIN_PASSWORD: ${{ secrets.WAITLY_LOGIN_PASSWORD }}
+
+      # Dashboard push token (classic PAT with repo scope)
+      DASHBOARD_PUSH_TOKEN: ${{ secrets.DASHBOARD_PUSH_TOKEN }}
+
+      # Optional (harmløst hvis scriptet ikke bruger den)
+      DASHBOARD_REPO: "jeppenaeb/venteliste-dashboard"
+
+      PYTHONUNBUFFERED: "1"
 
     steps:
       - name: Checkout waitly-watch
@@ -23,37 +43,34 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python
+      - name: Setup Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "pip"
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Install Playwright browsers
+      - name: Install Playwright Chromium
         run: |
           python -m playwright install --with-deps chromium
 
       - name: Run Waitly Watch
-        env:
-          # SMTP
-          WAITLY_SMTP_HOST: ${{ secrets.WAITLY_SMTP_HOST }}
-          WAITLY_SMTP_PORT: ${{ secrets.WAITLY_SMTP_PORT }}
-          WAITLY_SMTP_USER: ${{ secrets.WAITLY_SMTP_USER }}
-          WAITLY_SMTP_PASS: ${{ secrets.WAITLY_SMTP_PASS }}
-          WAITLY_MAIL_FROM: ${{ secrets.WAITLY_MAIL_FROM }}
-
-          # Waitly login
-          WAITLY_LOGIN_EMAIL: ${{ secrets.WAITLY_LOGIN_EMAIL }}
-          WAITLY_LOGIN_PASSWORD: ${{ secrets.WAITLY_LOGIN_PASSWORD }}
         run: |
           python waitly_watch_all.py
 
-      - name: Commit & push state/watchlist (if changed)
+      - name: Verify current.json exists
+        run: |
+          test -f current.json
+          echo "current.json size:"
+          wc -c current.json
+          echo "current.json preview:"
+          head -n 40 current.json || true
+
+      - name: Commit & push state/watchlist/current.json (if changed)
         run: |
           set -e
 
@@ -68,8 +85,8 @@ jobs:
           git add -A
           git commit -m "Waitly Watch: update state and/or watchlist"
 
-          # --- IMPORTANT: integrate remote changes before pushing ---
-          git fetch origin main
+          # integrate remote changes before pushing (avoids non-fast-forward)
+          git fetch --no-tags origin main
           git rebase origin/main
 
           git push origin HEAD:main
@@ -82,22 +99,29 @@ jobs:
           path: dashboard
           fetch-depth: 0
 
-      - name: Copy current.json to dashboard
+      - name: Copy current.json into dashboard repo
         run: |
-          test -f current.json
           mkdir -p dashboard/data
           cp -f current.json dashboard/data/current.json
 
-      - name: Commit & push dashboard update (if changed)
+      - name: Commit & push dashboard data (if changed)
         working-directory: dashboard
         run: |
           set -e
-          if git status --porcelain | grep -q 'data/current.json'; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add data/current.json
-            git commit -m "Update data/current.json (Waitly Watch)"
-            git push
-          else
+
+          if git diff --quiet; then
             echo "No dashboard changes to commit."
+            exit 0
           fi
+
+          git config user.name "Waitly Watch (GitHub Actions)"
+          git config user.email "actions@users.noreply.github.com"
+
+          git add data/current.json
+          git commit -m "Update data/current.json (Waitly Watch)"
+
+          # integrate remote changes before pushing
+          git fetch --no-tags origin main
+          git rebase origin/main
+
+          git push origin HEAD:main
