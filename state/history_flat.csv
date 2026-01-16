@@ -7,6 +7,7 @@ timestamp,list_id,name,position,total
 2026-01-16T05:01:51+00:00,1853,A/B Amagervold - Ekstern venteliste,431,473
 2026-01-16T07:00:42+00:00,1853,A/B Amagervold - Ekstern venteliste,431,473
 2026-01-16T07:44:42+00:00,1853,A/B Amagervold - Ekstern venteliste,431,473
+2026-01-16T08:57:44+00:00,1853,A/B Amagervold - Ekstern venteliste,431,473
 2026-01-15T21:13:00+00:00,1737,A/B Buddingevej - Ekstern venteliste,52,54
 2026-01-15T21:27:27+00:00,1737,A/B Buddingevej - Ekstern venteliste,52,54
 2026-01-15T22:45:05+00:00,1737,A/B Buddingevej - Ekstern venteliste,52,54
@@ -15,6 +16,7 @@ timestamp,list_id,name,position,total
 2026-01-16T05:01:51+00:00,1737,A/B Buddingevej - Ekstern venteliste,52,54
 2026-01-16T07:00:42+00:00,1737,A/B Buddingevej - Ekstern venteliste,52,54
 2026-01-16T07:44:42+00:00,1737,A/B Buddingevej - Ekstern venteliste,52,54
+2026-01-16T08:57:44+00:00,1737,A/B Buddingevej - Ekstern venteliste,52,54
 2026-01-15T21:13:00+00:00,392,A/B Baghuset - Ekstern venteliste,328,335
 2026-01-15T21:27:27+00:00,392,A/B Baghuset - Ekstern venteliste,328,335
 2026-01-15T22:45:05+00:00,392,A/B Baghuset - Ekstern venteliste,328,335
@@ -23,6 +25,7 @@ timestamp,list_id,name,position,total
 2026-01-16T05:01:51+00:00,392,A/B Baghuset - Ekstern venteliste,328,335
 2026-01-16T07:00:42+00:00,392,A/B Baghuset - Ekstern venteliste,328,335
 2026-01-16T07:44:42+00:00,392,A/B Baghuset - Ekstern venteliste,328,335
+2026-01-16T08:57:44+00:00,392,A/B Baghuset - Ekstern venteliste,328,335
 2026-01-15T21:13:00+00:00,41,A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste,647,665
 2026-01-15T21:27:27+00:00,41,A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste,647,665
 2026-01-15T22:45:05+00:00,41,A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste,647,665
@@ -31,6 +34,7 @@ timestamp,list_id,name,position,total
 2026-01-16T05:01:51+00:00,41,A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste,647,665
 2026-01-16T07:00:42+00:00,41,A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste,647,665
 2026-01-16T07:44:42+00:00,41,A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste,647,665
+2026-01-16T08:57:44+00:00,41,A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste,647,665
 2026-01-15T21:13:00+00:00,294,A/B Positiv - Ekstern venteliste,770,776
 2026-01-15T21:27:27+00:00,294,A/B Positiv - Ekstern venteliste,770,776
 2026-01-15T22:45:05+00:00,294,A/B Positiv - Ekstern venteliste,770,776
@@ -39,6 +43,7 @@ timestamp,list_id,name,position,total
 2026-01-16T05:01:51+00:00,294,A/B Positiv - Ekstern venteliste,769,775
 2026-01-16T07:00:42+00:00,294,A/B Positiv - Ekstern venteliste,769,775
 2026-01-16T07:44:42+00:00,294,A/B Positiv - Ekstern venteliste,769,775
+2026-01-16T08:57:44+00:00,294,A/B Positiv - Ekstern venteliste,769,775
 2026-01-15T21:13:00+00:00,966,A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste,249,250
 2026-01-15T21:27:27+00:00,966,A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste,249,250
 2026-01-15T22:45:05+00:00,966,A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste,249,250
@@ -47,3 +52,4 @@ timestamp,list_id,name,position,total
 2026-01-16T05:01:51+00:00,966,A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste,249,250
 2026-01-16T07:00:42+00:00,966,A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste,249,250
 2026-01-16T07:44:42+00:00,966,A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste,249,250
+2026-01-16T08:57:44+00:00,966,A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste,249,250
