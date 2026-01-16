@@ -171,7 +171,11 @@ async def capture_nuxt_public_config(page: Page) -> None:
         json.dump(nuxt_public, f, ensure_ascii=False, indent=2)
 
     if isinstance(nuxt_public, dict):
-        subset = {k: nuxt_public.get(k) for k in ["baseApiUrl", "baseUrl", "consumerSiteUrl", "businessSiteUrl"] if k in nuxt_public}
+        subset = {
+            k: nuxt_public.get(k)
+            for k in ["baseApiUrl", "baseUrl", "consumerSiteUrl", "businessSiteUrl"]
+            if k in nuxt_public
+        }
         log("NUXT public config (subset): " + json.dumps(subset, ensure_ascii=False))
     else:
         log("NUXT public config not found (window.__NUXT__ missing?)")
@@ -189,6 +193,112 @@ def summarize_json_samples(samples: List[Dict[str, Any]]) -> None:
             log(f"  - {url} | list len: {len(data)}")
         else:
             log(f"  - {url} | type: {type(data).__name__}")
+
+
+# -----------------------------
+# NEW: setup handler + API fallback
+# -----------------------------
+async def handle_setup_if_present(page: Page) -> None:
+    """
+    If Waitly redirects to /setup, try to click through and end up on dashboard (/).
+    Best-effort, does not crash if UI changes.
+    """
+    try:
+        if "/setup" not in page.url:
+            return
+
+        log(f"Setup detected: {page.url}")
+        await debug_dump(page, "07_setup_detected")
+
+        candidates = [
+            "Fortsæt",
+            "Næste",
+            "Done",
+            "Afslut",
+            "Gå videre",
+            "Continue",
+            "Finish",
+            "Gå til dashboard",
+            "Gå til min konto",
+            "Gå til privatkonto",
+            "OK",
+        ]
+
+        for name in candidates:
+            try:
+                btn = page.get_by_role("button", name=name)
+                if await btn.count() > 0 and await btn.first.is_visible():
+                    await btn.first.click(timeout=5000)
+                    log(f"Setup: clicked button: {name}")
+                    await page.wait_for_timeout(1200)
+                    await accept_cookies_if_present(page)
+                    if "/setup" not in page.url:
+                        break
+            except Exception:
+                pass
+
+        # Always attempt to go to dashboard after setup
+        await page.goto("https://my.waitly.dk/", wait_until="domcontentloaded")
+        await page.wait_for_timeout(1500)
+        try:
+            await page.wait_for_load_state("networkidle", timeout=15000)
+        except Exception:
+            pass
+
+        await debug_dump(page, "08_after_setup_dashboard")
+        log(f"After setup handling, URL is: {page.url}")
+    except Exception as e:
+        log(f"Setup handling failed (continuing): {e}")
+
+
+async def fetch_subscriptions_via_api(page: Page) -> Optional[Dict[str, Any]]:
+    """
+    Robust fallback: call the API directly after login instead of relying on network capture.
+    Uses the authenticated browser context cookies.
+    """
+    headers = {"accept": "application/json"}
+
+    for attempt in range(1, 6):
+        try:
+            r_user = await page.request.get(
+                "https://app.waitly.dk/api/v2/consumer/user", headers=headers
+            )
+            if not r_user.ok:
+                log(f"API user fetch attempt {attempt} failed: HTTP {r_user.status}")
+                await page.wait_for_timeout(1000 * attempt)
+                continue
+
+            j_user = await r_user.json()
+            data = j_user.get("data") if isinstance(j_user, dict) else None
+
+            if not isinstance(data, dict) or "id" not in data:
+                msg = j_user.get("message") if isinstance(j_user, dict) else None
+                log(f"API user fetch attempt {attempt}: no data.id (message={msg})")
+                await page.wait_for_timeout(1000 * attempt)
+                continue
+
+            user_id = data["id"]
+            url_subs = f"https://app.waitly.dk/api/v2/consumer/users/{user_id}/subscriptions"
+            r_subs = await page.request.get(url_subs, headers=headers)
+
+            if not r_subs.ok:
+                log(f"API subscriptions fetch attempt {attempt} failed: HTTP {r_subs.status}")
+                await page.wait_for_timeout(1000 * attempt)
+                continue
+
+            j_subs = await r_subs.json()
+            if isinstance(j_subs, dict) and isinstance(j_subs.get("data"), list):
+                log(f"API subscriptions fetch OK (user_id={user_id}, records={len(j_subs['data'])})")
+                return j_subs
+
+            log("API subscriptions fetch returned unexpected JSON shape.")
+            await page.wait_for_timeout(1000 * attempt)
+
+        except Exception as e:
+            log(f"API subscriptions fallback attempt {attempt} error: {e}")
+            await page.wait_for_timeout(1000 * attempt)
+
+    return None
 
 
 # -----------------------------
@@ -221,7 +331,7 @@ def _load_start_positions_file(path: str) -> Dict[str, int]:
 def load_start_positions_with_override() -> Dict[str, int]:
     """
     Priority:
-      1) state/start_positions_override.json  (your canonical truth)
+      1) state/start_positions_override.json  (canonical truth)
       2) state/start_positions.json           (fallback/template)
     """
     override = _load_start_positions_file(START_POSITIONS_OVERRIDE_PATH)
@@ -238,10 +348,6 @@ def load_start_positions_with_override() -> Dict[str, int]:
 
 
 def write_start_positions_template_if_missing(path: str, queues: List[Dict]) -> None:
-    """
-    Creates a template file ONLY if missing.
-    (We never overwrite user files.)
-    """
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     if os.path.exists(path):
         return
@@ -267,7 +373,9 @@ def write_start_positions_template_if_missing(path: str, queues: List[Dict]) -> 
     log(f"Start positions template created: {path}")
 
 
-def compute_progress_from_start(current_position: Optional[int], start_position: Optional[int]) -> Dict[str, Any]:
+def compute_progress_from_start(
+    current_position: Optional[int], start_position: Optional[int]
+) -> Dict[str, Any]:
     if current_position is None or start_position is None:
         return {}
     try:
@@ -343,7 +451,7 @@ def parse_subscriptions_payload(payload: Any, start_positions: Dict[str, int]) -
         list_id = list_obj.get("id")
         list_name = list_obj.get("name")
         full_name = list_obj.get("full_name")
-        total = list_obj.get("subscribers")
+        total = list_obj.get("subscribers")  # canonical total
 
         company_name = None
         company = list_obj.get("company")
@@ -432,7 +540,6 @@ def _append_history_snapshot(history: Dict[str, Any], ts: str, queues: List[Dict
             series = []
             lists[str(list_id)] = series
 
-        # Avoid duplicates if the same timestamp is written twice
         if series and isinstance(series[-1], dict) and series[-1].get("ts") == ts:
             continue
 
@@ -600,7 +707,9 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
         if not email_sel or not pwd_sel:
             await debug_dump(page, "04_login_form_not_found")
             await browser.close()
-            raise RuntimeError("Could not find login form fields. Inspect state/debug_04_login_form_not_found.html/png")
+            raise RuntimeError(
+                "Could not find login form fields. Inspect state/debug_04_login_form_not_found.html/png"
+            )
 
         log(f"Filling login form ({email_sel}, {pwd_sel})")
         await page.fill(email_sel, email)
@@ -641,17 +750,22 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
         if "/login" in page.url:
             await debug_dump(page, "07_login_failed")
             await browser.close()
-            raise RuntimeError("Login failed (still on /login). Inspect state/debug_07_login_failed.html/png")
+            raise RuntimeError(
+                "Login failed (still on /login). Inspect state/debug_07_login_failed.html/png"
+            )
 
         log("Login succeeded")
+
+        # NEW: handle setup redirect
+        await handle_setup_if_present(page)
 
         # Optional debug
         await capture_nuxt_public_config(page)
 
         # extra time for API calls to settle
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(1500)
         try:
-            await page.wait_for_load_state("networkidle", timeout=25000)
+            await page.wait_for_load_state("networkidle", timeout=20000)
         except Exception:
             pass
         await debug_dump(page, "08_dashboard_loaded")
@@ -659,16 +773,22 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
         # Save captured JSON samples for debugging
         os.makedirs("state", exist_ok=True)
         with open("state/api_json_samples.json", "w", encoding="utf-8") as f:
-            json.dump(api_json_samples[:80], f, ensure_ascii=False, indent=2)
+            json.dump(api_json_samples[:120], f, ensure_ascii=False, indent=2)
         log(f"Captured JSON responses: {len(api_json_samples)} (saved state/api_json_samples.json)")
         summarize_json_samples(api_json_samples)
 
         subs_json = find_subscriptions_json(api_json_samples)
+
+        # NEW: fallback to direct API calls if subscriptions endpoint wasn't captured
+        if not subs_json:
+            log("Did not capture subscriptions in network. Trying API fallback...")
+            subs_json = await fetch_subscriptions_via_api(page)
+
         if not subs_json:
             await debug_dump(page, "09_subscriptions_not_found")
             await browser.close()
             raise RuntimeError(
-                "Did not capture subscriptions endpoint in this run. "
+                "Did not capture subscriptions endpoint in this run, and API fallback also failed. "
                 "See state/api_json_samples.json and state/debug_09_subscriptions_not_found.html/png"
             )
 
@@ -681,9 +801,7 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
         # If template missing, create (harmless). But override is preferred.
         write_start_positions_template_if_missing(START_POSITIONS_PATH, queues)
 
-        # -----------------------------
         # History + window progress
-        # -----------------------------
         ts_now = _now_iso()
         history = _load_history(HISTORY_PATH)
         _append_history_snapshot(history, ts_now, queues)
@@ -698,7 +816,11 @@ async def fetch_positions(email: str, password: str) -> List[Dict]:
             if win:
                 q["progress"] = win
 
-        queues_by_id = {str(q.get("id")): str(q.get("name", "")) for q in queues if q.get("id") is not None}
+        queues_by_id = {
+            str(q.get("id")): str(q.get("name", ""))
+            for q in queues
+            if q.get("id") is not None
+        }
         export_history_csv(history, queues_by_id, HISTORY_CSV_PATH)
         log(f"History CSV written: {HISTORY_CSV_PATH}")
 
