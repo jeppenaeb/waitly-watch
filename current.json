@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-01-16T09:50:06+00:00",
+  "updated_at": "2026-01-16T11:35:05+00:00",
   "queues": [
     {
       "id": "1853",
@@ -41,7 +41,7 @@
       "id": "41",
       "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
       "position": 647,
-      "total": 665,
+      "total": 666,
       "active": false,
       "completed": true,
       "approved": true,
