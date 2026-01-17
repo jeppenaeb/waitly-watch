@@ -6,6 +6,7 @@ import re
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import List, Optional, Set, Tuple
+from urllib.parse import urlparse
 
 import requests
 from bs4 import BeautifulSoup
@@ -16,12 +17,13 @@ SITEMAP_URL = "https://waitly.eu/da/sitemap"
 KNOWN_URLS_KBH_PATH = "state/known_sitemap_urls_kbh.json"
 DISCOVERED_LOG_KBH_PATH = "state/discovered_forenings_log_kbh.json"
 
-FORENING_RE = re.compile(r"^/da/foreninger/(\d{4})-[^/]+/([^/?#]+)")
+# We match on the *path* part, e.g. /da/foreninger/2100-oesterbro/a-b-xyz
+FORENING_PATH_RE = re.compile(r"^/da/foreninger/(\d{4})-[^/]+/([^/?#]+)")
 
 
 @dataclass(frozen=True)
 class ForeningUrl:
-    url: str
+    url: str         # path only, e.g. /da/foreninger/2100-.../slug
     postcode: int
     area: str
     slug: str
@@ -32,13 +34,11 @@ def utc_now_iso() -> str:
 
 
 def area_from_postcode(postcode: int) -> Optional[str]:
-    # Singles
     if postcode == 2100:
         return "København Ø"
     if postcode == 2200:
         return "København N"
 
-    # Ranges
     ranges: List[Tuple[int, int, str]] = [
         (1000, 1499, "København K"),
         (1500, 1799, "København V"),
@@ -73,36 +73,57 @@ def fetch_sitemap_html(timeout: int = 30) -> str:
     return r.text
 
 
+def _normalize_href_to_path(href: str) -> Optional[str]:
+    """
+    Accepts:
+      - /da/foreninger/...
+      - https://waitly.eu/da/foreninger/...
+    Returns the path (starting with /da/...) or None.
+    """
+    if not href:
+        return None
+
+    # Already a path?
+    if href.startswith("/da/"):
+        return href
+
+    # Absolute URL?
+    if href.startswith("http://") or href.startswith("https://"):
+        try:
+            p = urlparse(href)
+            if p.path.startswith("/da/"):
+                return p.path
+        except Exception:
+            return None
+
+    return None
+
+
 def extract_scoped_forening_urls(html: str) -> List[ForeningUrl]:
     soup = BeautifulSoup(html, "html.parser")
 
-    hrefs: Set[str] = set()
+    paths: Set[str] = set()
     for a in soup.find_all("a", href=True):
         href = a.get("href")
-        if isinstance(href, str) and href.startswith("/da/foreninger/"):
-            hrefs.add(href)
+        if not isinstance(href, str):
+            continue
+        path = _normalize_href_to_path(href)
+        if path and path.startswith("/da/foreninger/"):
+            paths.add(path)
 
     results: List[ForeningUrl] = []
-    for href in hrefs:
-        m = FORENING_RE.match(href)
+    for path in paths:
+        m = FORENING_PATH_RE.match(path)
         if not m:
             continue
 
         postcode = int(m.group(1))
         slug = m.group(2)
         area = area_from_postcode(postcode)
-
         if not area:
             continue
 
-        results.append(
-            ForeningUrl(
-                url=href,
-                postcode=postcode,
-                area=area,
-                slug=slug,
-            )
-        )
+        results.append(ForeningUrl(url=path, postcode=postcode, area=area, slug=slug))
 
     results.sort(key=lambda x: (x.postcode, x.area, x.slug))
     return results
@@ -112,14 +133,15 @@ def diff_against_known(current: List[ForeningUrl]):
     known = load_json(KNOWN_URLS_KBH_PATH, None)
     current_set = {x.url for x in current}
 
-    # First run: initialize baseline, do not alert
-    if not isinstance(known, dict) or "urls" not in known:
+    # First run OR broken/empty baseline: initialize baseline, do not alert
+    if not isinstance(known, dict) or "urls" not in known or not isinstance(known.get("urls"), list) or len(known.get("urls")) == 0:
         save_json(
             KNOWN_URLS_KBH_PATH,
             {
                 "initialized_at": utc_now_iso(),
                 "source": SITEMAP_URL,
                 "urls": sorted(current_set),
+                "note": "Baseline initialized (or re-initialized) without alert.",
             },
         )
         return True, []
@@ -128,7 +150,6 @@ def diff_against_known(current: List[ForeningUrl]):
     new_urls = current_set - known_set
     new_items = [x for x in current if x.url in new_urls]
 
-    # Update baseline
     known["updated_at"] = utc_now_iso()
     known["urls"] = sorted(current_set)
     save_json(KNOWN_URLS_KBH_PATH, known)
