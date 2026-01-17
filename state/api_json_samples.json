@@ -13,6 +13,22 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/heroicons.json?icons=arrow-path-20-solid",
+    "json": {
+      "prefix": "heroicons",
+      "icons": {
+        "arrow-path-20-solid": {
+          "body": "<path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M15.312 11.424a5.5 5.5 0 0 1-9.201 2.466l-.312-.311h2.433a.75.75 0 0 0 0-1.5H3.989a.75.75 0 0 0-.75.75v4.242a.75.75 0 0 0 1.5 0v-2.43l.31.31a7 7 0 0 0 11.712-3.138a.75.75 0 0 0-1.449-.39m1.23-3.723a.75.75 0 0 0 .219-.53V2.929a.75.75 0 0 0-1.5 0V5.36l-.31-.31A7 7 0 0 0 3.239 8.188a.75.75 0 1 0 1.448.389A5.5 5.5 0 0 1 13.89 6.11l.311.31h-2.432a.75.75 0 0 0 0 1.5h4.243a.75.75 0 0 0 .53-.219\" clip-rule=\"evenodd\"/>",
+          "width": 20,
+          "height": 20
+        }
+      },
+      "lastModified": 1721921294,
+      "width": 24,
+      "height": 24
+    }
+  },
+  {
     "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
     "json": {
       "widget": {
@@ -51,22 +67,6 @@
           "autodetectLanguage": true
         }
       }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/heroicons.json?icons=arrow-path-20-solid",
-    "json": {
-      "prefix": "heroicons",
-      "icons": {
-        "arrow-path-20-solid": {
-          "body": "<path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M15.312 11.424a5.5 5.5 0 0 1-9.201 2.466l-.312-.311h2.433a.75.75 0 0 0 0-1.5H3.989a.75.75 0 0 0-.75.75v4.242a.75.75 0 0 0 1.5 0v-2.43l.31.31a7 7 0 0 0 11.712-3.138a.75.75 0 0 0-1.449-.39m1.23-3.723a.75.75 0 0 0 .219-.53V2.929a.75.75 0 0 0-1.5 0V5.36l-.31-.31A7 7 0 0 0 3.239 8.188a.75.75 0 1 0 1.448.389A5.5 5.5 0 0 1 13.89 6.11l.311.31h-2.432a.75.75 0 0 0 0 1.5h4.243a.75.75 0 0 0 .53-.219\" clip-rule=\"evenodd\"/>",
-          "width": 20,
-          "height": 20
-        }
-      },
-      "lastModified": 1721921294,
-      "width": 24,
-      "height": 24
     }
   },
   {
@@ -415,16 +415,16 @@
             "id": 1737,
             "name": "Ekstern venteliste",
             "full_name": "A/B Buddingevej - Ekstern venteliste",
-            "subscribers": 54,
+            "subscribers": 55,
             "template": {
               "company_name": "A/B Buddingevej",
               "lists": [
                 {
                   "id": 1737,
                   "name": "Ekstern venteliste",
-                  "subscribers": 54,
+                  "subscribers": 55,
                   "passive_subscribers": 5,
-                  "active_subscribers": 49
+                  "active_subscribers": 50
                 }
               ]
             },
