@@ -2,11 +2,13 @@ import os
 import json
 import asyncio
 import sys
+import traceback
 from datetime import datetime, timezone
 from typing import List, Dict
 
 from waitly_positions import fetch_positions
 from waitly_sitemap_kbh import run_kbh_sitemap_discovery
+from waitly_mail import send_mail
 
 
 def utc_now_iso() -> str:
@@ -18,26 +20,55 @@ def log(msg: str) -> None:
     print(f"[waitly_watch_all {ts}] {msg}", flush=True)
 
 
+def _format_new_forenings_email(sitemap_kbh: Dict) -> str:
+    new_items = sitemap_kbh.get("new", []) or []
+    lines = []
+    lines.append("Der er opdaget nye forenings-sider på Waitly (København/Frederiksberg).")
+    lines.append("")
+    for item in new_items:
+        area = item.get("area", "Ukendt område")
+        postcode = item.get("postcode", "????")
+        full_url = item.get("full_url", "")
+        slug = item.get("slug", "")
+        lines.append(f"- {area} ({postcode}): {slug}")
+        if full_url:
+            lines.append(f"  {full_url}")
+    lines.append("")
+    lines.append("Tip: Tjek hurtigst muligt om ventelisten er åben for opskrivning.")
+    return "\n".join(lines)
+
+
 async def main() -> None:
     log("Waitly Watch started")
 
-    # 1) Discover new Waitly "foreninger" pages in København/Frederiksberg via sitemap.
-    #    This runs without login and provides early warnings when new associations appear.
+    # 1) Sitemap discovery (Kbh/Fb)
+    sitemap_kbh = None
     try:
         sitemap_kbh = run_kbh_sitemap_discovery()
-        if sitemap_kbh.get("new_count", 0):
-            log(f"Sitemap (KBH) discovered {sitemap_kbh['new_count']} new forening(s)")
+        new_count = int(sitemap_kbh.get("new_count", 0) or 0)
+        initialized = bool(sitemap_kbh.get("initialized", False))
+
+        if initialized:
+            log("Sitemap (KBH) baseline initialized (no alerts on first run).")
+        elif new_count > 0:
+            log(f"Sitemap (KBH) discovered {new_count} new forening(s). Sending mail...")
+            subject = f"Waitly: {new_count} ny(e) forening(er) i Kbh/Fb"
+            body = _format_new_forenings_email(sitemap_kbh)
+            send_mail(subject, body)
+            log("Mail sent.")
         else:
-            log("Sitemap (KBH) no new forening(s)")
+            log("Sitemap (KBH) no new forening(s).")
+
     except Exception as e:
-        # Never crash the entire run due to sitemap parsing; positions still matter.
-        log(f"WARNING: Sitemap (KBH) discovery failed: {e}")
+        # Never crash the whole run because of sitemap/mail — positions still matter.
+        log(f"WARNING: Sitemap (KBH) discovery/mail failed: {e}")
         sitemap_kbh = {
             "updated_at": utc_now_iso(),
             "source": "https://waitly.eu/da/sitemap",
             "error": str(e),
         }
 
+    # 2) Positions
     email = os.getenv("WAITLY_LOGIN_EMAIL", "")
     password = os.getenv("WAITLY_LOGIN_PASSWORD", "")
 
@@ -46,11 +77,9 @@ async def main() -> None:
 
     queues: List[Dict] = await fetch_positions(email, password)
 
-    # --- HARD FAIL if login creds exist but result is empty ---
+    # HARD FAIL if login creds exist but result is empty
     if isinstance(queues, list) and len(queues) == 0:
-        raise RuntimeError(
-            "Login credentials are set, but positions scrape returned 0 queues."
-        )
+        raise RuntimeError("Login credentials are set, but positions scrape returned 0 queues.")
 
     data = {
         "updated_at": utc_now_iso(),
@@ -65,14 +94,11 @@ async def main() -> None:
 
 
 if __name__ == "__main__":
-    # Debug-wrapper (your preference): print traceback + wait for Enter on crash.
-    # NOTE: In GitHub Actions stdin is not a TTY; in that case we do not block.
+    # Debug-wrapper (your preference): print traceback + wait for Enter on crash (only if TTY)
     try:
         asyncio.run(main())
     except Exception:
         log("FATAL ERROR")
-        import traceback
-
         traceback.print_exc()
         if sys.stdin.isatty():
             try:
