@@ -1,70 +1,100 @@
-from __future__ import annotations
+name: waitly-watch
 
-import os
-import smtplib
-from email.message import EmailMessage
-from typing import List, Optional
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "**/*.py"
+      - "requirements.txt"
+      - ".github/workflows/waitly-watch.yml"
+      - "state/**"
+  schedule:
+    # GitHub cron is UTC. 06:15 UTC ≈ 07:15 DK (vinter)
+    - cron: "15 6 * * *"
 
+concurrency:
+  group: waitly-watch
+  cancel-in-progress: true
 
-def _split_recipients(value: str) -> List[str]:
-    # supports "a@b.dk, c@d.dk; e@f.dk"
-    parts = [p.strip() for p in value.replace(";", ",").split(",")]
-    return [p for p in parts if p]
+permissions:
+  contents: write
 
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
 
-def send_mail(subject: str, body: str) -> None:
-    """
-    Sends an email using SMTP credentials from environment variables:
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    WAITLY_SMTP_HOST
-    WAITLY_SMTP_PORT
-    WAITLY_SMTP_USER
-    WAITLY_SMTP_PASS
-    WAITLY_MAIL_FROM
-    WAITLY_MAIL_TO
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
 
-    Notes:
-    - Uses STARTTLS
-    - Raises on missing config or SMTP errors (caller can catch if desired)
-    """
-    host = os.getenv("WAITLY_SMTP_HOST", "").strip()
-    port_str = os.getenv("WAITLY_SMTP_PORT", "").strip()
-    user = os.getenv("WAITLY_SMTP_USER", "").strip()
-    password = os.getenv("WAITLY_SMTP_PASS", "").strip()
-    mail_from = os.getenv("WAITLY_MAIL_FROM", "").strip()
-    mail_to_raw = os.getenv("WAITLY_MAIL_TO", "").strip()
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    if not host:
-        raise RuntimeError("Missing env: WAITLY_SMTP_HOST")
-    if not port_str:
-        raise RuntimeError("Missing env: WAITLY_SMTP_PORT")
-    if not mail_from:
-        raise RuntimeError("Missing env: WAITLY_MAIL_FROM")
-    if not mail_to_raw:
-        raise RuntimeError("Missing env: WAITLY_MAIL_TO")
+      # Playwright is optional; install browser only if playwright is present
+      - name: Install Playwright Chromium (no apt deps)
+        run: |
+          python - <<'PY'
+          import importlib.util, sys
+          if importlib.util.find_spec("playwright"):
+              sys.exit(0)
+          sys.exit(1)
+          PY
+          || exit 0
+          python -m playwright install chromium
 
-    try:
-        port = int(port_str)
-    except ValueError as e:
-        raise RuntimeError(f"WAITLY_SMTP_PORT must be int, got: {port_str!r}") from e
+      - name: Run watcher
+        env:
+          WAITLY_LOGIN_EMAIL: ${{ secrets.WAITLY_LOGIN_EMAIL }}
+          WAITLY_LOGIN_PASSWORD: ${{ secrets.WAITLY_LOGIN_PASSWORD }}
+          WAITLY_SMTP_HOST: ${{ secrets.WAITLY_SMTP_HOST }}
+          WAITLY_SMTP_PORT: ${{ secrets.WAITLY_SMTP_PORT }}
+          WAITLY_SMTP_USER: ${{ secrets.WAITLY_SMTP_USER }}
+          WAITLY_SMTP_PASS: ${{ secrets.WAITLY_SMTP_PASS }}
+          WAITLY_MAIL_FROM: ${{ secrets.WAITLY_MAIL_FROM }}
+          WAITLY_MAIL_TO: ${{ secrets.WAITLY_MAIL_TO }}
+        run: |
+          python waitly_watch_all.py
 
-    recipients = _split_recipients(mail_to_raw)
-    if not recipients:
-        raise RuntimeError("WAITLY_MAIL_TO parsed to empty recipient list")
+      - name: Show outputs (debug)
+        if: always()
+        run: |
+          echo "==== sitemap_kbh present? ===="
+          test -f current.json && grep -n "sitemap_kbh" current.json || echo "NO sitemap_kbh"
+          echo "==== current.json (tail) ===="
+          test -f current.json && tail -n 60 current.json || true
+          echo "==== state/ ===="
+          ls -la state || true
 
-    msg = EmailMessage()
-    msg["Subject"] = subject
-    msg["From"] = mail_from
-    msg["To"] = ", ".join(recipients)
-    msg.set_content(body)
+      - name: Commit updated state
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-    with smtplib.SMTP(host, port, timeout=30) as smtp:
-        smtp.ehlo()
-        smtp.starttls()
-        smtp.ehlo()
+          # Always stage current.json
+          git add current.json || true
 
-        # Some SMTP setups allow anonymous send; if user is set, we login.
-        if user:
-            smtp.login(user, password)
+          # Stage state/*.json only if files exist
+          if ls state/*.json >/dev/null 2>&1; then
+            git add state/*.json
+          fi
 
-        smtp.send_message(msg)
+          # Commit only if there are staged changes
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Update waitly state [skip ci]"
+            git push
+          fi
