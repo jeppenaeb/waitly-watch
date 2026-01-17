@@ -257,7 +257,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 474,
+            "subscribers": 475,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -271,9 +271,9 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 474,
+                  "subscribers": 475,
                   "passive_subscribers": 39,
-                  "active_subscribers": 435
+                  "active_subscribers": 436
                 }
               ]
             },
@@ -882,7 +882,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 774,
+            "subscribers": 775,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -896,9 +896,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 774,
+                  "subscribers": 775,
                   "passive_subscribers": 47,
-                  "active_subscribers": 727
+                  "active_subscribers": 728
                 }
               ]
             },
