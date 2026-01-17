@@ -42,17 +42,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Playwright is optional; install browser only if playwright is present
+      # OPTIONAL: only needed if you actually use Playwright in code
+      # Safe shell syntax, no heredoc, no apt deps
       - name: Install Playwright Chromium (no apt deps)
         run: |
-          python - <<'PY'
-          import importlib.util, sys
-          if importlib.util.find_spec("playwright"):
-              sys.exit(0)
-          sys.exit(1)
-          PY
-          || exit 0
-          python -m playwright install chromium
+          if python -c "import importlib.util; import sys; sys.exit(0 if importlib.util.find_spec('playwright') else 1)"; then
+            python -m playwright install chromium
+          else
+            echo "Playwright not installed - skipping browser install"
+          fi
 
       - name: Run watcher
         env:
