@@ -17,13 +17,13 @@ SITEMAP_URL = "https://waitly.eu/da/sitemap"
 KNOWN_URLS_KBH_PATH = "state/known_sitemap_urls_kbh.json"
 DISCOVERED_LOG_KBH_PATH = "state/discovered_forenings_log_kbh.json"
 
-# We match on the *path* part, e.g. /da/foreninger/2100-oesterbro/a-b-xyz
+# Match on PATH only (handles absolute and relative URLs)
 FORENING_PATH_RE = re.compile(r"^/da/foreninger/(\d{4})-[^/]+/([^/?#]+)")
 
 
 @dataclass(frozen=True)
 class ForeningUrl:
-    url: str         # path only, e.g. /da/foreninger/2100-.../slug
+    url: str          # path only, e.g. /da/foreninger/2100-.../slug
     postcode: int
     area: str
     slug: str
@@ -74,20 +74,12 @@ def fetch_sitemap_html(timeout: int = 30) -> str:
 
 
 def _normalize_href_to_path(href: str) -> Optional[str]:
-    """
-    Accepts:
-      - /da/foreninger/...
-      - https://waitly.eu/da/foreninger/...
-    Returns the path (starting with /da/...) or None.
-    """
     if not href:
         return None
 
-    # Already a path?
     if href.startswith("/da/"):
         return href
 
-    # Absolute URL?
     if href.startswith("http://") or href.startswith("https://"):
         try:
             p = urlparse(href)
@@ -107,6 +99,7 @@ def extract_scoped_forening_urls(html: str) -> List[ForeningUrl]:
         href = a.get("href")
         if not isinstance(href, str):
             continue
+
         path = _normalize_href_to_path(href)
         if path and path.startswith("/da/foreninger/"):
             paths.add(path)
@@ -123,7 +116,14 @@ def extract_scoped_forening_urls(html: str) -> List[ForeningUrl]:
         if not area:
             continue
 
-        results.append(ForeningUrl(url=path, postcode=postcode, area=area, slug=slug))
+        results.append(
+            ForeningUrl(
+                url=path,
+                postcode=postcode,
+                area=area,
+                slug=slug,
+            )
+        )
 
     results.sort(key=lambda x: (x.postcode, x.area, x.slug))
     return results
@@ -133,8 +133,13 @@ def diff_against_known(current: List[ForeningUrl]):
     known = load_json(KNOWN_URLS_KBH_PATH, None)
     current_set = {x.url for x in current}
 
-    # First run OR broken/empty baseline: initialize baseline, do not alert
-    if not isinstance(known, dict) or "urls" not in known or not isinstance(known.get("urls"), list) or len(known.get("urls")) == 0:
+    # First run OR empty/broken baseline → init silently
+    if (
+        not isinstance(known, dict)
+        or "urls" not in known
+        or not isinstance(known.get("urls"), list)
+        or len(known.get("urls")) == 0
+    ):
         save_json(
             KNOWN_URLS_KBH_PATH,
             {
