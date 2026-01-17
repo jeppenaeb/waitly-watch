@@ -1,88 +1,197 @@
-name: waitly-watch
+"""
+Waitly sitemap discovery (København + Frederiksberg).
 
-on:
-  workflow_dispatch:
-  push:
-    branches: [ "main" ]
-    paths:
-      - "**/*.py"
-      - "requirements.txt"
-      - ".github/workflows/waitly-watch.yml"
-      - "state/**"
-  schedule:
-    # Every day at 07:15 Copenhagen time-ish (UTC+1 winter / UTC+2 summer).
-    # GitHub cron is UTC, so this is a reasonable fixed UTC time.
-    - cron: "15 6 * * *"
+Detects new Waitly "foreninger" pages by diffing the public sitemap.
 
-concurrency:
-  group: waitly-watch
-  cancel-in-progress: true
+Scope:
+- København K (1000–1499)
+- København V (1500–1799)
+- København Ø (2100)
+- København N (2200)
+- København S (2300–2450)
+- Frederiksberg (1800–2000)
+"""
 
-permissions:
-  contents: write
+from __future__ import annotations
 
-jobs:
-  run:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
+import json
+import os
+import re
+from dataclasses import dataclass
+from datetime import datetime, timezone
+from typing import List, Optional, Set, Tuple
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+import requests
+from bs4 import BeautifulSoup
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-          cache: "pip"
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+SITEMAP_URL = "https://waitly.eu/da/sitemap"
 
-      # Only keep this step if your code actually uses Playwright.
-      # IMPORTANT: no --with-deps (avoids apt + Microsoft repo 403 issues)
-      - name: Install Playwright Chromium (no apt deps)
-        if: ${{ hashFiles('requirements.txt') != '' }}
-        run: |
-          python -c "import importlib.util,sys; sys.exit(0 if importlib.util.find_spec('playwright') else 1)" || exit 0
-          python -m playwright install chromium
+# State files
+KNOWN_URLS_KBH_PATH = "state/known_sitemap_urls_kbh.json"
+DISCOVERED_LOG_KBH_PATH = "state/discovered_forenings_log_kbh.json"
 
-      - name: Run watcher
-        env:
-          WAITLY_LOGIN_EMAIL: ${{ secrets.WAITLY_LOGIN_EMAIL }}
-          WAITLY_LOGIN_PASSWORD: ${{ secrets.WAITLY_LOGIN_PASSWORD }}
-          WAITLY_SMTP_HOST: ${{ secrets.WAITLY_SMTP_HOST }}
-          WAITLY_SMTP_PORT: ${{ secrets.WAITLY_SMTP_PORT }}
-          WAITLY_SMTP_USER: ${{ secrets.WAITLY_SMTP_USER }}
-          WAITLY_SMTP_PASS: ${{ secrets.WAITLY_SMTP_PASS }}
-          WAITLY_MAIL_FROM: ${{ secrets.WAITLY_MAIL_FROM }}
-          WAITLY_MAIL_TO: ${{ secrets.WAITLY_MAIL_TO }}
-        run: |
-          python waitly_watch_all.py
+FORENING_RE = re.compile(r"^/da/foreninger/(\d{4})-[^/]+/([^/?#]+)")
 
-      - name: Show outputs (debug)
-        if: always()
-        run: |
-          echo "==== current.json (head) ===="
-          test -f current.json && head -n 60 current.json || echo "current.json not found"
-          echo "==== state/ ===="
-          ls -la state || true
 
-      - name: Commit updated state
-        run: |
-          set -e
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+@dataclass(frozen=True)
+class ForeningUrl:
+    url: str
+    postcode: int
+    area: str
+    slug: str
 
-          # Only commit if there are changes
-          if git status --porcelain | grep -E '^( M|M |A |??)'; then
-            git add state/*.json current.json 2>/dev/null || true
-            git commit -m "Update waitly state [skip ci]" || true
-            git push
-          else
-            echo "No changes to commit."
-          fi
+
+def utc_now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+def area_from_postcode(postcode: int) -> Optional[str]:
+    if postcode == 2100:
+        return "København Ø"
+    if postcode == 2200:
+        return "København N"
+
+    ranges: List[Tuple[int, int, str]] = [
+        (1000, 1499, "København K"),
+        (1500, 1799, "København V"),
+        (1800, 2000, "Frederiksberg"),
+        (2300, 2450, "København S"),
+    ]
+
+    for lo, hi, label in ranges:
+        if lo <= postcode <= hi:
+            return label
+    return None
+
+
+def load_json(path: str, default):
+    if not os.path.exists(path):
+        return default
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return default
+
+
+def save_json(path: str, data) -> None:
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def fetch_sitemap_html(timeout: int = 30) -> str:
+    r = requests.get(SITEMAP_URL, timeout=timeout)
+    r.raise_for_status()
+    return r.text
+
+
+def extract_scoped_forening_urls(html: str) -> List[ForeningUrl]:
+    soup = BeautifulSoup(html, "html.parser")
+
+    hrefs: Set[str] = set()
+    for a in soup.find_all("a", href=True):
+        href = a.get("href")
+        if isinstance(href, str) and href.startswith("/da/foreninger/"):
+            hrefs.add(href)
+
+    results: List[ForeningUrl] = []
+    for href in hrefs:
+        m = FORENING_RE.match(href)
+        if not m:
+            continue
+
+        postcode = int(m.group(1))
+        slug = m.group(2)
+        area = area_from_postcode(postcode)
+
+        if not area:
+            continue
+
+        results.append(
+            ForeningUrl(
+                url=href,
+                postcode=postcode,
+                area=area,
+                slug=slug,
+            )
+        )
+
+    results.sort(key=lambda x: (x.postcode, x.area, x.slug))
+    return results
+
+
+def diff_against_known(current: List[ForeningUrl]):
+    known = load_json(KNOWN_URLS_KBH_PATH, None)
+    current_set = {x.url for x in current}
+
+    if not isinstance(known, dict) or "urls" not in known:
+        save_json(
+            KNOWN_URLS_KBH_PATH,
+            {
+                "initialized_at": utc_now_iso(),
+                "source": SITEMAP_URL,
+                "urls": sorted(current_set),
+            },
+        )
+        return True, []
+
+    known_set = set(known.get("urls", []))
+    new_urls = current_set - known_set
+    new_items = [x for x in current if x.url in new_urls]
+
+    known["updated_at"] = utc_now_iso()
+    known["urls"] = sorted(current_set)
+    save_json(KNOWN_URLS_KBH_PATH, known)
+
+    return False, new_items
+
+
+def append_discovered(new_items: List[ForeningUrl]) -> None:
+    if not new_items:
+        return
+
+    log = load_json(DISCOVERED_LOG_KBH_PATH, [])
+    ts = utc_now_iso()
+
+    for x in new_items:
+        log.append(
+            {
+                "discovered_at": ts,
+                "url": x.url,
+                "postcode": f"{x.postcode:04d}",
+                "area": x.area,
+                "slug": x.slug,
+                "source": "sitemap",
+                "action_taken": False,
+            }
+        )
+
+    save_json(DISCOVERED_LOG_KBH_PATH, log)
+
+
+def run_kbh_sitemap_discovery():
+    html = fetch_sitemap_html()
+    current = extract_scoped_forening_urls(html)
+
+    initialized, new_items = diff_against_known(current)
+    append_discovered(new_items)
+
+    return {
+        "updated_at": utc_now_iso(),
+        "source": SITEMAP_URL,
+        "initialized": initialized,
+        "total_urls": len(current),
+        "new_count": len(new_items),
+        "new": [
+            {
+                "url": x.url,
+                "postcode": f"{x.postcode:04d}",
+                "area": x.area,
+                "slug": x.slug,
+                "full_url": "https://waitly.eu" + x.url,
+            }
+            for x in new_items
+        ],
+    }
