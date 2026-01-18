@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-01-17T15:50:53+00:00",
+  "updated_at": "2026-01-18T06:58:19+00:00",
   "queues": [
     {
       "id": "1853",
@@ -29,7 +29,7 @@
       "id": "392",
       "name": "A/B Baghuset - Ekstern venteliste",
       "position": 328,
-      "total": 335,
+      "total": 336,
       "active": false,
       "completed": true,
       "approved": true,
@@ -75,9 +75,9 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-01-17T15:50:39+00:00",
+    "updated_at": "2026-01-18T06:58:06+00:00",
     "source": "https://waitly.eu/da/sitemap",
-    "initialized": true,
+    "initialized": false,
     "total_urls": 291,
     "new_count": 0,
     "new": []
