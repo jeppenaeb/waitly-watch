@@ -257,7 +257,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 475,
+            "subscribers": 477,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -271,9 +271,9 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 475,
-                  "passive_subscribers": 39,
-                  "active_subscribers": 436
+                  "subscribers": 477,
+                  "passive_subscribers": 40,
+                  "active_subscribers": 437
                 }
               ]
             },
@@ -716,7 +716,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 646,
+          "placement": 645,
           "application": null,
           "created_at": "2026-01-02T21:08:33.000000Z",
           "end_date": null,
@@ -724,7 +724,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 664,
+            "subscribers": 666,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -738,9 +738,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 664,
+                  "subscribers": 666,
                   "passive_subscribers": 57,
-                  "active_subscribers": 607
+                  "active_subscribers": 609
                 }
               ]
             },
@@ -882,7 +882,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 775,
+            "subscribers": 776,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -896,9 +896,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 775,
+                  "subscribers": 776,
                   "passive_subscribers": 47,
-                  "active_subscribers": 728
+                  "active_subscribers": 729
                 }
               ]
             },
