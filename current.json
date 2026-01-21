@@ -1,17 +1,17 @@
 {
-  "updated_at": "2026-01-20T07:43:37+00:00",
+  "updated_at": "2026-01-21T07:44:56+00:00",
   "queues": [
     {
       "id": "1853",
       "name": "A/B Amagervold - Ekstern venteliste",
-      "position": 431,
-      "total": 477,
+      "position": 421,
+      "total": 467,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 431,
-      "moved": 0,
-      "moved_pct": 0.0
+      "moved": 10,
+      "moved_pct": 2.32
     },
     {
       "id": "1737",
@@ -52,14 +52,14 @@
     {
       "id": "294",
       "name": "A/B Positiv - Ekstern venteliste",
-      "position": 767,
-      "total": 776,
+      "position": 766,
+      "total": 777,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 771,
-      "moved": 4,
-      "moved_pct": 0.52
+      "moved": 5,
+      "moved_pct": 0.65
     },
     {
       "id": "966",
@@ -75,7 +75,7 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-01-20T07:43:25+00:00",
+    "updated_at": "2026-01-21T07:44:42+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": false,
     "total_urls": 291,

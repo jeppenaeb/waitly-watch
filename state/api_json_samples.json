@@ -249,7 +249,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 431,
+          "placement": 421,
           "application": null,
           "created_at": "2026-01-02T21:12:27.000000Z",
           "end_date": null,
@@ -257,7 +257,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 477,
+            "subscribers": 467,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -271,9 +271,9 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 477,
-                  "passive_subscribers": 40,
-                  "active_subscribers": 437
+                  "subscribers": 467,
+                  "passive_subscribers": 39,
+                  "active_subscribers": 428
                 }
               ]
             },
@@ -874,7 +874,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 767,
+          "placement": 766,
           "application": null,
           "created_at": "2026-01-02T21:07:26.000000Z",
           "end_date": null,
@@ -882,7 +882,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 776,
+            "subscribers": 777,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -896,9 +896,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 776,
-                  "passive_subscribers": 47,
-                  "active_subscribers": 729
+                  "subscribers": 777,
+                  "passive_subscribers": 46,
+                  "active_subscribers": 731
                 }
               ]
             },
