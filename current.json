@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-01-21T07:44:56+00:00",
+  "updated_at": "2026-01-22T07:42:46+00:00",
   "queues": [
     {
       "id": "1853",
       "name": "A/B Amagervold - Ekstern venteliste",
       "position": 421,
-      "total": 467,
+      "total": 469,
       "active": false,
       "completed": true,
       "approved": true,
@@ -29,7 +29,7 @@
       "id": "392",
       "name": "A/B Baghuset - Ekstern venteliste",
       "position": 328,
-      "total": 336,
+      "total": 335,
       "active": false,
       "completed": true,
       "approved": true,
@@ -52,14 +52,14 @@
     {
       "id": "294",
       "name": "A/B Positiv - Ekstern venteliste",
-      "position": 766,
+      "position": 765,
       "total": 777,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 771,
-      "moved": 5,
-      "moved_pct": 0.65
+      "moved": 6,
+      "moved_pct": 0.78
     },
     {
       "id": "966",
@@ -75,7 +75,7 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-01-21T07:44:42+00:00",
+    "updated_at": "2026-01-22T07:42:33+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": false,
     "total_urls": 291,

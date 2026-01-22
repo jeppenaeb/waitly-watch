@@ -257,7 +257,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 467,
+            "subscribers": 469,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -271,8 +271,8 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 467,
-                  "passive_subscribers": 39,
+                  "subscribers": 469,
+                  "passive_subscribers": 41,
                   "active_subscribers": 428
                 }
               ]
@@ -566,7 +566,7 @@
             "id": 392,
             "name": "Ekstern venteliste",
             "full_name": "A/B Baghuset - Ekstern venteliste",
-            "subscribers": 336,
+            "subscribers": 335,
             "template": {
               "company_name": "A/B Baghuset",
               "lists": [
@@ -580,9 +580,9 @@
                 {
                   "id": 392,
                   "name": "Ekstern venteliste",
-                  "subscribers": 336,
+                  "subscribers": 335,
                   "passive_subscribers": 33,
-                  "active_subscribers": 303
+                  "active_subscribers": 302
                 }
               ]
             },
@@ -874,7 +874,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 766,
+          "placement": 765,
           "application": null,
           "created_at": "2026-01-02T21:07:26.000000Z",
           "end_date": null,
