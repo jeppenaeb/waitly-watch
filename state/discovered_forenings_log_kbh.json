@@ -1,0 +1,29 @@
+[
+  {
+    "discovered_at": "2026-01-23T07:04:17+00:00",
+    "url": "/da/foreninger/1672-kobenhavn/2023-ab-broager",
+    "postcode": "1672",
+    "area": "København V",
+    "slug": "2023-ab-broager",
+    "source": "sitemap",
+    "action_taken": false
+  },
+  {
+    "discovered_at": "2026-01-23T07:04:17+00:00",
+    "url": "/da/foreninger/2100-kobenhavn/2040-ab-ryparken",
+    "postcode": "2100",
+    "area": "København Ø",
+    "slug": "2040-ab-ryparken",
+    "source": "sitemap",
+    "action_taken": false
+  },
+  {
+    "discovered_at": "2026-01-23T07:04:17+00:00",
+    "url": "/da/foreninger/2300-kobenhavn-s/2051-ef-osterpark",
+    "postcode": "2300",
+    "area": "København S",
+    "slug": "2051-ef-osterpark",
+    "source": "sitemap",
+    "action_taken": false
+  }
+]

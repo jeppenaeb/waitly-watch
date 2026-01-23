@@ -48,7 +48,7 @@
     "/da/foreninger/1656-koebenhavn-v/a-b-lutzhoefts-minde",
     "/da/foreninger/1661-koebenhavn/a-b-westend",
     "/da/foreninger/1668-koebenhavn-v/a-b-mysundegade-15-17",
-    "/da/foreninger/1672-kobenhavn-v/2023-ab-broager",
+    "/da/foreninger/1672-kobenhavn/2023-ab-broager",
     "/da/foreninger/1674-koebenhavn-v/a-b-tusindfryd",
     "/da/foreninger/1700-koebenhavn-v/a-b-halmtorvet-36-42",
     "/da/foreninger/1700-koebenhavn-v/a-b-lille-colbjoernsensgade-1-3",
@@ -124,6 +124,7 @@
     "/da/foreninger/2100-kobenhavn-o/ab-osterbrogade-137-nygardsvej-1",
     "/da/foreninger/2100-kobenhavn-o/ab-ringkobinggarden",
     "/da/foreninger/2100-kobenhavn/2030-ab-haraldsgarden",
+    "/da/foreninger/2100-kobenhavn/2040-ab-ryparken",
     "/da/foreninger/2100-koebenhavn-oe/a-b-borgervangen",
     "/da/foreninger/2100-koebenhavn-oe/a-b-classensgade-43-45",
     "/da/foreninger/2100-koebenhavn-oe/a-b-glaenoegaard",
@@ -201,6 +202,7 @@
     "/da/foreninger/2200-koebenhavn-n/andelsboligforeningen-wesselsgade-15a-og-15b",
     "/da/foreninger/2200-koebenhavn-n/heimdalshus-andelsboligforening",
     "/da/foreninger/2300-kobenhavn-s/2029-ab-amagervold",
+    "/da/foreninger/2300-kobenhavn-s/2051-ef-osterpark",
     "/da/foreninger/2300-kobenhavn-s/ab-hveensborg",
     "/da/foreninger/2300-kobenhavn-s/ab-ungarnsgade-21-25-bulgariensgade-1",
     "/da/foreninger/2300-kobenhavn-s/ab-wolterhus",
@@ -295,5 +297,5 @@
     "/da/foreninger/2450-koebenhavn-sv/andelsboligforeningen-tjoernen-koebenhavn"
   ],
   "note": "Baseline initialized (or re-initialized) without alert.",
-  "updated_at": "2026-01-22T07:42:33+00:00"
+  "updated_at": "2026-01-23T07:04:17+00:00"
 }

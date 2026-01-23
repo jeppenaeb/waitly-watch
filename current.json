@@ -1,17 +1,20 @@
 {
-  "updated_at": "2026-01-22T07:42:46+00:00",
+  "updated_at": "2026-01-23T07:04:35+00:00",
   "queues": [
     {
       "id": "1853",
       "name": "A/B Amagervold - Ekstern venteliste",
       "position": 421,
-      "total": 469,
+      "total": 471,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 431,
       "moved": 10,
-      "moved_pct": 2.32
+      "moved_pct": 2.32,
+      "progress": {
+        "week": 10
+      }
     },
     {
       "id": "1737",
@@ -23,7 +26,10 @@
       "approved": true,
       "start_position": 53,
       "moved": 1,
-      "moved_pct": 1.89
+      "moved_pct": 1.89,
+      "progress": {
+        "week": 0
+      }
     },
     {
       "id": "392",
@@ -35,31 +41,40 @@
       "approved": true,
       "start_position": 332,
       "moved": 4,
-      "moved_pct": 1.2
+      "moved_pct": 1.2,
+      "progress": {
+        "week": 0
+      }
     },
     {
       "id": "41",
       "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
       "position": 644,
-      "total": 668,
+      "total": 669,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 655,
       "moved": 11,
-      "moved_pct": 1.68
+      "moved_pct": 1.68,
+      "progress": {
+        "week": 3
+      }
     },
     {
       "id": "294",
       "name": "A/B Positiv - Ekstern venteliste",
-      "position": 765,
+      "position": 764,
       "total": 777,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 771,
-      "moved": 6,
-      "moved_pct": 0.78
+      "moved": 7,
+      "moved_pct": 0.91,
+      "progress": {
+        "week": 5
+      }
     },
     {
       "id": "966",
@@ -71,15 +86,15 @@
       "approved": true,
       "start_position": 249,
       "moved": 0,
-      "moved_pct": 0.0
+      "moved_pct": 0.0,
+      "progress": {
+        "week": 0
+      }
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-01-22T07:42:33+00:00",
+    "updated_at": "2026-01-23T07:04:17+00:00",
     "source": "https://waitly.eu/da/sitemap",
-    "initialized": false,
-    "total_urls": 291,
-    "new_count": 0,
-    "new": []
+    "error": "Missing env: WAITLY_SMTP_HOST"
   }
 }
