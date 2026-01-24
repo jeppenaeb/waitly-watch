@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-01-23T07:04:35+00:00",
+  "updated_at": "2026-01-24T06:58:47+00:00",
   "queues": [
     {
       "id": "1853",
@@ -50,7 +50,7 @@
       "id": "41",
       "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
       "position": 644,
-      "total": 669,
+      "total": 671,
       "active": false,
       "completed": true,
       "approved": true,
@@ -58,20 +58,20 @@
       "moved": 11,
       "moved_pct": 1.68,
       "progress": {
-        "week": 3
+        "week": 2
       }
     },
     {
       "id": "294",
       "name": "A/B Positiv - Ekstern venteliste",
-      "position": 764,
-      "total": 777,
+      "position": 763,
+      "total": 776,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 771,
-      "moved": 7,
-      "moved_pct": 0.91,
+      "moved": 8,
+      "moved_pct": 1.04,
       "progress": {
         "week": 5
       }
@@ -93,8 +93,11 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-01-23T07:04:17+00:00",
+    "updated_at": "2026-01-24T06:58:33+00:00",
     "source": "https://waitly.eu/da/sitemap",
-    "error": "Missing env: WAITLY_SMTP_HOST"
+    "initialized": false,
+    "total_urls": 293,
+    "new_count": 0,
+    "new": []
   }
 }
