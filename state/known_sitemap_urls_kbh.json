@@ -39,7 +39,6 @@
     "/da/foreninger/1610-koebenhavn-v/gammel-kongevej",
     "/da/foreninger/1619-kobenhavn-v/949-ab-vaernedamsvejtullinsgade",
     "/da/foreninger/1620-koebenhavn-v/a-b-vesterbrogade-141-vesterfaelledvej-1a-c",
-    "/da/foreninger/1650-kobenhavn-v/1909-ab-rosenaen",
     "/da/foreninger/1650-koebenhavn-v/a-b-istegade-140-mysundegade-26-30",
     "/da/foreninger/1650-koebenhavn-v/a-b-isto",
     "/da/foreninger/1651-kobenhavn-v/ab-reventlowsgade-12-a-b",
@@ -297,5 +296,5 @@
     "/da/foreninger/2450-koebenhavn-sv/andelsboligforeningen-tjoernen-koebenhavn"
   ],
   "note": "Baseline initialized (or re-initialized) without alert.",
-  "updated_at": "2026-01-27T07:42:57+00:00"
+  "updated_at": "2026-01-28T07:39:09+00:00"
 }
