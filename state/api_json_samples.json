@@ -829,47 +829,6 @@
     }
   },
   {
-    "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
-    "json": {
-      "widget": {
-        "enabled": false,
-        "position": {
-          "position": "bottom-left",
-          "distanceVerticalPx": 10,
-          "distanceHorizontalPx": 10
-        },
-        "theme": {
-          "closed": {
-            "backgroundColor": "#141414",
-            "foregroundColor": "#FFFFFF"
-          },
-          "opened": {
-            "backgroundColor": "#FFFFFF",
-            "foregroundColor": "#141414",
-            "highlightColor": "#1032CF",
-            "shadeColor": "#D6D6D6",
-            "changeBackgroundColor": "#1032CF",
-            "changeTextColor": "#FFFFFF",
-            "changeBorderColor": "#1032CF",
-            "withdrawBackgroundColor": "#FFFFFF",
-            "withdrawTextColor": "#141414",
-            "withdrawBorderColor": "#1032CF",
-            "detailsBackgroundColor": "#F2F2F2"
-          }
-        },
-        "content": {
-          "cultures": [
-            "da",
-            "en",
-            "de"
-          ],
-          "default": "da",
-          "autodetectLanguage": true
-        }
-      }
-    }
-  },
-  {
     "url": "https://my.waitly.dk/_i18n/r_vgo_XK/en/messages.json",
     "json": {
       "en": {
@@ -1571,6 +1530,1012 @@
         "paymentAddMethodToastSuccess": "Payment method added!",
         "dashboardPageTitle": "Overview"
       }
+    }
+  },
+  {
+    "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
+    "json": {
+      "widget": {
+        "enabled": false,
+        "position": {
+          "position": "bottom-left",
+          "distanceVerticalPx": 10,
+          "distanceHorizontalPx": 10
+        },
+        "theme": {
+          "closed": {
+            "backgroundColor": "#141414",
+            "foregroundColor": "#FFFFFF"
+          },
+          "opened": {
+            "backgroundColor": "#FFFFFF",
+            "foregroundColor": "#141414",
+            "highlightColor": "#1032CF",
+            "shadeColor": "#D6D6D6",
+            "changeBackgroundColor": "#1032CF",
+            "changeTextColor": "#FFFFFF",
+            "changeBorderColor": "#1032CF",
+            "withdrawBackgroundColor": "#FFFFFF",
+            "withdrawTextColor": "#141414",
+            "withdrawBorderColor": "#1032CF",
+            "detailsBackgroundColor": "#F2F2F2"
+          }
+        },
+        "content": {
+          "cultures": [
+            "da",
+            "en",
+            "de"
+          ],
+          "default": "da",
+          "autodetectLanguage": true
+        }
+      }
+    }
+  },
+  {
+    "url": "https://app.waitly.dk/api/v2/consumer/users/122316/subscriptions",
+    "json": {
+      "data": [
+        {
+          "id": 334329,
+          "uid": "4d6ec861-00f8-43af-b3c2-3a6bb66b4553",
+          "name": "Luna Yoon Kurland",
+          "email": "",
+          "active": false,
+          "completed": true,
+          "approved": true,
+          "placement": 390,
+          "application": null,
+          "created_at": "2026-01-02T21:12:27.000000Z",
+          "end_date": null,
+          "list": {
+            "id": 1853,
+            "name": "Ekstern venteliste",
+            "full_name": "A/B Amagervold - Ekstern venteliste",
+            "subscribers": 446,
+            "template": {
+              "company_name": "A/B Amagervold",
+              "lists": [
+                {
+                  "id": 1852,
+                  "name": "Intern venteliste",
+                  "subscribers": 49,
+                  "passive_subscribers": 0,
+                  "active_subscribers": 49
+                },
+                {
+                  "id": 1853,
+                  "name": "Ekstern venteliste",
+                  "subscribers": 446,
+                  "passive_subscribers": 41,
+                  "active_subscribers": 405
+                }
+              ]
+            },
+            "company": {
+              "id": 2029,
+              "name": "A/B Amagervold",
+              "description": "<p>A/B Amagervold er en andelsbolig forening med 85 lejligehder, som består af:</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15 stk. 1-vær. lejligheder på 44-50kvm.</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45 stk. 2.-vær. lejligheder på 59-74 kvm.</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;17 stk. 3-vær. lejligheder på 73-96 kvm.</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8 stk. 4-vær. lejligheder på 110-124 kvm.</p><p>Der tages forbehold for antal af hver lejlighedstype, da sammenlægninger af lejligheder er tilladt jf. vedtægter.&nbsp;&nbsp;</p><p>&nbsp;</p><p>Ejendommen ligger i 2300 København S – med adresse i hhv.:</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Amagerbrogade 9A – 9B</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flinterenden 1 – 7</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Markmandsgade 4</p><p><br></p><p><br></p><p><strong>Om ejendommen</strong></p><p>A/B Amagervold er en veldrevet andelsboligforening med en ejendom opført i 1937 og stiftet som forening i 1982.</p><p>Ejendommen består af 85 boliger fordelt på 5 etager (ekskl. kælder og loftsetage) i størrelser fra 44 til 124 m² – alle med eget køkken og bad.</p><p>Der er elevator i alle opgange, dørtelefon med kamera samt aflåste gadedøre for tryghed. Til hver lejlighed hører et mindre loftsrum, og der er mulighed for at leje ekstra loftrum efter behov.</p><p>Ejendommen har fået nye altaner mod gaden i 1996 og altaner mod gården i 2013. De oprindelige elevatorer er løbende vedligeholdt og blev renoveret i 2023 i forbindelse med en fuld opgangsrenovering, hvor alle lejlighedsdøre samtidig blev udskiftet til sikkerhedsdøre.</p><p>Vi deler en aflukket, grøn gård med legeområde til mindre børn, borde- og bænkesæt samt grillfaciliteter i sommerhalvåret, sammen med naboforeningen. Her findes også adgang til aflåst cykelkælder og barnevognsrum.</p><p>Husdyr er tilladt i foreningen. </p><p>Derudover rummer ejendommen tre erhvervslokaler beliggende ud mod Amagerbrogade og et fælles vaskeri i gadeplan.</p>",
+              "slug": "2029-ab-amagervold",
+              "created_at": "2025-11-05T09:18:10.000000Z",
+              "allow_no_showing_participation": true,
+              "company_type": "cooperative_association",
+              "stats": {
+                "number_of_residences": 85,
+                "number_of_sales_per_year": 7,
+                "rooms_min": 1,
+                "rooms_max": 4,
+                "floor_min": 0,
+                "floor_max": 5,
+                "recurring_price_min": 2300,
+                "recurring_price_max": 7500,
+                "onetime_price_min": 823000,
+                "onetime_price_max": 2450000,
+                "estimated_wait_time": null,
+                "living_space_min": 44,
+                "living_space_max": 124
+              },
+              "features": {
+                "offer_comment": true
+              }
+            },
+            "valuta": "DKK",
+            "settings": {
+              "end_date": false,
+              "application": false,
+              "set_passive": true,
+              "wishes": true,
+              "more_information": true,
+              "placement": true,
+              "template": true,
+              "relation": false,
+              "meta_fields": false
+            }
+          },
+          "user": {
+            "id": 122316,
+            "hashed_id": "769f71168cde2e5956c5d73d29ce14287ce02aad987f001f6c3420c3040b7b1e",
+            "name": "Luna Yoon Kurland",
+            "email": "lunayoonkurland@gmail.com",
+            "address": {
+              "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
+              "full_address": "Bæverstien 5, 2880 Bagsværd",
+              "address_line": "Bæverstien 5",
+              "street": "Bæverstien",
+              "house_number": "5",
+              "floor": null,
+              "door": null,
+              "city": "Bagsværd",
+              "sub_city": null,
+              "zip": "2880",
+              "country": "Danmark",
+              "country_code": "DK",
+              "latitude": 55.75135006,
+              "longitude": 12.46684212
+            },
+            "phone": "´+4561307111",
+            "birthday": "2017-05-04",
+            "avatar": null,
+            "country": {
+              "id": 46,
+              "name": "Denmark",
+              "code": "DK",
+              "market": "Denmark"
+            },
+            "created_at": "2026-01-01T18:32:46.000000Z",
+            "updated_at": "2026-01-01T19:22:18.000000Z",
+            "waitlyplus": false,
+            "waitlyplus_end_date": null,
+            "waitlyplus_id": null,
+            "markets": [
+              {
+                "name": "Denmark",
+                "description": "Denmark",
+                "vat_rate": 25,
+                "currency": "DKK",
+                "support_mail": "support@waitly.dk",
+                "locale": "da"
+              }
+            ],
+            "language": "en",
+            "profile": {
+              "status": "gold",
+              "points": 9,
+              "total": 9,
+              "point_types": {
+                "personal": {
+                  "current": 4,
+                  "total": 4
+                },
+                "status": {
+                  "current": 4,
+                  "total": 4
+                },
+                "interests": {
+                  "current": 1,
+                  "total": 1
+                }
+              }
+            },
+            "role": "consumer",
+            "impersonated": false
+          },
+          "wishes": {
+            "rooms_min": null,
+            "rooms_max": null,
+            "floor_min": null,
+            "floor_max": null,
+            "recurring_price_min": null,
+            "recurring_price_max": null,
+            "onetime_price_min": null,
+            "onetime_price_max": null,
+            "living_space_min": null,
+            "living_space_max": null
+          },
+          "fields": []
+        },
+        {
+          "id": 334328,
+          "uid": "b902e020-88bb-4cf6-8f7d-b122baeaf9fa",
+          "name": "Luna Yoon Kurland",
+          "email": "",
+          "active": false,
+          "completed": true,
+          "approved": true,
+          "placement": 52,
+          "application": null,
+          "created_at": "2026-01-02T21:11:18.000000Z",
+          "end_date": null,
+          "list": {
+            "id": 1737,
+            "name": "Ekstern venteliste",
+            "full_name": "A/B Buddingevej - Ekstern venteliste",
+            "subscribers": 55,
+            "template": {
+              "company_name": "A/B Buddingevej",
+              "lists": [
+                {
+                  "id": 1737,
+                  "name": "Ekstern venteliste",
+                  "subscribers": 55,
+                  "passive_subscribers": 5,
+                  "active_subscribers": 50
+                }
+              ]
+            },
+            "company": {
+              "id": 934,
+              "name": "A/B Buddingevej",
+              "description": "<p><span style=\"color: rgb(43, 46, 47); background-color: transparent;\">Boliger i stue har terrasse, 1. og 2. sal har altan.</span></p><p><br></p><p><span style=\"background-color: transparent;\">Andelsboligforeningen er fordelt på 2 bygninger, som har elevator.</span></p><p><span style=\"background-color: transparent;\">&nbsp;</span></p><p><span style=\"background-color: transparent;\">Grønne områder og fælles p plads.</span></p><p><span style=\"background-color: transparent;\">&nbsp;</span></p><p><span style=\"background-color: transparent;\">Offentlig transport – Den nye Letbane er tæt på bygningen.</span></p><p><span style=\"background-color: transparent;\">&nbsp;</span></p><p><br></p>",
+              "slug": "934-ab-buddingevej",
+              "created_at": "2025-03-03T09:02:09.000000Z",
+              "allow_no_showing_participation": true,
+              "company_type": "cooperative_association",
+              "stats": {
+                "number_of_residences": 26,
+                "number_of_sales_per_year": 2,
+                "rooms_min": 3,
+                "rooms_max": 3,
+                "floor_min": 0,
+                "floor_max": 2,
+                "recurring_price_min": 4649,
+                "recurring_price_max": 6029,
+                "onetime_price_min": 1394764,
+                "onetime_price_max": 1808833,
+                "estimated_wait_time": null,
+                "living_space_min": 77,
+                "living_space_max": 81
+              },
+              "features": {
+                "offer_comment": true
+              }
+            },
+            "valuta": "DKK",
+            "settings": {
+              "end_date": false,
+              "application": false,
+              "set_passive": true,
+              "wishes": true,
+              "more_information": true,
+              "placement": true,
+              "template": true,
+              "relation": false,
+              "meta_fields": false
+            }
+          },
+          "user": {
+            "id": 122316,
+            "hashed_id": "769f71168cde2e5956c5d73d29ce14287ce02aad987f001f6c3420c3040b7b1e",
+            "name": "Luna Yoon Kurland",
+            "email": "lunayoonkurland@gmail.com",
+            "address": {
+              "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
+              "full_address": "Bæverstien 5, 2880 Bagsværd",
+              "address_line": "Bæverstien 5",
+              "street": "Bæverstien",
+              "house_number": "5",
+              "floor": null,
+              "door": null,
+              "city": "Bagsværd",
+              "sub_city": null,
+              "zip": "2880",
+              "country": "Danmark",
+              "country_code": "DK",
+              "latitude": 55.75135006,
+              "longitude": 12.46684212
+            },
+            "phone": "´+4561307111",
+            "birthday": "2017-05-04",
+            "avatar": null,
+            "country": {
+              "id": 46,
+              "name": "Denmark",
+              "code": "DK",
+              "market": "Denmark"
+            },
+            "created_at": "2026-01-01T18:32:46.000000Z",
+            "updated_at": "2026-01-01T19:22:18.000000Z",
+            "waitlyplus": false,
+            "waitlyplus_end_date": null,
+            "waitlyplus_id": null,
+            "markets": [
+              {
+                "name": "Denmark",
+                "description": "Denmark",
+                "vat_rate": 25,
+                "currency": "DKK",
+                "support_mail": "support@waitly.dk",
+                "locale": "da"
+              }
+            ],
+            "language": "en",
+            "profile": {
+              "status": "gold",
+              "points": 9,
+              "total": 9,
+              "point_types": {
+                "personal": {
+                  "current": 4,
+                  "total": 4
+                },
+                "status": {
+                  "current": 4,
+                  "total": 4
+                },
+                "interests": {
+                  "current": 1,
+                  "total": 1
+                }
+              }
+            },
+            "role": "consumer",
+            "impersonated": false
+          },
+          "wishes": {
+            "rooms_min": null,
+            "rooms_max": null,
+            "floor_min": null,
+            "floor_max": null,
+            "recurring_price_min": null,
+            "recurring_price_max": null,
+            "onetime_price_min": null,
+            "onetime_price_max": null,
+            "living_space_min": null,
+            "living_space_max": null
+          },
+          "fields": []
+        },
+        {
+          "id": 334327,
+          "uid": "9a37af68-7897-42e0-9a26-5b32b44f24ee",
+          "name": "Luna Yoon Kurland",
+          "email": "",
+          "active": false,
+          "completed": true,
+          "approved": true,
+          "placement": 328,
+          "application": null,
+          "created_at": "2026-01-02T21:10:18.000000Z",
+          "end_date": null,
+          "list": {
+            "id": 392,
+            "name": "Ekstern venteliste",
+            "full_name": "A/B Baghuset - Ekstern venteliste",
+            "subscribers": 335,
+            "template": {
+              "company_name": "A/B Baghuset",
+              "lists": [
+                {
+                  "id": 391,
+                  "name": "Intern venteliste",
+                  "subscribers": 23,
+                  "passive_subscribers": 1,
+                  "active_subscribers": 22
+                },
+                {
+                  "id": 392,
+                  "name": "Ekstern venteliste",
+                  "subscribers": 335,
+                  "passive_subscribers": 33,
+                  "active_subscribers": 302
+                }
+              ]
+            },
+            "company": {
+              "id": 188,
+              "name": "A/B Baghuset",
+              "description": "<p>A/B Baghuset er en lille forening som bestående af 35 andelsboliger som ligger i en charmerende bygning med fine detaljer. Foreningen har adgang til et fælles gårdareal.</p>",
+              "slug": "188-ab-baghuset",
+              "created_at": "2022-05-12T11:14:28.000000Z",
+              "allow_no_showing_participation": true,
+              "company_type": "cooperative_association",
+              "stats": {
+                "number_of_residences": 35,
+                "number_of_sales_per_year": 4,
+                "rooms_min": null,
+                "rooms_max": null,
+                "floor_min": null,
+                "floor_max": null,
+                "recurring_price_min": null,
+                "recurring_price_max": null,
+                "onetime_price_min": null,
+                "onetime_price_max": null,
+                "estimated_wait_time": null,
+                "living_space_min": null,
+                "living_space_max": null
+              },
+              "features": {
+                "offer_comment": true
+              }
+            },
+            "valuta": "DKK",
+            "settings": {
+              "end_date": false,
+              "application": false,
+              "set_passive": true,
+              "wishes": true,
+              "more_information": true,
+              "placement": true,
+              "template": true,
+              "relation": false,
+              "meta_fields": false
+            }
+          },
+          "user": {
+            "id": 122316,
+            "hashed_id": "769f71168cde2e5956c5d73d29ce14287ce02aad987f001f6c3420c3040b7b1e",
+            "name": "Luna Yoon Kurland",
+            "email": "lunayoonkurland@gmail.com",
+            "address": {
+              "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
+              "full_address": "Bæverstien 5, 2880 Bagsværd",
+              "address_line": "Bæverstien 5",
+              "street": "Bæverstien",
+              "house_number": "5",
+              "floor": null,
+              "door": null,
+              "city": "Bagsværd",
+              "sub_city": null,
+              "zip": "2880",
+              "country": "Danmark",
+              "country_code": "DK",
+              "latitude": 55.75135006,
+              "longitude": 12.46684212
+            },
+            "phone": "´+4561307111",
+            "birthday": "2017-05-04",
+            "avatar": null,
+            "country": {
+              "id": 46,
+              "name": "Denmark",
+              "code": "DK",
+              "market": "Denmark"
+            },
+            "created_at": "2026-01-01T18:32:46.000000Z",
+            "updated_at": "2026-01-01T19:22:18.000000Z",
+            "waitlyplus": false,
+            "waitlyplus_end_date": null,
+            "waitlyplus_id": null,
+            "markets": [
+              {
+                "name": "Denmark",
+                "description": "Denmark",
+                "vat_rate": 25,
+                "currency": "DKK",
+                "support_mail": "support@waitly.dk",
+                "locale": "da"
+              }
+            ],
+            "language": "en",
+            "profile": {
+              "status": "gold",
+              "points": 9,
+              "total": 9,
+              "point_types": {
+                "personal": {
+                  "current": 4,
+                  "total": 4
+                },
+                "status": {
+                  "current": 4,
+                  "total": 4
+                },
+                "interests": {
+                  "current": 1,
+                  "total": 1
+                }
+              }
+            },
+            "role": "consumer",
+            "impersonated": false
+          },
+          "wishes": {
+            "rooms_min": null,
+            "rooms_max": null,
+            "floor_min": null,
+            "floor_max": null,
+            "recurring_price_min": null,
+            "recurring_price_max": null,
+            "onetime_price_min": null,
+            "onetime_price_max": null,
+            "living_space_min": null,
+            "living_space_max": null
+          },
+          "fields": []
+        },
+        {
+          "id": 334326,
+          "uid": "517c26d0-ff3c-4cde-b6fa-38d65d8b5dae",
+          "name": "Luna Yoon Kurland",
+          "email": "",
+          "active": false,
+          "completed": true,
+          "approved": true,
+          "placement": 642,
+          "application": null,
+          "created_at": "2026-01-02T21:08:33.000000Z",
+          "end_date": null,
+          "list": {
+            "id": 41,
+            "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
+            "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
+            "subscribers": 674,
+            "template": {
+              "company_name": "A/B Gl Kongevej 35 A - 37 A",
+              "lists": [
+                {
+                  "id": 42,
+                  "name": "A/B Gl Kongevej 35 A - 37 A - Intern venteliste",
+                  "subscribers": 44,
+                  "passive_subscribers": 2,
+                  "active_subscribers": 42
+                },
+                {
+                  "id": 41,
+                  "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
+                  "subscribers": 674,
+                  "passive_subscribers": 57,
+                  "active_subscribers": 617
+                }
+              ]
+            },
+            "company": {
+              "id": 11,
+              "name": "A/B Gl Kongevej 35 A - 37 A",
+              "description": "<p>Andelsboligforeningen ligger på Gammel Kongevej, en af Københavns mest attraktive adresser. Det er et skønt område med masser af muligheder og god plads til både børnefamilier eller unge par. Området byder på grønne oaser, hyggelige cafeer og lækre restauranter.</p><p><br></p><p>Foreningen blev stiftet i 1988 og rummer 50 lejligheder og ligger i en fin ældre ejendom. Der er et gennemsnitligt salg på 5 boliger om året.</p>",
+              "slug": "11-ab-gl-kongevej-35-a-37-a",
+              "created_at": "2020-06-09T08:44:32.000000Z",
+              "allow_no_showing_participation": true,
+              "company_type": "cooperative_association",
+              "stats": {
+                "number_of_residences": 50,
+                "number_of_sales_per_year": 5,
+                "rooms_min": null,
+                "rooms_max": null,
+                "floor_min": null,
+                "floor_max": null,
+                "recurring_price_min": null,
+                "recurring_price_max": null,
+                "onetime_price_min": null,
+                "onetime_price_max": null,
+                "estimated_wait_time": null,
+                "living_space_min": null,
+                "living_space_max": null
+              },
+              "features": {
+                "offer_comment": true
+              }
+            },
+            "valuta": "DKK",
+            "settings": {
+              "end_date": false,
+              "application": false,
+              "set_passive": true,
+              "wishes": true,
+              "more_information": true,
+              "placement": true,
+              "template": true,
+              "relation": false,
+              "meta_fields": false
+            }
+          },
+          "user": {
+            "id": 122316,
+            "hashed_id": "769f71168cde2e5956c5d73d29ce14287ce02aad987f001f6c3420c3040b7b1e",
+            "name": "Luna Yoon Kurland",
+            "email": "lunayoonkurland@gmail.com",
+            "address": {
+              "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
+              "full_address": "Bæverstien 5, 2880 Bagsværd",
+              "address_line": "Bæverstien 5",
+              "street": "Bæverstien",
+              "house_number": "5",
+              "floor": null,
+              "door": null,
+              "city": "Bagsværd",
+              "sub_city": null,
+              "zip": "2880",
+              "country": "Danmark",
+              "country_code": "DK",
+              "latitude": 55.75135006,
+              "longitude": 12.46684212
+            },
+            "phone": "´+4561307111",
+            "birthday": "2017-05-04",
+            "avatar": null,
+            "country": {
+              "id": 46,
+              "name": "Denmark",
+              "code": "DK",
+              "market": "Denmark"
+            },
+            "created_at": "2026-01-01T18:32:46.000000Z",
+            "updated_at": "2026-01-01T19:22:18.000000Z",
+            "waitlyplus": false,
+            "waitlyplus_end_date": null,
+            "waitlyplus_id": null,
+            "markets": [
+              {
+                "name": "Denmark",
+                "description": "Denmark",
+                "vat_rate": 25,
+                "currency": "DKK",
+                "support_mail": "support@waitly.dk",
+                "locale": "da"
+              }
+            ],
+            "language": "en",
+            "profile": {
+              "status": "gold",
+              "points": 9,
+              "total": 9,
+              "point_types": {
+                "personal": {
+                  "current": 4,
+                  "total": 4
+                },
+                "status": {
+                  "current": 4,
+                  "total": 4
+                },
+                "interests": {
+                  "current": 1,
+                  "total": 1
+                }
+              }
+            },
+            "role": "consumer",
+            "impersonated": false
+          },
+          "wishes": {
+            "rooms_min": null,
+            "rooms_max": null,
+            "floor_min": null,
+            "floor_max": null,
+            "recurring_price_min": null,
+            "recurring_price_max": null,
+            "onetime_price_min": null,
+            "onetime_price_max": null,
+            "living_space_min": null,
+            "living_space_max": null
+          },
+          "fields": []
+        },
+        {
+          "id": 334324,
+          "uid": "73a02f75-0b2b-4620-8e29-db14c205f134",
+          "name": "Luna Yoon Kurland",
+          "email": "",
+          "active": false,
+          "completed": true,
+          "approved": true,
+          "placement": 760,
+          "application": null,
+          "created_at": "2026-01-02T21:07:26.000000Z",
+          "end_date": null,
+          "list": {
+            "id": 294,
+            "name": "Ekstern venteliste",
+            "full_name": "A/B Positiv - Ekstern venteliste",
+            "subscribers": 777,
+            "template": {
+              "company_name": "A/B Positiv",
+              "lists": [
+                {
+                  "id": 293,
+                  "name": "Intern venteliste",
+                  "subscribers": 47,
+                  "passive_subscribers": 1,
+                  "active_subscribers": 46
+                },
+                {
+                  "id": 294,
+                  "name": "Ekstern venteliste",
+                  "subscribers": 777,
+                  "passive_subscribers": 47,
+                  "active_subscribers": 730
+                }
+              ]
+            },
+            "company": {
+              "id": 129,
+              "name": "A/B Positiv",
+              "description": "A/B Positiv blev dannet i 1984, og i de efterfølgende år blev foreningens ejendom byfornyet. \r\n\r\nForeningen består af 64 andele og flere fælles faciliteter, som fx et vaskeri, et hobbyrum og en stor grøn gård, som vi deler med naboejendommene gennem et gårdlaug.\r\n\r\nEn gang om året mødes andelshaverne til en arbejdsdag, hvor ejendommen og omgivelserne får en større overhaling.\r\n\r\nDet er tilladt at holde husdyr.",
+              "slug": "129-ab-positiv",
+              "created_at": "2021-10-26T09:53:51.000000Z",
+              "allow_no_showing_participation": true,
+              "company_type": "cooperative_association",
+              "stats": {
+                "number_of_residences": 64,
+                "number_of_sales_per_year": 8,
+                "rooms_min": null,
+                "rooms_max": null,
+                "floor_min": 0,
+                "floor_max": 5,
+                "recurring_price_min": 3006,
+                "recurring_price_max": 8418,
+                "onetime_price_min": 2004000,
+                "onetime_price_max": 716000,
+                "estimated_wait_time": null,
+                "living_space_min": null,
+                "living_space_max": null
+              },
+              "features": {
+                "offer_comment": true
+              }
+            },
+            "valuta": "DKK",
+            "settings": {
+              "end_date": false,
+              "application": false,
+              "set_passive": true,
+              "wishes": true,
+              "more_information": true,
+              "placement": true,
+              "template": true,
+              "relation": false,
+              "meta_fields": false
+            }
+          },
+          "user": {
+            "id": 122316,
+            "hashed_id": "769f71168cde2e5956c5d73d29ce14287ce02aad987f001f6c3420c3040b7b1e",
+            "name": "Luna Yoon Kurland",
+            "email": "lunayoonkurland@gmail.com",
+            "address": {
+              "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
+              "full_address": "Bæverstien 5, 2880 Bagsværd",
+              "address_line": "Bæverstien 5",
+              "street": "Bæverstien",
+              "house_number": "5",
+              "floor": null,
+              "door": null,
+              "city": "Bagsværd",
+              "sub_city": null,
+              "zip": "2880",
+              "country": "Danmark",
+              "country_code": "DK",
+              "latitude": 55.75135006,
+              "longitude": 12.46684212
+            },
+            "phone": "´+4561307111",
+            "birthday": "2017-05-04",
+            "avatar": null,
+            "country": {
+              "id": 46,
+              "name": "Denmark",
+              "code": "DK",
+              "market": "Denmark"
+            },
+            "created_at": "2026-01-01T18:32:46.000000Z",
+            "updated_at": "2026-01-01T19:22:18.000000Z",
+            "waitlyplus": false,
+            "waitlyplus_end_date": null,
+            "waitlyplus_id": null,
+            "markets": [
+              {
+                "name": "Denmark",
+                "description": "Denmark",
+                "vat_rate": 25,
+                "currency": "DKK",
+                "support_mail": "support@waitly.dk",
+                "locale": "da"
+              }
+            ],
+            "language": "en",
+            "profile": {
+              "status": "gold",
+              "points": 9,
+              "total": 9,
+              "point_types": {
+                "personal": {
+                  "current": 4,
+                  "total": 4
+                },
+                "status": {
+                  "current": 4,
+                  "total": 4
+                },
+                "interests": {
+                  "current": 1,
+                  "total": 1
+                }
+              }
+            },
+            "role": "consumer",
+            "impersonated": false
+          },
+          "wishes": {
+            "rooms_min": null,
+            "rooms_max": null,
+            "floor_min": null,
+            "floor_max": null,
+            "recurring_price_min": null,
+            "recurring_price_max": null,
+            "onetime_price_min": null,
+            "onetime_price_max": null,
+            "living_space_min": null,
+            "living_space_max": null
+          },
+          "fields": []
+        },
+        {
+          "id": 334024,
+          "uid": "597a2f85-2cfb-4b89-9d99-9b79b405dc3e",
+          "name": "Luna Yoon Kurland",
+          "email": "",
+          "active": false,
+          "completed": true,
+          "approved": true,
+          "placement": 249,
+          "application": null,
+          "created_at": "2026-01-01T19:22:17.000000Z",
+          "end_date": null,
+          "list": {
+            "id": 966,
+            "name": "Ekstern venteliste",
+            "full_name": "A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste",
+            "subscribers": 250,
+            "template": {
+              "company_name": "A/B Vesterbrogade 176 / Kochsvej 44-46",
+              "lists": [
+                {
+                  "id": 965,
+                  "name": "Intern venteliste",
+                  "subscribers": 24,
+                  "passive_subscribers": 0,
+                  "active_subscribers": 24
+                },
+                {
+                  "id": 966,
+                  "name": "Ekstern venteliste",
+                  "subscribers": 250,
+                  "passive_subscribers": 8,
+                  "active_subscribers": 242
+                }
+              ]
+            },
+            "company": {
+              "id": 487,
+              "name": "A/B Vesterbrogade 176 / Kochsvej 44-46",
+              "description": null,
+              "slug": "487-ab-vesterbrogade-176-kochsvej-44-46",
+              "created_at": "2023-11-10T07:44:10.000000Z",
+              "allow_no_showing_participation": true,
+              "company_type": "cooperative_association",
+              "stats": {
+                "number_of_residences": 28,
+                "number_of_sales_per_year": 3,
+                "rooms_min": 2,
+                "rooms_max": 6,
+                "floor_min": 0,
+                "floor_max": 4,
+                "recurring_price_min": 2650,
+                "recurring_price_max": 7100,
+                "onetime_price_min": 1285439,
+                "onetime_price_max": 3783361,
+                "estimated_wait_time": null,
+                "living_space_min": null,
+                "living_space_max": null
+              },
+              "features": {
+                "offer_comment": true
+              }
+            },
+            "valuta": "DKK",
+            "settings": {
+              "end_date": false,
+              "application": false,
+              "set_passive": true,
+              "wishes": true,
+              "more_information": true,
+              "placement": true,
+              "template": true,
+              "relation": false,
+              "meta_fields": false
+            }
+          },
+          "user": {
+            "id": 122316,
+            "hashed_id": "769f71168cde2e5956c5d73d29ce14287ce02aad987f001f6c3420c3040b7b1e",
+            "name": "Luna Yoon Kurland",
+            "email": "lunayoonkurland@gmail.com",
+            "address": {
+              "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
+              "full_address": "Bæverstien 5, 2880 Bagsværd",
+              "address_line": "Bæverstien 5",
+              "street": "Bæverstien",
+              "house_number": "5",
+              "floor": null,
+              "door": null,
+              "city": "Bagsværd",
+              "sub_city": null,
+              "zip": "2880",
+              "country": "Danmark",
+              "country_code": "DK",
+              "latitude": 55.75135006,
+              "longitude": 12.46684212
+            },
+            "phone": "´+4561307111",
+            "birthday": "2017-05-04",
+            "avatar": null,
+            "country": {
+              "id": 46,
+              "name": "Denmark",
+              "code": "DK",
+              "market": "Denmark"
+            },
+            "created_at": "2026-01-01T18:32:46.000000Z",
+            "updated_at": "2026-01-01T19:22:18.000000Z",
+            "waitlyplus": false,
+            "waitlyplus_end_date": null,
+            "waitlyplus_id": null,
+            "markets": [
+              {
+                "name": "Denmark",
+                "description": "Denmark",
+                "vat_rate": 25,
+                "currency": "DKK",
+                "support_mail": "support@waitly.dk",
+                "locale": "da"
+              }
+            ],
+            "language": "en",
+            "profile": {
+              "status": "gold",
+              "points": 9,
+              "total": 9,
+              "point_types": {
+                "personal": {
+                  "current": 4,
+                  "total": 4
+                },
+                "status": {
+                  "current": 4,
+                  "total": 4
+                },
+                "interests": {
+                  "current": 1,
+                  "total": 1
+                }
+              }
+            },
+            "role": "consumer",
+            "impersonated": false
+          },
+          "wishes": {
+            "rooms_min": null,
+            "rooms_max": null,
+            "floor_min": null,
+            "floor_max": null,
+            "recurring_price_min": null,
+            "recurring_price_max": null,
+            "onetime_price_min": null,
+            "onetime_price_max": null,
+            "living_space_min": null,
+            "living_space_max": null
+          },
+          "fields": []
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=dots-three-outline-vertical%2Ctrash",
+    "json": {
+      "prefix": "ph",
+      "icons": {
+        "dots-three-outline-vertical": {
+          "body": "<path fill=\"currentColor\" d=\"M128 96a32 32 0 1 0 32 32a32 32 0 0 0-32-32m0 48a16 16 0 1 1 16-16a16 16 0 0 1-16 16m0-64a32 32 0 1 0-32-32a32 32 0 0 0 32 32m0-48a16 16 0 1 1-16 16a16 16 0 0 1 16-16m0 144a32 32 0 1 0 32 32a32 32 0 0 0-32-32m0 48a16 16 0 1 1 16-16a16 16 0 0 1-16 16\"/>"
+        },
+        "trash": {
+          "body": "<path fill=\"currentColor\" d=\"M216 48h-40v-8a24 24 0 0 0-24-24h-48a24 24 0 0 0-24 24v8H40a8 8 0 0 0 0 16h8v144a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16V64h8a8 8 0 0 0 0-16M96 40a8 8 0 0 1 8-8h48a8 8 0 0 1 8 8v8H96Zm96 168H64V64h128Zm-80-104v64a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0m48 0v64a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0\"/>"
+        }
+      },
+      "lastModified": 1714973607,
+      "width": 256,
+      "height": 256
     }
   }
 ]
