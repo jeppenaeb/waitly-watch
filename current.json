@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-02T08:03:11+00:00",
+  "updated_at": "2026-02-03T07:11:51+00:00",
   "queues": [
     {
       "id": "1853",
@@ -20,7 +20,7 @@
       "id": "1737",
       "name": "A/B Buddingevej - Ekstern venteliste",
       "position": 52,
-      "total": 55,
+      "total": 56,
       "active": false,
       "completed": true,
       "approved": true,
@@ -50,7 +50,7 @@
       "id": "41",
       "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
       "position": 641,
-      "total": 679,
+      "total": 681,
       "active": false,
       "completed": true,
       "approved": true,
@@ -80,7 +80,7 @@
       "id": "966",
       "name": "A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste",
       "position": 248,
-      "total": 249,
+      "total": 250,
       "active": false,
       "completed": true,
       "approved": true,
@@ -93,7 +93,7 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-02-02T08:02:59+00:00",
+    "updated_at": "2026-02-03T07:11:38+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": false,
     "total_urls": 292,

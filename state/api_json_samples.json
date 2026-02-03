@@ -1751,16 +1751,16 @@
             "id": 1737,
             "name": "Ekstern venteliste",
             "full_name": "A/B Buddingevej - Ekstern venteliste",
-            "subscribers": 55,
+            "subscribers": 56,
             "template": {
               "company_name": "A/B Buddingevej",
               "lists": [
                 {
                   "id": 1737,
                   "name": "Ekstern venteliste",
-                  "subscribers": 55,
+                  "subscribers": 56,
                   "passive_subscribers": 5,
-                  "active_subscribers": 50
+                  "active_subscribers": 51
                 }
               ]
             },
@@ -2060,7 +2060,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 679,
+            "subscribers": 681,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2074,9 +2074,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 679,
+                  "subscribers": 681,
                   "passive_subscribers": 57,
-                  "active_subscribers": 622
+                  "active_subscribers": 624
                 }
               ]
             },
@@ -2376,7 +2376,7 @@
             "id": 966,
             "name": "Ekstern venteliste",
             "full_name": "A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste",
-            "subscribers": 249,
+            "subscribers": 250,
             "template": {
               "company_name": "A/B Vesterbrogade 176 / Kochsvej 44-46",
               "lists": [
@@ -2390,9 +2390,9 @@
                 {
                   "id": 966,
                   "name": "Ekstern venteliste",
-                  "subscribers": 249,
+                  "subscribers": 250,
                   "passive_subscribers": 8,
-                  "active_subscribers": 241
+                  "active_subscribers": 242
                 }
               ]
             },
