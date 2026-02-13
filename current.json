@@ -1,26 +1,26 @@
 {
-  "updated_at": "2026-02-12T07:18:40+00:00",
+  "updated_at": "2026-02-13T07:16:51+00:00",
   "queues": [
     {
       "id": "1853",
       "name": "A/B Amagervold - Ekstern venteliste",
-      "position": 387,
-      "total": 453,
+      "position": 388,
+      "total": 456,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 431,
-      "moved": 44,
-      "moved_pct": 10.21,
+      "moved": 43,
+      "moved_pct": 9.98,
       "progress": {
-        "week": 3
+        "week": 2
       }
     },
     {
       "id": "1737",
       "name": "A/B Buddingevej - Ekstern venteliste",
       "position": 52,
-      "total": 57,
+      "total": 56,
       "active": false,
       "completed": true,
       "approved": true,
@@ -35,7 +35,7 @@
       "id": "392",
       "name": "A/B Baghuset - Ekstern venteliste",
       "position": 323,
-      "total": 330,
+      "total": 332,
       "active": false,
       "completed": true,
       "approved": true,
@@ -64,36 +64,36 @@
     {
       "id": "294",
       "name": "A/B Positiv - Ekstern venteliste",
-      "position": 756,
-      "total": 777,
+      "position": 755,
+      "total": 776,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 771,
-      "moved": 15,
-      "moved_pct": 1.95,
+      "moved": 16,
+      "moved_pct": 2.08,
       "progress": {
-        "week": 2
+        "week": 3
       }
     },
     {
       "id": "966",
       "name": "A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste",
-      "position": 248,
-      "total": 250,
+      "position": 247,
+      "total": 249,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 249,
-      "moved": 1,
-      "moved_pct": 0.4,
+      "moved": 2,
+      "moved_pct": 0.8,
       "progress": {
-        "week": 0
+        "week": 1
       }
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-02-12T07:18:25+00:00",
+    "updated_at": "2026-02-13T07:16:39+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": false,
     "total_urls": 291,
