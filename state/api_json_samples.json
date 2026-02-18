@@ -2060,7 +2060,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 691,
+            "subscribers": 694,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2074,9 +2074,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 691,
+                  "subscribers": 694,
                   "passive_subscribers": 58,
-                  "active_subscribers": 633
+                  "active_subscribers": 636
                 }
               ]
             },
@@ -2368,7 +2368,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 247,
+          "placement": 246,
           "application": null,
           "created_at": "2026-01-01T19:22:17.000000Z",
           "end_date": null,
@@ -2376,7 +2376,7 @@
             "id": 966,
             "name": "Ekstern venteliste",
             "full_name": "A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste",
-            "subscribers": 250,
+            "subscribers": 249,
             "template": {
               "company_name": "A/B Vesterbrogade 176 / Kochsvej 44-46",
               "lists": [
@@ -2390,9 +2390,9 @@
                 {
                   "id": 966,
                   "name": "Ekstern venteliste",
-                  "subscribers": 250,
+                  "subscribers": 249,
                   "passive_subscribers": 8,
-                  "active_subscribers": 242
+                  "active_subscribers": 241
                 }
               ]
             },
