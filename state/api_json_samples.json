@@ -717,6 +717,22 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/heroicons.json?icons=arrow-path-20-solid",
+    "json": {
+      "prefix": "heroicons",
+      "icons": {
+        "arrow-path-20-solid": {
+          "body": "<path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M15.312 11.424a5.5 5.5 0 0 1-9.201 2.466l-.312-.311h2.433a.75.75 0 0 0 0-1.5H3.989a.75.75 0 0 0-.75.75v4.242a.75.75 0 0 0 1.5 0v-2.43l.31.31a7 7 0 0 0 11.712-3.138a.75.75 0 0 0-1.449-.39m1.23-3.723a.75.75 0 0 0 .219-.53V2.929a.75.75 0 0 0-1.5 0V5.36l-.31-.31A7 7 0 0 0 3.239 8.188a.75.75 0 1 0 1.448.389A5.5 5.5 0 0 1 13.89 6.11l.311.31h-2.432a.75.75 0 0 0 0 1.5h4.243a.75.75 0 0 0 .53-.219\" clip-rule=\"evenodd\"/>",
+          "width": 20,
+          "height": 20
+        }
+      },
+      "lastModified": 1758346379,
+      "width": 24,
+      "height": 24
+    }
+  },
+  {
     "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
     "json": {
       "widget": {
@@ -755,22 +771,6 @@
           "autodetectLanguage": true
         }
       }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/heroicons.json?icons=arrow-path-20-solid",
-    "json": {
-      "prefix": "heroicons",
-      "icons": {
-        "arrow-path-20-solid": {
-          "body": "<path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M15.312 11.424a5.5 5.5 0 0 1-9.201 2.466l-.312-.311h2.433a.75.75 0 0 0 0-1.5H3.989a.75.75 0 0 0-.75.75v4.242a.75.75 0 0 0 1.5 0v-2.43l.31.31a7 7 0 0 0 11.712-3.138a.75.75 0 0 0-1.449-.39m1.23-3.723a.75.75 0 0 0 .219-.53V2.929a.75.75 0 0 0-1.5 0V5.36l-.31-.31A7 7 0 0 0 3.239 8.188a.75.75 0 1 0 1.448.389A5.5 5.5 0 0 1 13.89 6.11l.311.31h-2.432a.75.75 0 0 0 0 1.5h4.243a.75.75 0 0 0 .53-.219\" clip-rule=\"evenodd\"/>",
-          "width": 20,
-          "height": 20
-        }
-      },
-      "lastModified": 1758346379,
-      "width": 24,
-      "height": 24
     }
   },
   {
@@ -826,6 +826,47 @@
         "dynamic": {}
       },
       "prerendered": []
+    }
+  },
+  {
+    "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
+    "json": {
+      "widget": {
+        "enabled": false,
+        "position": {
+          "position": "bottom-left",
+          "distanceVerticalPx": 10,
+          "distanceHorizontalPx": 10
+        },
+        "theme": {
+          "closed": {
+            "backgroundColor": "#141414",
+            "foregroundColor": "#FFFFFF"
+          },
+          "opened": {
+            "backgroundColor": "#FFFFFF",
+            "foregroundColor": "#141414",
+            "highlightColor": "#1032CF",
+            "shadeColor": "#D6D6D6",
+            "changeBackgroundColor": "#1032CF",
+            "changeTextColor": "#FFFFFF",
+            "changeBorderColor": "#1032CF",
+            "withdrawBackgroundColor": "#FFFFFF",
+            "withdrawTextColor": "#141414",
+            "withdrawBorderColor": "#1032CF",
+            "detailsBackgroundColor": "#F2F2F2"
+          }
+        },
+        "content": {
+          "cultures": [
+            "da",
+            "en",
+            "de"
+          ],
+          "default": "da",
+          "autodetectLanguage": true
+        }
+      }
     }
   },
   {
@@ -1533,47 +1574,6 @@
     }
   },
   {
-    "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
-    "json": {
-      "widget": {
-        "enabled": false,
-        "position": {
-          "position": "bottom-left",
-          "distanceVerticalPx": 10,
-          "distanceHorizontalPx": 10
-        },
-        "theme": {
-          "closed": {
-            "backgroundColor": "#141414",
-            "foregroundColor": "#FFFFFF"
-          },
-          "opened": {
-            "backgroundColor": "#FFFFFF",
-            "foregroundColor": "#141414",
-            "highlightColor": "#1032CF",
-            "shadeColor": "#D6D6D6",
-            "changeBackgroundColor": "#1032CF",
-            "changeTextColor": "#FFFFFF",
-            "changeBorderColor": "#1032CF",
-            "withdrawBackgroundColor": "#FFFFFF",
-            "withdrawTextColor": "#141414",
-            "withdrawBorderColor": "#1032CF",
-            "detailsBackgroundColor": "#F2F2F2"
-          }
-        },
-        "content": {
-          "cultures": [
-            "da",
-            "en",
-            "de"
-          ],
-          "default": "da",
-          "autodetectLanguage": true
-        }
-      }
-    }
-  },
-  {
     "url": "https://app.waitly.dk/api/v2/consumer/users/122316/subscriptions",
     "json": {
       "data": [
@@ -1585,7 +1585,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 388,
+          "placement": 387,
           "application": null,
           "created_at": "2026-01-02T21:12:27.000000Z",
           "end_date": null,
@@ -1600,9 +1600,9 @@
                 {
                   "id": 1852,
                   "name": "Intern venteliste",
-                  "subscribers": 49,
+                  "subscribers": 50,
                   "passive_subscribers": 0,
-                  "active_subscribers": 49
+                  "active_subscribers": 50
                 },
                 {
                   "id": 1853,
@@ -1751,16 +1751,16 @@
             "id": 1737,
             "name": "Ekstern venteliste",
             "full_name": "A/B Buddingevej - Ekstern venteliste",
-            "subscribers": 56,
+            "subscribers": 55,
             "template": {
               "company_name": "A/B Buddingevej",
               "lists": [
                 {
                   "id": 1737,
                   "name": "Ekstern venteliste",
-                  "subscribers": 56,
+                  "subscribers": 55,
                   "passive_subscribers": 5,
-                  "active_subscribers": 51
+                  "active_subscribers": 50
                 }
               ]
             },
@@ -1902,7 +1902,7 @@
             "id": 392,
             "name": "Ekstern venteliste",
             "full_name": "A/B Baghuset - Ekstern venteliste",
-            "subscribers": 332,
+            "subscribers": 331,
             "template": {
               "company_name": "A/B Baghuset",
               "lists": [
@@ -1916,9 +1916,9 @@
                 {
                   "id": 392,
                   "name": "Ekstern venteliste",
-                  "subscribers": 332,
+                  "subscribers": 331,
                   "passive_subscribers": 33,
-                  "active_subscribers": 299
+                  "active_subscribers": 298
                 }
               ]
             },
@@ -2052,7 +2052,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 638,
+          "placement": 637,
           "application": null,
           "created_at": "2026-01-02T21:08:33.000000Z",
           "end_date": null,
@@ -2060,7 +2060,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 694,
+            "subscribers": 692,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2074,9 +2074,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 694,
+                  "subscribers": 692,
                   "passive_subscribers": 58,
-                  "active_subscribers": 636
+                  "active_subscribers": 634
                 }
               ]
             },
@@ -2210,7 +2210,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 755,
+          "placement": 754,
           "application": null,
           "created_at": "2026-01-02T21:07:26.000000Z",
           "end_date": null,
@@ -2218,7 +2218,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 777,
+            "subscribers": 776,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -2232,8 +2232,8 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 777,
-                  "passive_subscribers": 47,
+                  "subscribers": 776,
+                  "passive_subscribers": 46,
                   "active_subscribers": 730
                 }
               ]
