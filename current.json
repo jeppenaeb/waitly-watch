@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-03-03T07:11:37+00:00",
+  "updated_at": "2026-03-05T07:11:30+00:00",
   "queues": [
     {
       "id": "1853",
       "name": "A/B Amagervold - Ekstern venteliste",
       "position": 386,
-      "total": 462,
+      "total": 461,
       "active": false,
       "completed": true,
       "approved": true,
@@ -21,7 +21,7 @@
       "id": "1737",
       "name": "A/B Buddingevej - Ekstern venteliste",
       "position": 51,
-      "total": 57,
+      "total": 58,
       "active": false,
       "completed": true,
       "approved": true,
@@ -36,14 +36,14 @@
     {
       "id": "392",
       "name": "A/B Baghuset - Ekstern venteliste",
-      "position": 321,
-      "total": 330,
+      "position": 320,
+      "total": 329,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 332,
-      "moved": 11,
-      "moved_pct": 3.31,
+      "moved": 12,
+      "moved_pct": 3.61,
       "progress": {
         "week": 2,
         "month": 6
@@ -53,7 +53,7 @@
       "id": "41",
       "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
       "position": 636,
-      "total": 698,
+      "total": 699,
       "active": false,
       "completed": true,
       "approved": true,
@@ -61,24 +61,24 @@
       "moved": 19,
       "moved_pct": 2.9,
       "progress": {
-        "week": 1,
-        "month": 6
+        "week": 0,
+        "month": 5
       }
     },
     {
       "id": "294",
       "name": "A/B Positiv - Ekstern venteliste",
-      "position": 753,
+      "position": 752,
       "total": 780,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 771,
-      "moved": 18,
-      "moved_pct": 2.33,
+      "moved": 19,
+      "moved_pct": 2.46,
       "progress": {
-        "week": 1,
-        "month": 6
+        "week": 2,
+        "month": 7
       }
     },
     {
@@ -94,12 +94,12 @@
       "moved_pct": 1.2,
       "progress": {
         "week": 0,
-        "month": 3
+        "month": 2
       }
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-03-03T07:11:23+00:00",
+    "updated_at": "2026-03-05T07:11:18+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": false,
     "total_urls": 291,
