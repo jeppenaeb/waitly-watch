@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-13T07:13:51+00:00",
+  "updated_at": "2026-03-15T07:14:36+00:00",
   "queues": [
     {
       "id": "1853",
@@ -14,7 +14,7 @@
       "moved_pct": 10.44,
       "progress": {
         "week": 0,
-        "month": 2
+        "month": 1
       }
     },
     {
@@ -36,40 +36,40 @@
     {
       "id": "392",
       "name": "A/B Baghuset - Ekstern venteliste",
-      "position": 320,
-      "total": 330,
+      "position": 319,
+      "total": 329,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 332,
-      "moved": 12,
-      "moved_pct": 3.61,
-      "progress": {
-        "week": 0,
-        "month": 4
-      }
-    },
-    {
-      "id": "41",
-      "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-      "position": 635,
-      "total": 700,
-      "active": false,
-      "completed": true,
-      "approved": true,
-      "start_position": 655,
-      "moved": 20,
-      "moved_pct": 3.05,
+      "moved": 13,
+      "moved_pct": 3.92,
       "progress": {
         "week": 1,
         "month": 4
       }
     },
     {
+      "id": "41",
+      "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
+      "position": 634,
+      "total": 700,
+      "active": false,
+      "completed": true,
+      "approved": true,
+      "start_position": 655,
+      "moved": 21,
+      "moved_pct": 3.21,
+      "progress": {
+        "week": 2,
+        "month": 5
+      }
+    },
+    {
       "id": "294",
       "name": "A/B Positiv - Ekstern venteliste",
       "position": 750,
-      "total": 779,
+      "total": 780,
       "active": false,
       "completed": true,
       "approved": true,
@@ -77,8 +77,8 @@
       "moved": 21,
       "moved_pct": 2.72,
       "progress": {
-        "week": 2,
-        "month": 7
+        "week": 1,
+        "month": 6
       }
     },
     {
@@ -99,7 +99,7 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-03-13T07:13:38+00:00",
+    "updated_at": "2026-03-15T07:14:23+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": false,
     "total_urls": 291,
