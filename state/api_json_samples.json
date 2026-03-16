@@ -730,22 +730,6 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/heroicons.json?icons=arrow-path-20-solid",
-    "json": {
-      "prefix": "heroicons",
-      "icons": {
-        "arrow-path-20-solid": {
-          "body": "<path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M15.312 11.424a5.5 5.5 0 0 1-9.201 2.466l-.312-.311h2.433a.75.75 0 0 0 0-1.5H3.989a.75.75 0 0 0-.75.75v4.242a.75.75 0 0 0 1.5 0v-2.43l.31.31a7 7 0 0 0 11.712-3.138a.75.75 0 0 0-1.449-.39m1.23-3.723a.75.75 0 0 0 .219-.53V2.929a.75.75 0 0 0-1.5 0V5.36l-.31-.31A7 7 0 0 0 3.239 8.188a.75.75 0 1 0 1.448.389A5.5 5.5 0 0 1 13.89 6.11l.311.31h-2.432a.75.75 0 0 0 0 1.5h4.243a.75.75 0 0 0 .53-.219\" clip-rule=\"evenodd\"/>",
-          "width": 20,
-          "height": 20
-        }
-      },
-      "lastModified": 1758346379,
-      "width": 24,
-      "height": 24
-    }
-  },
-  {
     "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
     "json": {
       "widget": {
@@ -788,17 +772,19 @@
     }
   },
   {
-    "url": "https://app.waitly.dk/api/login",
+    "url": "https://my.waitly.dk/api/_nuxt_icon/heroicons.json?icons=arrow-path-20-solid",
     "json": {
-      "message": "loginEmailIsRequired (and 1 more error)",
-      "errors": {
-        "email": [
-          "loginEmailIsRequired"
-        ],
-        "password": [
-          "loginPasswordIsRequired"
-        ]
-      }
+      "prefix": "heroicons",
+      "icons": {
+        "arrow-path-20-solid": {
+          "body": "<path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M15.312 11.424a5.5 5.5 0 0 1-9.201 2.466l-.312-.311h2.433a.75.75 0 0 0 0-1.5H3.989a.75.75 0 0 0-.75.75v4.242a.75.75 0 0 0 1.5 0v-2.43l.31.31a7 7 0 0 0 11.712-3.138a.75.75 0 0 0-1.449-.39m1.23-3.723a.75.75 0 0 0 .219-.53V2.929a.75.75 0 0 0-1.5 0V5.36l-.31-.31A7 7 0 0 0 3.239 8.188a.75.75 0 1 0 1.448.389A5.5 5.5 0 0 1 13.89 6.11l.311.31h-2.432a.75.75 0 0 0 0 1.5h4.243a.75.75 0 0 0 .53-.219\" clip-rule=\"evenodd\"/>",
+          "width": 20,
+          "height": 20
+        }
+      },
+      "lastModified": 1758346379,
+      "width": 24,
+      "height": 24
     }
   },
   {
@@ -813,6 +799,20 @@
       "lastModified": 1714973607,
       "width": 256,
       "height": 256
+    }
+  },
+  {
+    "url": "https://app.waitly.dk/api/login",
+    "json": {
+      "message": "loginEmailIsRequired (and 1 more error)",
+      "errors": {
+        "email": [
+          "loginEmailIsRequired"
+        ],
+        "password": [
+          "loginPasswordIsRequired"
+        ]
+      }
     }
   },
   {
@@ -840,48 +840,6 @@
         "dynamic": {}
       },
       "prerendered": []
-    }
-  },
-  {
-    "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
-    "json": {
-      "widget": {
-        "enabled": false,
-        "position": {
-          "position": "bottom-left",
-          "distanceVerticalPx": 10,
-          "distanceHorizontalPx": 10
-        },
-        "theme": {
-          "closed": {
-            "backgroundColor": "#141414",
-            "foregroundColor": "#FFFFFF"
-          },
-          "opened": {
-            "backgroundColor": "#FFFFFF",
-            "foregroundColor": "#141414",
-            "highlightColor": "#1032CF",
-            "shadeColor": "#D6D6D6",
-            "changeBackgroundColor": "#1032CF",
-            "changeTextColor": "#FFFFFF",
-            "changeBorderColor": "#1032CF",
-            "withdrawBackgroundColor": "#FFFFFF",
-            "withdrawTextColor": "#141414",
-            "withdrawBorderColor": "#1032CF",
-            "detailsBackgroundColor": "#F2F2F2"
-          }
-        },
-        "content": {
-          "cultures": [
-            "da",
-            "en",
-            "de"
-          ],
-          "default": "da",
-          "autodetectLanguage": true
-        }
-      },
-      "twipla": null
     }
   },
   {
@@ -1602,6 +1560,48 @@
     }
   },
   {
+    "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
+    "json": {
+      "widget": {
+        "enabled": false,
+        "position": {
+          "position": "bottom-left",
+          "distanceVerticalPx": 10,
+          "distanceHorizontalPx": 10
+        },
+        "theme": {
+          "closed": {
+            "backgroundColor": "#141414",
+            "foregroundColor": "#FFFFFF"
+          },
+          "opened": {
+            "backgroundColor": "#FFFFFF",
+            "foregroundColor": "#141414",
+            "highlightColor": "#1032CF",
+            "shadeColor": "#D6D6D6",
+            "changeBackgroundColor": "#1032CF",
+            "changeTextColor": "#FFFFFF",
+            "changeBorderColor": "#1032CF",
+            "withdrawBackgroundColor": "#FFFFFF",
+            "withdrawTextColor": "#141414",
+            "withdrawBorderColor": "#1032CF",
+            "detailsBackgroundColor": "#F2F2F2"
+          }
+        },
+        "content": {
+          "cultures": [
+            "da",
+            "en",
+            "de"
+          ],
+          "default": "da",
+          "autodetectLanguage": true
+        }
+      },
+      "twipla": null
+    }
+  },
+  {
     "url": "https://app.waitly.dk/api/v2/consumer/users/122316/subscriptions",
     "json": {
       "data": [
@@ -1621,7 +1621,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 461,
+            "subscribers": 462,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -1635,9 +1635,9 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 461,
+                  "subscribers": 462,
                   "passive_subscribers": 46,
-                  "active_subscribers": 415
+                  "active_subscribers": 416
                 }
               ]
             },
@@ -1779,16 +1779,16 @@
             "id": 1737,
             "name": "Ekstern venteliste",
             "full_name": "A/B Buddingevej - Ekstern venteliste",
-            "subscribers": 58,
+            "subscribers": 59,
             "template": {
               "company_name": "A/B Buddingevej",
               "lists": [
                 {
                   "id": 1737,
                   "name": "Ekstern venteliste",
-                  "subscribers": 58,
+                  "subscribers": 59,
                   "passive_subscribers": 5,
-                  "active_subscribers": 53
+                  "active_subscribers": 54
                 }
               ]
             },
@@ -1930,7 +1930,7 @@
             "id": 392,
             "name": "Ekstern venteliste",
             "full_name": "A/B Baghuset - Ekstern venteliste",
-            "subscribers": 329,
+            "subscribers": 330,
             "template": {
               "company_name": "A/B Baghuset",
               "lists": [
@@ -1944,9 +1944,9 @@
                 {
                   "id": 392,
                   "name": "Ekstern venteliste",
-                  "subscribers": 329,
+                  "subscribers": 330,
                   "passive_subscribers": 32,
-                  "active_subscribers": 297
+                  "active_subscribers": 298
                 }
               ]
             },
@@ -2088,7 +2088,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 700,
+            "subscribers": 701,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2102,9 +2102,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 700,
+                  "subscribers": 701,
                   "passive_subscribers": 58,
-                  "active_subscribers": 642
+                  "active_subscribers": 643
                 }
               ]
             },
