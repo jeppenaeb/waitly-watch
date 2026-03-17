@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-16T07:49:28+00:00",
+  "updated_at": "2026-03-17T07:31:14+00:00",
   "queues": [
     {
       "id": "1853",
@@ -62,7 +62,7 @@
       "moved_pct": 3.21,
       "progress": {
         "week": 1,
-        "month": 5
+        "month": 4
       }
     },
     {
@@ -84,22 +84,22 @@
     {
       "id": "966",
       "name": "A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste",
-      "position": 245,
+      "position": 244,
       "total": 250,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 249,
-      "moved": 4,
-      "moved_pct": 1.61,
+      "moved": 5,
+      "moved_pct": 2.01,
       "progress": {
-        "week": 1,
-        "month": 2
+        "week": 2,
+        "month": 3
       }
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-03-16T07:49:15+00:00",
+    "updated_at": "2026-03-17T07:31:02+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": false,
     "total_urls": 291,
