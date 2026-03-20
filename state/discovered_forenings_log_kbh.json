@@ -25,5 +25,41 @@
     "slug": "2051-ef-osterpark",
     "source": "sitemap",
     "action_taken": false
+  },
+  {
+    "discovered_at": "2026-03-20T07:14:43+00:00",
+    "url": "/da/foreninger/1650-kobenhavn-v/1909-ab-rosenaen",
+    "postcode": "1650",
+    "area": "København V",
+    "slug": "1909-ab-rosenaen",
+    "source": "sitemap",
+    "action_taken": false
+  },
+  {
+    "discovered_at": "2026-03-20T07:14:43+00:00",
+    "url": "/da/foreninger/2100-kobenhavn-o/2036-ab-sopassagen",
+    "postcode": "2100",
+    "area": "København Ø",
+    "slug": "2036-ab-sopassagen",
+    "source": "sitemap",
+    "action_taken": false
+  },
+  {
+    "discovered_at": "2026-03-20T07:14:43+00:00",
+    "url": "/da/foreninger/2100-kobenhavn-o/2051-ef-osterpark",
+    "postcode": "2100",
+    "area": "København Ø",
+    "slug": "2051-ef-osterpark",
+    "source": "sitemap",
+    "action_taken": false
+  },
+  {
+    "discovered_at": "2026-03-20T07:14:43+00:00",
+    "url": "/da/foreninger/2200-kobenhavn-n/2056-ab-ole-mimer",
+    "postcode": "2200",
+    "area": "København N",
+    "slug": "2056-ab-ole-mimer",
+    "source": "sitemap",
+    "action_taken": false
   }
 ]
