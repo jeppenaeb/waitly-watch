@@ -788,20 +788,6 @@
     }
   },
   {
-    "url": "https://app.waitly.dk/api/login",
-    "json": {
-      "message": "loginEmailIsRequired (and 1 more error)",
-      "errors": {
-        "email": [
-          "loginEmailIsRequired"
-        ],
-        "password": [
-          "loginPasswordIsRequired"
-        ]
-      }
-    }
-  },
-  {
     "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=eye",
     "json": {
       "prefix": "ph",
@@ -813,6 +799,20 @@
       "lastModified": 1714973607,
       "width": 256,
       "height": 256
+    }
+  },
+  {
+    "url": "https://app.waitly.dk/api/login",
+    "json": {
+      "message": "loginEmailIsRequired (and 1 more error)",
+      "errors": {
+        "email": [
+          "loginEmailIsRequired"
+        ],
+        "password": [
+          "loginPasswordIsRequired"
+        ]
+      }
     }
   },
   {
@@ -1621,7 +1621,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 463,
+            "subscribers": 464,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -1635,8 +1635,8 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 463,
-                  "passive_subscribers": 46,
+                  "subscribers": 464,
+                  "passive_subscribers": 47,
                   "active_subscribers": 417
                 }
               ]
@@ -1779,16 +1779,16 @@
             "id": 1737,
             "name": "Ekstern venteliste",
             "full_name": "A/B Buddingevej - Ekstern venteliste",
-            "subscribers": 61,
+            "subscribers": 62,
             "template": {
               "company_name": "A/B Buddingevej",
               "lists": [
                 {
                   "id": 1737,
                   "name": "Ekstern venteliste",
-                  "subscribers": 61,
+                  "subscribers": 62,
                   "passive_subscribers": 5,
-                  "active_subscribers": 56
+                  "active_subscribers": 57
                 }
               ]
             },
@@ -1930,7 +1930,7 @@
             "id": 392,
             "name": "Ekstern venteliste",
             "full_name": "A/B Baghuset - Ekstern venteliste",
-            "subscribers": 331,
+            "subscribers": 332,
             "template": {
               "company_name": "A/B Baghuset",
               "lists": [
@@ -1944,9 +1944,9 @@
                 {
                   "id": 392,
                   "name": "Ekstern venteliste",
-                  "subscribers": 331,
+                  "subscribers": 332,
                   "passive_subscribers": 32,
-                  "active_subscribers": 299
+                  "active_subscribers": 300
                 }
               ]
             },
@@ -2088,7 +2088,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 700,
+            "subscribers": 701,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2102,9 +2102,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 700,
+                  "subscribers": 701,
                   "passive_subscribers": 58,
-                  "active_subscribers": 642
+                  "active_subscribers": 643
                 }
               ]
             },
@@ -2246,7 +2246,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 779,
+            "subscribers": 780,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -2260,9 +2260,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 779,
+                  "subscribers": 780,
                   "passive_subscribers": 45,
-                  "active_subscribers": 734
+                  "active_subscribers": 735
                 }
               ]
             },
