@@ -120,7 +120,6 @@
     "/da/foreninger/2100-kobenhavn-o/2017-ab-viben",
     "/da/foreninger/2100-kobenhavn-o/2032-ab-bellmansgade-7-37",
     "/da/foreninger/2100-kobenhavn-o/2033-ab-venneminde",
-    "/da/foreninger/2100-kobenhavn-o/2036-ab-sopassagen",
     "/da/foreninger/2100-kobenhavn-o/2051-ef-osterpark",
     "/da/foreninger/2100-kobenhavn-o/ab-osterbrogade-137-nygardsvej-1",
     "/da/foreninger/2100-kobenhavn-o/ab-ringkobinggarden",
@@ -298,5 +297,5 @@
     "/da/foreninger/2450-koebenhavn-sv/andelsboligforeningen-tjoernen-koebenhavn"
   ],
   "note": "Baseline initialized (or re-initialized) without alert.",
-  "updated_at": "2026-03-23T07:40:23+00:00"
+  "updated_at": "2026-03-24T07:30:49+00:00"
 }
