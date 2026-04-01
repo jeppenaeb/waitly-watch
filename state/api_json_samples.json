@@ -1,18 +1,5 @@
 [
   {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/55816654-151e-4681-9c03-763f435839d1.json",
-    "json": {
-      "id": "55816654-151e-4681-9c03-763f435839d1",
-      "timestamp": 1771519675554,
-      "matcher": {
-        "static": {},
-        "wildcard": {},
-        "dynamic": {}
-      },
-      "prerendered": []
-    }
-  },
-  {
     "url": "https://my.waitly.dk/_i18n/bdhnG42s/en/messages.json",
     "json": {
       "en": {
@@ -730,6 +717,35 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/55816654-151e-4681-9c03-763f435839d1.json",
+    "json": {
+      "id": "55816654-151e-4681-9c03-763f435839d1",
+      "timestamp": 1771519675554,
+      "matcher": {
+        "static": {},
+        "wildcard": {},
+        "dynamic": {}
+      },
+      "prerendered": []
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/heroicons.json?icons=arrow-path-20-solid",
+    "json": {
+      "prefix": "heroicons",
+      "icons": {
+        "arrow-path-20-solid": {
+          "body": "<path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M15.312 11.424a5.5 5.5 0 0 1-9.201 2.466l-.312-.311h2.433a.75.75 0 0 0 0-1.5H3.989a.75.75 0 0 0-.75.75v4.242a.75.75 0 0 0 1.5 0v-2.43l.31.31a7 7 0 0 0 11.712-3.138a.75.75 0 0 0-1.449-.39m1.23-3.723a.75.75 0 0 0 .219-.53V2.929a.75.75 0 0 0-1.5 0V5.36l-.31-.31A7 7 0 0 0 3.239 8.188a.75.75 0 1 0 1.448.389A5.5 5.5 0 0 1 13.89 6.11l.311.31h-2.432a.75.75 0 0 0 0 1.5h4.243a.75.75 0 0 0 .53-.219\" clip-rule=\"evenodd\"/>",
+          "width": 20,
+          "height": 20
+        }
+      },
+      "lastModified": 1758346379,
+      "width": 24,
+      "height": 24
+    }
+  },
+  {
     "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
     "json": {
       "widget": {
@@ -772,22 +788,6 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/heroicons.json?icons=arrow-path-20-solid",
-    "json": {
-      "prefix": "heroicons",
-      "icons": {
-        "arrow-path-20-solid": {
-          "body": "<path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M15.312 11.424a5.5 5.5 0 0 1-9.201 2.466l-.312-.311h2.433a.75.75 0 0 0 0-1.5H3.989a.75.75 0 0 0-.75.75v4.242a.75.75 0 0 0 1.5 0v-2.43l.31.31a7 7 0 0 0 11.712-3.138a.75.75 0 0 0-1.449-.39m1.23-3.723a.75.75 0 0 0 .219-.53V2.929a.75.75 0 0 0-1.5 0V5.36l-.31-.31A7 7 0 0 0 3.239 8.188a.75.75 0 1 0 1.448.389A5.5 5.5 0 0 1 13.89 6.11l.311.31h-2.432a.75.75 0 0 0 0 1.5h4.243a.75.75 0 0 0 .53-.219\" clip-rule=\"evenodd\"/>",
-          "width": 20,
-          "height": 20
-        }
-      },
-      "lastModified": 1758346379,
-      "width": 24,
-      "height": 24
-    }
-  },
-  {
     "url": "https://app.waitly.dk/api/login",
     "json": {
       "message": "loginEmailIsRequired (and 1 more error)",
@@ -827,6 +827,79 @@
       "lastModified": 1714973607,
       "width": 256,
       "height": 256
+    }
+  },
+  {
+    "url": "https://app.waitly.dk/api/v2/consumer/user",
+    "json": {
+      "data": {
+        "id": 122316,
+        "hashed_id": "769f71168cde2e5956c5d73d29ce14287ce02aad987f001f6c3420c3040b7b1e",
+        "name": "Luna Yoon Kurland",
+        "email": "lunayoonkurland@gmail.com",
+        "address": {
+          "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
+          "full_address": "Bæverstien 5, 2880 Bagsværd",
+          "address_line": "Bæverstien 5",
+          "street": "Bæverstien",
+          "house_number": "5",
+          "floor": null,
+          "door": null,
+          "city": "Bagsværd",
+          "sub_city": null,
+          "zip": "2880",
+          "country": "Danmark",
+          "country_code": "DK",
+          "latitude": 55.75135006,
+          "longitude": 12.46684212
+        },
+        "phone": "´+4561307111",
+        "birthday": "2017-05-04",
+        "avatar": null,
+        "country": {
+          "id": 46,
+          "name": "Denmark",
+          "code": "DK",
+          "market": "Denmark"
+        },
+        "created_at": "2026-01-01T18:32:46.000000Z",
+        "updated_at": "2026-01-01T19:22:18.000000Z",
+        "waitlyplus": false,
+        "waitlyplus_end_date": null,
+        "waitlyplus_id": null,
+        "markets": [
+          {
+            "name": "Denmark",
+            "description": "Denmark",
+            "vat_rate": 25,
+            "currency": "DKK",
+            "support_mail": "support@waitly.dk",
+            "locale": "da"
+          }
+        ],
+        "language": "en",
+        "profile": {
+          "status": "gold",
+          "points": 9,
+          "total": 9,
+          "point_types": {
+            "personal": {
+              "current": 4,
+              "total": 4
+            },
+            "status": {
+              "current": 4,
+              "total": 4
+            },
+            "interests": {
+              "current": 1,
+              "total": 1
+            }
+          }
+        },
+        "role": "consumer",
+        "impersonated": false
+      }
     }
   },
   {
@@ -2088,7 +2161,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 714,
+            "subscribers": 715,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2102,9 +2175,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 714,
+                  "subscribers": 715,
                   "passive_subscribers": 59,
-                  "active_subscribers": 655
+                  "active_subscribers": 656
                 }
               ]
             },
@@ -2246,7 +2319,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 778,
+            "subscribers": 779,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -2260,9 +2333,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 778,
+                  "subscribers": 779,
                   "passive_subscribers": 46,
-                  "active_subscribers": 732
+                  "active_subscribers": 733
                 }
               ]
             },
@@ -2404,7 +2477,7 @@
             "id": 966,
             "name": "Ekstern venteliste",
             "full_name": "A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste",
-            "subscribers": 249,
+            "subscribers": 250,
             "template": {
               "company_name": "A/B Vesterbrogade 176 / Kochsvej 44-46",
               "lists": [
@@ -2418,9 +2491,9 @@
                 {
                   "id": 966,
                   "name": "Ekstern venteliste",
-                  "subscribers": 249,
+                  "subscribers": 250,
                   "passive_subscribers": 9,
-                  "active_subscribers": 240
+                  "active_subscribers": 241
                 }
               ]
             },
