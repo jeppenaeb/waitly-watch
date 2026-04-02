@@ -1,5 +1,18 @@
 [
   {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/55816654-151e-4681-9c03-763f435839d1.json",
+    "json": {
+      "id": "55816654-151e-4681-9c03-763f435839d1",
+      "timestamp": 1771519675554,
+      "matcher": {
+        "static": {},
+        "wildcard": {},
+        "dynamic": {}
+      },
+      "prerendered": []
+    }
+  },
+  {
     "url": "https://my.waitly.dk/_i18n/bdhnG42s/en/messages.json",
     "json": {
       "en": {
@@ -714,19 +727,6 @@
         "newPasswordEmailLabel": "Email address",
         "paymentPaymentMethodsHeadline": "My payment methods"
       }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/55816654-151e-4681-9c03-763f435839d1.json",
-    "json": {
-      "id": "55816654-151e-4681-9c03-763f435839d1",
-      "timestamp": 1771519675554,
-      "matcher": {
-        "static": {},
-        "wildcard": {},
-        "dynamic": {}
-      },
-      "prerendered": []
     }
   },
   {
@@ -916,6 +916,48 @@
     }
   },
   {
+    "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
+    "json": {
+      "widget": {
+        "enabled": false,
+        "position": {
+          "position": "bottom-left",
+          "distanceVerticalPx": 10,
+          "distanceHorizontalPx": 10
+        },
+        "theme": {
+          "closed": {
+            "backgroundColor": "#141414",
+            "foregroundColor": "#FFFFFF"
+          },
+          "opened": {
+            "backgroundColor": "#FFFFFF",
+            "foregroundColor": "#141414",
+            "highlightColor": "#1032CF",
+            "shadeColor": "#D6D6D6",
+            "changeBackgroundColor": "#1032CF",
+            "changeTextColor": "#FFFFFF",
+            "changeBorderColor": "#1032CF",
+            "withdrawBackgroundColor": "#FFFFFF",
+            "withdrawTextColor": "#141414",
+            "withdrawBorderColor": "#1032CF",
+            "detailsBackgroundColor": "#F2F2F2"
+          }
+        },
+        "content": {
+          "cultures": [
+            "da",
+            "en",
+            "de"
+          ],
+          "default": "da",
+          "autodetectLanguage": true
+        }
+      },
+      "twipla": null
+    }
+  },
+  {
     "url": "https://my.waitly.dk/_i18n/bdhnG42s/en/messages.json",
     "json": {
       "en": {
@@ -1630,48 +1672,6 @@
         "newPasswordEmailLabel": "Email address",
         "paymentPaymentMethodsHeadline": "My payment methods"
       }
-    }
-  },
-  {
-    "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
-    "json": {
-      "widget": {
-        "enabled": false,
-        "position": {
-          "position": "bottom-left",
-          "distanceVerticalPx": 10,
-          "distanceHorizontalPx": 10
-        },
-        "theme": {
-          "closed": {
-            "backgroundColor": "#141414",
-            "foregroundColor": "#FFFFFF"
-          },
-          "opened": {
-            "backgroundColor": "#FFFFFF",
-            "foregroundColor": "#141414",
-            "highlightColor": "#1032CF",
-            "shadeColor": "#D6D6D6",
-            "changeBackgroundColor": "#1032CF",
-            "changeTextColor": "#FFFFFF",
-            "changeBorderColor": "#1032CF",
-            "withdrawBackgroundColor": "#FFFFFF",
-            "withdrawTextColor": "#141414",
-            "withdrawBorderColor": "#1032CF",
-            "detailsBackgroundColor": "#F2F2F2"
-          }
-        },
-        "content": {
-          "cultures": [
-            "da",
-            "en",
-            "de"
-          ],
-          "default": "da",
-          "autodetectLanguage": true
-        }
-      },
-      "twipla": null
     }
   },
   {
@@ -2161,7 +2161,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 715,
+            "subscribers": 716,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2175,9 +2175,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 715,
+                  "subscribers": 716,
                   "passive_subscribers": 59,
-                  "active_subscribers": 656
+                  "active_subscribers": 657
                 }
               ]
             },
@@ -2319,7 +2319,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 779,
+            "subscribers": 780,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -2333,9 +2333,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 779,
+                  "subscribers": 780,
                   "passive_subscribers": 46,
-                  "active_subscribers": 733
+                  "active_subscribers": 734
                 }
               ]
             },
@@ -2469,7 +2469,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 242,
+          "placement": 241,
           "application": null,
           "created_at": "2026-01-01T19:22:17.000000Z",
           "end_date": null,
@@ -2477,7 +2477,7 @@
             "id": 966,
             "name": "Ekstern venteliste",
             "full_name": "A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste",
-            "subscribers": 250,
+            "subscribers": 249,
             "template": {
               "company_name": "A/B Vesterbrogade 176 / Kochsvej 44-46",
               "lists": [
@@ -2491,9 +2491,9 @@
                 {
                   "id": 966,
                   "name": "Ekstern venteliste",
-                  "subscribers": 250,
+                  "subscribers": 249,
                   "passive_subscribers": 9,
-                  "active_subscribers": 241
+                  "active_subscribers": 240
                 }
               ]
             },
