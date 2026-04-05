@@ -13,48 +13,6 @@
     }
   },
   {
-    "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
-    "json": {
-      "widget": {
-        "enabled": false,
-        "position": {
-          "position": "bottom-left",
-          "distanceVerticalPx": 10,
-          "distanceHorizontalPx": 10
-        },
-        "theme": {
-          "closed": {
-            "backgroundColor": "#141414",
-            "foregroundColor": "#FFFFFF"
-          },
-          "opened": {
-            "backgroundColor": "#FFFFFF",
-            "foregroundColor": "#141414",
-            "highlightColor": "#1032CF",
-            "shadeColor": "#D6D6D6",
-            "changeBackgroundColor": "#1032CF",
-            "changeTextColor": "#FFFFFF",
-            "changeBorderColor": "#1032CF",
-            "withdrawBackgroundColor": "#FFFFFF",
-            "withdrawTextColor": "#141414",
-            "withdrawBorderColor": "#1032CF",
-            "detailsBackgroundColor": "#F2F2F2"
-          }
-        },
-        "content": {
-          "cultures": [
-            "da",
-            "en",
-            "de"
-          ],
-          "default": "da",
-          "autodetectLanguage": true
-        }
-      },
-      "twipla": null
-    }
-  },
-  {
     "url": "https://my.waitly.dk/_i18n/bdhnG42s/en/messages.json",
     "json": {
       "en": {
@@ -769,6 +727,48 @@
         "newPasswordEmailLabel": "Email address",
         "paymentPaymentMethodsHeadline": "My payment methods"
       }
+    }
+  },
+  {
+    "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
+    "json": {
+      "widget": {
+        "enabled": false,
+        "position": {
+          "position": "bottom-left",
+          "distanceVerticalPx": 10,
+          "distanceHorizontalPx": 10
+        },
+        "theme": {
+          "closed": {
+            "backgroundColor": "#141414",
+            "foregroundColor": "#FFFFFF"
+          },
+          "opened": {
+            "backgroundColor": "#FFFFFF",
+            "foregroundColor": "#141414",
+            "highlightColor": "#1032CF",
+            "shadeColor": "#D6D6D6",
+            "changeBackgroundColor": "#1032CF",
+            "changeTextColor": "#FFFFFF",
+            "changeBorderColor": "#1032CF",
+            "withdrawBackgroundColor": "#FFFFFF",
+            "withdrawTextColor": "#141414",
+            "withdrawBorderColor": "#1032CF",
+            "detailsBackgroundColor": "#F2F2F2"
+          }
+        },
+        "content": {
+          "cultures": [
+            "da",
+            "en",
+            "de"
+          ],
+          "default": "da",
+          "autodetectLanguage": true
+        }
+      },
+      "twipla": null
     }
   },
   {
@@ -843,48 +843,6 @@
     }
   },
   {
-    "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
-    "json": {
-      "widget": {
-        "enabled": false,
-        "position": {
-          "position": "bottom-left",
-          "distanceVerticalPx": 10,
-          "distanceHorizontalPx": 10
-        },
-        "theme": {
-          "closed": {
-            "backgroundColor": "#141414",
-            "foregroundColor": "#FFFFFF"
-          },
-          "opened": {
-            "backgroundColor": "#FFFFFF",
-            "foregroundColor": "#141414",
-            "highlightColor": "#1032CF",
-            "shadeColor": "#D6D6D6",
-            "changeBackgroundColor": "#1032CF",
-            "changeTextColor": "#FFFFFF",
-            "changeBorderColor": "#1032CF",
-            "withdrawBackgroundColor": "#FFFFFF",
-            "withdrawTextColor": "#141414",
-            "withdrawBorderColor": "#1032CF",
-            "detailsBackgroundColor": "#F2F2F2"
-          }
-        },
-        "content": {
-          "cultures": [
-            "da",
-            "en",
-            "de"
-          ],
-          "default": "da",
-          "autodetectLanguage": true
-        }
-      },
-      "twipla": null
-    }
-  },
-  {
     "url": "https://my.waitly.dk/_i18n/bdhnG42s/en/messages.json",
     "json": {
       "en": {
@@ -1599,6 +1557,48 @@
         "newPasswordEmailLabel": "Email address",
         "paymentPaymentMethodsHeadline": "My payment methods"
       }
+    }
+  },
+  {
+    "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
+    "json": {
+      "widget": {
+        "enabled": false,
+        "position": {
+          "position": "bottom-left",
+          "distanceVerticalPx": 10,
+          "distanceHorizontalPx": 10
+        },
+        "theme": {
+          "closed": {
+            "backgroundColor": "#141414",
+            "foregroundColor": "#FFFFFF"
+          },
+          "opened": {
+            "backgroundColor": "#FFFFFF",
+            "foregroundColor": "#141414",
+            "highlightColor": "#1032CF",
+            "shadeColor": "#D6D6D6",
+            "changeBackgroundColor": "#1032CF",
+            "changeTextColor": "#FFFFFF",
+            "changeBorderColor": "#1032CF",
+            "withdrawBackgroundColor": "#FFFFFF",
+            "withdrawTextColor": "#141414",
+            "withdrawBorderColor": "#1032CF",
+            "detailsBackgroundColor": "#F2F2F2"
+          }
+        },
+        "content": {
+          "cultures": [
+            "da",
+            "en",
+            "de"
+          ],
+          "default": "da",
+          "autodetectLanguage": true
+        }
+      },
+      "twipla": null
     }
   },
   {
@@ -2080,7 +2080,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 631,
+          "placement": 630,
           "application": null,
           "created_at": "2026-01-02T21:08:33.000000Z",
           "end_date": null,
@@ -2246,7 +2246,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 781,
+            "subscribers": 782,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -2260,9 +2260,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 781,
+                  "subscribers": 782,
                   "passive_subscribers": 46,
-                  "active_subscribers": 735
+                  "active_subscribers": 736
                 }
               ]
             },
