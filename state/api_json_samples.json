@@ -1,5 +1,60 @@
 [
   {
+    "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
+    "json": {
+      "widget": {
+        "enabled": false,
+        "position": {
+          "position": "bottom-left",
+          "distanceVerticalPx": 10,
+          "distanceHorizontalPx": 10
+        },
+        "theme": {
+          "closed": {
+            "backgroundColor": "#141414",
+            "foregroundColor": "#FFFFFF"
+          },
+          "opened": {
+            "backgroundColor": "#FFFFFF",
+            "foregroundColor": "#141414",
+            "highlightColor": "#1032CF",
+            "shadeColor": "#D6D6D6",
+            "changeBackgroundColor": "#1032CF",
+            "changeTextColor": "#FFFFFF",
+            "changeBorderColor": "#1032CF",
+            "withdrawBackgroundColor": "#FFFFFF",
+            "withdrawTextColor": "#141414",
+            "withdrawBorderColor": "#1032CF",
+            "detailsBackgroundColor": "#F2F2F2"
+          }
+        },
+        "content": {
+          "cultures": [
+            "da",
+            "en",
+            "de"
+          ],
+          "default": "da",
+          "autodetectLanguage": true
+        }
+      },
+      "twipla": null
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/55816654-151e-4681-9c03-763f435839d1.json",
+    "json": {
+      "id": "55816654-151e-4681-9c03-763f435839d1",
+      "timestamp": 1771519675554,
+      "matcher": {
+        "static": {},
+        "wildcard": {},
+        "dynamic": {}
+      },
+      "prerendered": []
+    }
+  },
+  {
     "url": "https://my.waitly.dk/_i18n/bdhnG42s/en/messages.json",
     "json": {
       "en": {
@@ -714,61 +769,6 @@
         "newPasswordEmailLabel": "Email address",
         "paymentPaymentMethodsHeadline": "My payment methods"
       }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/55816654-151e-4681-9c03-763f435839d1.json",
-    "json": {
-      "id": "55816654-151e-4681-9c03-763f435839d1",
-      "timestamp": 1771519675554,
-      "matcher": {
-        "static": {},
-        "wildcard": {},
-        "dynamic": {}
-      },
-      "prerendered": []
-    }
-  },
-  {
-    "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
-    "json": {
-      "widget": {
-        "enabled": false,
-        "position": {
-          "position": "bottom-left",
-          "distanceVerticalPx": 10,
-          "distanceHorizontalPx": 10
-        },
-        "theme": {
-          "closed": {
-            "backgroundColor": "#141414",
-            "foregroundColor": "#FFFFFF"
-          },
-          "opened": {
-            "backgroundColor": "#FFFFFF",
-            "foregroundColor": "#141414",
-            "highlightColor": "#1032CF",
-            "shadeColor": "#D6D6D6",
-            "changeBackgroundColor": "#1032CF",
-            "changeTextColor": "#FFFFFF",
-            "changeBorderColor": "#1032CF",
-            "withdrawBackgroundColor": "#FFFFFF",
-            "withdrawTextColor": "#141414",
-            "withdrawBorderColor": "#1032CF",
-            "detailsBackgroundColor": "#F2F2F2"
-          }
-        },
-        "content": {
-          "cultures": [
-            "da",
-            "en",
-            "de"
-          ],
-          "default": "da",
-          "autodetectLanguage": true
-        }
-      },
-      "twipla": null
     }
   },
   {
@@ -1621,7 +1621,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 469,
+            "subscribers": 470,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -1635,8 +1635,8 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 469,
-                  "passive_subscribers": 48,
+                  "subscribers": 470,
+                  "passive_subscribers": 49,
                   "active_subscribers": 421
                 }
               ]
@@ -2080,7 +2080,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 630,
+          "placement": 629,
           "application": null,
           "created_at": "2026-01-02T21:08:33.000000Z",
           "end_date": null,
