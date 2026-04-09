@@ -830,6 +830,79 @@
     }
   },
   {
+    "url": "https://app.waitly.dk/api/v2/consumer/user",
+    "json": {
+      "data": {
+        "id": 122316,
+        "hashed_id": "769f71168cde2e5956c5d73d29ce14287ce02aad987f001f6c3420c3040b7b1e",
+        "name": "Luna Yoon Kurland",
+        "email": "lunayoonkurland@gmail.com",
+        "address": {
+          "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
+          "full_address": "Bæverstien 5, 2880 Bagsværd",
+          "address_line": "Bæverstien 5",
+          "street": "Bæverstien",
+          "house_number": "5",
+          "floor": null,
+          "door": null,
+          "city": "Bagsværd",
+          "sub_city": null,
+          "zip": "2880",
+          "country": "Danmark",
+          "country_code": "DK",
+          "latitude": 55.75135006,
+          "longitude": 12.46684212
+        },
+        "phone": "´+4561307111",
+        "birthday": "2017-05-04",
+        "avatar": null,
+        "country": {
+          "id": 46,
+          "name": "Denmark",
+          "code": "DK",
+          "market": "Denmark"
+        },
+        "created_at": "2026-01-01T18:32:46.000000Z",
+        "updated_at": "2026-01-01T19:22:18.000000Z",
+        "waitlyplus": false,
+        "waitlyplus_end_date": null,
+        "waitlyplus_id": null,
+        "markets": [
+          {
+            "name": "Denmark",
+            "description": "Denmark",
+            "vat_rate": 25,
+            "currency": "DKK",
+            "support_mail": "support@waitly.dk",
+            "locale": "da"
+          }
+        ],
+        "language": "en",
+        "profile": {
+          "status": "gold",
+          "points": 9,
+          "total": 9,
+          "point_types": {
+            "personal": {
+              "current": 4,
+              "total": 4
+            },
+            "status": {
+              "current": 4,
+              "total": 4
+            },
+            "interests": {
+              "current": 1,
+              "total": 1
+            }
+          }
+        },
+        "role": "consumer",
+        "impersonated": false
+      }
+    }
+  },
+  {
     "url": "https://my.waitly.dk/_nuxt/builds/meta/55816654-151e-4681-9c03-763f435839d1.json",
     "json": {
       "id": "55816654-151e-4681-9c03-763f435839d1",
@@ -840,48 +913,6 @@
         "dynamic": {}
       },
       "prerendered": []
-    }
-  },
-  {
-    "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
-    "json": {
-      "widget": {
-        "enabled": false,
-        "position": {
-          "position": "bottom-left",
-          "distanceVerticalPx": 10,
-          "distanceHorizontalPx": 10
-        },
-        "theme": {
-          "closed": {
-            "backgroundColor": "#141414",
-            "foregroundColor": "#FFFFFF"
-          },
-          "opened": {
-            "backgroundColor": "#FFFFFF",
-            "foregroundColor": "#141414",
-            "highlightColor": "#1032CF",
-            "shadeColor": "#D6D6D6",
-            "changeBackgroundColor": "#1032CF",
-            "changeTextColor": "#FFFFFF",
-            "changeBorderColor": "#1032CF",
-            "withdrawBackgroundColor": "#FFFFFF",
-            "withdrawTextColor": "#141414",
-            "withdrawBorderColor": "#1032CF",
-            "detailsBackgroundColor": "#F2F2F2"
-          }
-        },
-        "content": {
-          "cultures": [
-            "da",
-            "en",
-            "de"
-          ],
-          "default": "da",
-          "autodetectLanguage": true
-        }
-      },
-      "twipla": null
     }
   },
   {
@@ -1602,6 +1633,48 @@
     }
   },
   {
+    "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
+    "json": {
+      "widget": {
+        "enabled": false,
+        "position": {
+          "position": "bottom-left",
+          "distanceVerticalPx": 10,
+          "distanceHorizontalPx": 10
+        },
+        "theme": {
+          "closed": {
+            "backgroundColor": "#141414",
+            "foregroundColor": "#FFFFFF"
+          },
+          "opened": {
+            "backgroundColor": "#FFFFFF",
+            "foregroundColor": "#141414",
+            "highlightColor": "#1032CF",
+            "shadeColor": "#D6D6D6",
+            "changeBackgroundColor": "#1032CF",
+            "changeTextColor": "#FFFFFF",
+            "changeBorderColor": "#1032CF",
+            "withdrawBackgroundColor": "#FFFFFF",
+            "withdrawTextColor": "#141414",
+            "withdrawBorderColor": "#1032CF",
+            "detailsBackgroundColor": "#F2F2F2"
+          }
+        },
+        "content": {
+          "cultures": [
+            "da",
+            "en",
+            "de"
+          ],
+          "default": "da",
+          "autodetectLanguage": true
+        }
+      },
+      "twipla": null
+    }
+  },
+  {
     "url": "https://app.waitly.dk/api/v2/consumer/users/122316/subscriptions",
     "json": {
       "data": [
@@ -2088,7 +2161,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 721,
+            "subscribers": 724,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2102,9 +2175,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 721,
+                  "subscribers": 724,
                   "passive_subscribers": 60,
-                  "active_subscribers": 661
+                  "active_subscribers": 664
                 }
               ]
             },
