@@ -1,6 +1,6 @@
 [
   {
-    "url": "https://my.waitly.dk/_i18n/paHxbbPq/en/messages.json",
+    "url": "https://my.waitly.dk/_i18n/zCRwVPSW/en/messages.json",
     "json": {
       "en": {
         "id": "emGSm0wjSqSvbcXn_N1m4w",
@@ -780,7 +780,7 @@
     "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
     "json": {
       "prefix": "lucide",
-      "lastModified": 1774935252,
+      "lastModified": 1775804562,
       "aliases": {},
       "width": 24,
       "height": 24,
@@ -820,10 +820,10 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/81ef0599-4739-4462-84ae-2621fa1a0a3a.json",
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/0bfe2647-f6cb-4243-80e0-4d9dd90d06e2.json",
     "json": {
-      "id": "81ef0599-4739-4462-84ae-2621fa1a0a3a",
-      "timestamp": 1775828886752,
+      "id": "0bfe2647-f6cb-4243-80e0-4d9dd90d06e2",
+      "timestamp": 1776086541531,
       "prerendered": []
     }
   },
@@ -923,7 +923,7 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/_i18n/paHxbbPq/en/messages.json",
+    "url": "https://my.waitly.dk/_i18n/zCRwVPSW/en/messages.json",
     "json": {
       "en": {
         "id": "emGSm0wjSqSvbcXn_N1m4w",
@@ -1658,7 +1658,7 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/_i18n/paHxbbPq/en/messages.json",
+    "url": "https://my.waitly.dk/_i18n/zCRwVPSW/en/messages.json",
     "json": {
       "en": {
         "id": "emGSm0wjSqSvbcXn_N1m4w",
@@ -2770,7 +2770,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 314,
+          "placement": 313,
           "application": null,
           "created_at": "2026-01-02T21:10:18.000000Z",
           "end_date": null,
@@ -2778,7 +2778,7 @@
             "id": 392,
             "name": "Ekstern venteliste",
             "full_name": "A/B Baghuset - Ekstern venteliste",
-            "subscribers": 327,
+            "subscribers": 326,
             "template": {
               "company_name": "A/B Baghuset",
               "lists": [
@@ -2792,9 +2792,9 @@
                 {
                   "id": 392,
                   "name": "Ekstern venteliste",
-                  "subscribers": 327,
+                  "subscribers": 326,
                   "passive_subscribers": 32,
-                  "active_subscribers": 295
+                  "active_subscribers": 294
                 }
               ]
             },
@@ -2936,7 +2936,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 628,
+          "placement": 627,
           "application": null,
           "created_at": "2026-01-02T21:08:33.000000Z",
           "end_date": null,
@@ -2944,7 +2944,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 726,
+            "subscribers": 725,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2958,9 +2958,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 726,
+                  "subscribers": 725,
                   "passive_subscribers": 61,
-                  "active_subscribers": 665
+                  "active_subscribers": 664
                 }
               ]
             },
