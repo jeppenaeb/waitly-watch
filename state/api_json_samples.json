@@ -792,6 +792,14 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/0bfe2647-f6cb-4243-80e0-4d9dd90d06e2.json",
+    "json": {
+      "id": "0bfe2647-f6cb-4243-80e0-4d9dd90d06e2",
+      "timestamp": 1776086541531,
+      "prerendered": []
+    }
+  },
+  {
     "url": "https://app.waitly.dk/api/login",
     "json": {
       "message": "loginEmailIsRequired (and 1 more error)",
@@ -803,14 +811,6 @@
           "loginPasswordIsRequired"
         ]
       }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/0bfe2647-f6cb-4243-80e0-4d9dd90d06e2.json",
-    "json": {
-      "id": "0bfe2647-f6cb-4243-80e0-4d9dd90d06e2",
-      "timestamp": 1776086541531,
-      "prerendered": []
     }
   },
   {
@@ -2619,16 +2619,16 @@
             "id": 1737,
             "name": "Ekstern venteliste",
             "full_name": "A/B Buddingevej - Ekstern venteliste",
-            "subscribers": 63,
+            "subscribers": 62,
             "template": {
               "company_name": "A/B Buddingevej",
               "lists": [
                 {
                   "id": 1737,
                   "name": "Ekstern venteliste",
-                  "subscribers": 63,
+                  "subscribers": 62,
                   "passive_subscribers": 5,
-                  "active_subscribers": 58
+                  "active_subscribers": 57
                 }
               ]
             },
@@ -2944,7 +2944,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 726,
+            "subscribers": 728,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2958,9 +2958,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 726,
+                  "subscribers": 728,
                   "passive_subscribers": 61,
-                  "active_subscribers": 665
+                  "active_subscribers": 667
                 }
               ]
             },
