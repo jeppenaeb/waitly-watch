@@ -792,14 +792,6 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/0bfe2647-f6cb-4243-80e0-4d9dd90d06e2.json",
-    "json": {
-      "id": "0bfe2647-f6cb-4243-80e0-4d9dd90d06e2",
-      "timestamp": 1776086541531,
-      "prerendered": []
-    }
-  },
-  {
     "url": "https://app.waitly.dk/api/login",
     "json": {
       "message": "loginEmailIsRequired (and 1 more error)",
@@ -811,6 +803,14 @@
           "loginPasswordIsRequired"
         ]
       }
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/0bfe2647-f6cb-4243-80e0-4d9dd90d06e2.json",
+    "json": {
+      "id": "0bfe2647-f6cb-4243-80e0-4d9dd90d06e2",
+      "timestamp": 1776086541531,
+      "prerendered": []
     }
   },
   {
@@ -2453,7 +2453,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 470,
+            "subscribers": 471,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -2467,9 +2467,9 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 470,
+                  "subscribers": 471,
                   "passive_subscribers": 50,
-                  "active_subscribers": 420
+                  "active_subscribers": 421
                 }
               ]
             },
@@ -2619,16 +2619,16 @@
             "id": 1737,
             "name": "Ekstern venteliste",
             "full_name": "A/B Buddingevej - Ekstern venteliste",
-            "subscribers": 62,
+            "subscribers": 63,
             "template": {
               "company_name": "A/B Buddingevej",
               "lists": [
                 {
                   "id": 1737,
                   "name": "Ekstern venteliste",
-                  "subscribers": 62,
+                  "subscribers": 63,
                   "passive_subscribers": 5,
-                  "active_subscribers": 57
+                  "active_subscribers": 58
                 }
               ]
             },
@@ -3102,7 +3102,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 742,
+          "placement": 743,
           "application": null,
           "created_at": "2026-01-02T21:07:26.000000Z",
           "end_date": null,
@@ -3110,7 +3110,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 780,
+            "subscribers": 781,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -3118,14 +3118,14 @@
                   "id": 293,
                   "name": "Intern venteliste",
                   "subscribers": 47,
-                  "passive_subscribers": 1,
-                  "active_subscribers": 46
+                  "passive_subscribers": 2,
+                  "active_subscribers": 45
                 },
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 780,
-                  "passive_subscribers": 45,
+                  "subscribers": 781,
+                  "passive_subscribers": 46,
                   "active_subscribers": 735
                 }
               ]
