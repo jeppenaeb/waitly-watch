@@ -203,6 +203,7 @@
     "/da/foreninger/2200-koebenhavn-n/andelsboligforeningen-wesselsgade-15a-og-15b",
     "/da/foreninger/2200-koebenhavn-n/heimdalshus-andelsboligforening",
     "/da/foreninger/2300-kobenhavn-s/2029-ab-amagervold",
+    "/da/foreninger/2300-kobenhavn-s/2099-ab-telemarken",
     "/da/foreninger/2300-kobenhavn-s/ab-hveensborg",
     "/da/foreninger/2300-kobenhavn-s/ab-ungarnsgade-21-25-bulgariensgade-1",
     "/da/foreninger/2300-kobenhavn-s/ab-wolterhus",
@@ -263,6 +264,7 @@
     "/da/foreninger/2300-koebenhavn-s/andelsboligforeningen-vennehoej",
     "/da/foreninger/2300-koebenhavn-s/andelsforeningen-tingvej-14-a-og-b",
     "/da/foreninger/2400-kobenhavn-nv/2011-ab-oldermandsgarden-af-1996",
+    "/da/foreninger/2400-kobenhavn-nv/2063-ab-laerkevej-4-6",
     "/da/foreninger/2400-kobenhavn-nv/ab-montmestergarden",
     "/da/foreninger/2400-kobenhavn-nv/ab-rodkaelkebo",
     "/da/foreninger/2400-kobenhavn/1934-ab-skoleholdergarden-af-1997",
@@ -297,5 +299,5 @@
     "/da/foreninger/2450-koebenhavn-sv/andelsboligforeningen-tjoernen-koebenhavn"
   ],
   "note": "Baseline initialized (or re-initialized) without alert.",
-  "updated_at": "2026-04-23T08:12:02+00:00"
+  "updated_at": "2026-04-25T07:46:30+00:00"
 }

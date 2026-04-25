@@ -61,5 +61,23 @@
     "slug": "2056-ab-ole-mimer",
     "source": "sitemap",
     "action_taken": false
+  },
+  {
+    "discovered_at": "2026-04-25T07:46:30+00:00",
+    "url": "/da/foreninger/2300-kobenhavn-s/2099-ab-telemarken",
+    "postcode": "2300",
+    "area": "København S",
+    "slug": "2099-ab-telemarken",
+    "source": "sitemap",
+    "action_taken": false
+  },
+  {
+    "discovered_at": "2026-04-25T07:46:30+00:00",
+    "url": "/da/foreninger/2400-kobenhavn-nv/2063-ab-laerkevej-4-6",
+    "postcode": "2400",
+    "area": "København S",
+    "slug": "2063-ab-laerkevej-4-6",
+    "source": "sitemap",
+    "action_taken": false
   }
 ]
