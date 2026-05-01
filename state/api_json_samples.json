@@ -780,7 +780,7 @@
     "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
     "json": {
       "prefix": "lucide",
-      "lastModified": 1777005922,
+      "lastModified": 1777526690,
       "aliases": {},
       "width": 24,
       "height": 24,
@@ -2399,6 +2399,27 @@
     }
   },
   {
+    "url": "https://graphql.datocms.com/",
+    "json": {
+      "data": {
+        "allInitialModals": [
+          {
+            "slug": "welcome-to-waitly",
+            "title": "Welcome to Waitly! 🎉",
+            "body": "<p>Please take a moment to <strong>update your User Profile</strong> with accurate and up-to-date information about you and your housing needs. This helps us match you with apartments.<br><br></p>\n<p>We also encourage you to <strong>upload relevant documents,</strong> such as your SCHUFA, to your application folder. Having these ready in your profile will help the process when an apartment become available. 🏡</p>",
+            "ctaText": "Go to Application folder",
+            "ctaUrl": "https://my.waitly.dk/profile?tab=application",
+            "checkboxLabel": "Don't show this again",
+            "trigger": "initial_visit",
+            "targetMarkets": [
+              "Germany"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=bell%2Cbook-open%2Ccredit-card%2Cgraduation-cap%2Clist-bold%2Crocket-launch%2Cstar%2Cuser-circle",
     "json": {
       "prefix": "ph",
@@ -2434,27 +2455,6 @@
     }
   },
   {
-    "url": "https://graphql.datocms.com/",
-    "json": {
-      "data": {
-        "allInitialModals": [
-          {
-            "slug": "welcome-to-waitly",
-            "title": "Welcome to Waitly! 🎉",
-            "body": "<p>Please take a moment to <strong>update your User Profile</strong> with accurate and up-to-date information about you and your housing needs. This helps us match you with apartments.<br><br></p>\n<p>We also encourage you to <strong>upload relevant documents,</strong> such as your SCHUFA, to your application folder. Having these ready in your profile will help the process when an apartment become available. 🏡</p>",
-            "ctaText": "Go to Application folder",
-            "ctaUrl": "https://my.waitly.dk/profile?tab=application",
-            "checkboxLabel": "Don't show this again",
-            "trigger": "initial_visit",
-            "targetMarkets": [
-              "Germany"
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
     "url": "https://app.waitly.dk/api/v2/consumer/notifications",
     "json": {
       "data": []
@@ -2480,7 +2480,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 473,
+            "subscribers": 474,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -2494,9 +2494,9 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 473,
+                  "subscribers": 474,
                   "passive_subscribers": 50,
-                  "active_subscribers": 423
+                  "active_subscribers": 424
                 }
               ]
             },
@@ -2971,7 +2971,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 740,
+            "subscribers": 743,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2985,9 +2985,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 740,
+                  "subscribers": 743,
                   "passive_subscribers": 61,
-                  "active_subscribers": 679
+                  "active_subscribers": 682
                 }
               ]
             },
@@ -3295,7 +3295,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 241,
+          "placement": 240,
           "application": null,
           "created_at": "2026-01-01T19:22:17.000000Z",
           "end_date": null,
@@ -3303,7 +3303,7 @@
             "id": 966,
             "name": "Ekstern venteliste",
             "full_name": "A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste",
-            "subscribers": 250,
+            "subscribers": 249,
             "template": {
               "company_name": "A/B Vesterbrogade 176 / Kochsvej 44-46",
               "lists": [
@@ -3317,9 +3317,9 @@
                 {
                   "id": 966,
                   "name": "Ekstern venteliste",
-                  "subscribers": 250,
-                  "passive_subscribers": 11,
-                  "active_subscribers": 239
+                  "subscribers": 249,
+                  "passive_subscribers": 12,
+                  "active_subscribers": 237
                 }
               ]
             },
