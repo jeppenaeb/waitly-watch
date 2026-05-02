@@ -735,6 +735,21 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
+    "json": {
+      "prefix": "lucide",
+      "lastModified": 1777526690,
+      "aliases": {},
+      "width": 24,
+      "height": 24,
+      "icons": {
+        "loader-circle": {
+          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
+        }
+      }
+    }
+  },
+  {
     "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
     "json": {
       "widget": {
@@ -774,21 +789,6 @@
         }
       },
       "twipla": null
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
-    "json": {
-      "prefix": "lucide",
-      "lastModified": 1777526690,
-      "aliases": {},
-      "width": 24,
-      "height": 24,
-      "icons": {
-        "loader-circle": {
-          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
-        }
-      }
     }
   },
   {
@@ -2472,7 +2472,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 383,
+          "placement": 382,
           "application": null,
           "created_at": "2026-01-02T21:12:27.000000Z",
           "end_date": null,
@@ -2480,7 +2480,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 474,
+            "subscribers": 473,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -2494,9 +2494,9 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 474,
+                  "subscribers": 473,
                   "passive_subscribers": 50,
-                  "active_subscribers": 424
+                  "active_subscribers": 423
                 }
               ]
             },
@@ -2638,7 +2638,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 51,
+          "placement": 50,
           "application": null,
           "created_at": "2026-01-02T21:11:18.000000Z",
           "end_date": null,
@@ -2646,16 +2646,16 @@
             "id": 1737,
             "name": "Ekstern venteliste",
             "full_name": "A/B Buddingevej - Ekstern venteliste",
-            "subscribers": 64,
+            "subscribers": 63,
             "template": {
               "company_name": "A/B Buddingevej",
               "lists": [
                 {
                   "id": 1737,
                   "name": "Ekstern venteliste",
-                  "subscribers": 64,
+                  "subscribers": 63,
                   "passive_subscribers": 5,
-                  "active_subscribers": 59
+                  "active_subscribers": 58
                 }
               ]
             },
@@ -2971,7 +2971,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 743,
+            "subscribers": 745,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2985,9 +2985,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 743,
+                  "subscribers": 745,
                   "passive_subscribers": 61,
-                  "active_subscribers": 682
+                  "active_subscribers": 684
                 }
               ]
             },
@@ -3303,7 +3303,7 @@
             "id": 966,
             "name": "Ekstern venteliste",
             "full_name": "A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste",
-            "subscribers": 249,
+            "subscribers": 250,
             "template": {
               "company_name": "A/B Vesterbrogade 176 / Kochsvej 44-46",
               "lists": [
@@ -3317,9 +3317,9 @@
                 {
                   "id": 966,
                   "name": "Ekstern venteliste",
-                  "subscribers": 249,
+                  "subscribers": 250,
                   "passive_subscribers": 12,
-                  "active_subscribers": 237
+                  "active_subscribers": 238
                 }
               ]
             },
