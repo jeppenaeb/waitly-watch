@@ -735,21 +735,6 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
-    "json": {
-      "prefix": "lucide",
-      "lastModified": 1777526690,
-      "aliases": {},
-      "width": 24,
-      "height": 24,
-      "icons": {
-        "loader-circle": {
-          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
-        }
-      }
-    }
-  },
-  {
     "url": "https://consentcdn.cookiebot.eu/consentconfig/ab195ee5-3410-4ea7-a358-df7ea3331599/settings.json",
     "json": {
       "widget": {
@@ -789,6 +774,21 @@
         }
       },
       "twipla": null
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
+    "json": {
+      "prefix": "lucide",
+      "lastModified": 1777526690,
+      "aliases": {},
+      "width": 24,
+      "height": 24,
+      "icons": {
+        "loader-circle": {
+          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
+        }
+      }
     }
   },
   {
@@ -2399,27 +2399,6 @@
     }
   },
   {
-    "url": "https://graphql.datocms.com/",
-    "json": {
-      "data": {
-        "allInitialModals": [
-          {
-            "slug": "welcome-to-waitly",
-            "title": "Welcome to Waitly! 🎉",
-            "body": "<p>Please take a moment to <strong>update your User Profile</strong> with accurate and up-to-date information about you and your housing needs. This helps us match you with apartments.<br><br></p>\n<p>We also encourage you to <strong>upload relevant documents,</strong> such as your SCHUFA, to your application folder. Having these ready in your profile will help the process when an apartment become available. 🏡</p>",
-            "ctaText": "Go to Application folder",
-            "ctaUrl": "https://my.waitly.dk/profile?tab=application",
-            "checkboxLabel": "Don't show this again",
-            "trigger": "initial_visit",
-            "targetMarkets": [
-              "Germany"
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
     "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=bell%2Cbook-open%2Ccredit-card%2Cgraduation-cap%2Clist-bold%2Crocket-launch%2Cstar%2Cuser-circle",
     "json": {
       "prefix": "ph",
@@ -2455,6 +2434,27 @@
     }
   },
   {
+    "url": "https://graphql.datocms.com/",
+    "json": {
+      "data": {
+        "allInitialModals": [
+          {
+            "slug": "welcome-to-waitly",
+            "title": "Welcome to Waitly! 🎉",
+            "body": "<p>Please take a moment to <strong>update your User Profile</strong> with accurate and up-to-date information about you and your housing needs. This helps us match you with apartments.<br><br></p>\n<p>We also encourage you to <strong>upload relevant documents,</strong> such as your SCHUFA, to your application folder. Having these ready in your profile will help the process when an apartment become available. 🏡</p>",
+            "ctaText": "Go to Application folder",
+            "ctaUrl": "https://my.waitly.dk/profile?tab=application",
+            "checkboxLabel": "Don't show this again",
+            "trigger": "initial_visit",
+            "targetMarkets": [
+              "Germany"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "url": "https://app.waitly.dk/api/v2/consumer/notifications",
     "json": {
       "data": []
@@ -2480,7 +2480,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 473,
+            "subscribers": 474,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -2494,8 +2494,8 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 473,
-                  "passive_subscribers": 50,
+                  "subscribers": 474,
+                  "passive_subscribers": 51,
                   "active_subscribers": 423
                 }
               ]
@@ -2963,7 +2963,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 627,
+          "placement": 626,
           "application": null,
           "created_at": "2026-01-02T21:08:33.000000Z",
           "end_date": null,
@@ -2971,7 +2971,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 745,
+            "subscribers": 748,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2985,9 +2985,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 745,
+                  "subscribers": 748,
                   "passive_subscribers": 61,
-                  "active_subscribers": 684
+                  "active_subscribers": 687
                 }
               ]
             },
@@ -3137,7 +3137,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 785,
+            "subscribers": 793,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -3151,9 +3151,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 785,
-                  "passive_subscribers": 46,
-                  "active_subscribers": 739
+                  "subscribers": 793,
+                  "passive_subscribers": 47,
+                  "active_subscribers": 746
                 }
               ]
             },
