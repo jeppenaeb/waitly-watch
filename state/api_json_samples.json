@@ -2399,27 +2399,6 @@
     }
   },
   {
-    "url": "https://graphql.datocms.com/",
-    "json": {
-      "data": {
-        "allInitialModals": [
-          {
-            "slug": "welcome-to-waitly",
-            "title": "Welcome to Waitly! 🎉",
-            "body": "<p>Please take a moment to <strong>update your User Profile</strong> with accurate and up-to-date information about you and your housing needs. This helps us match you with apartments.<br><br></p>\n<p>We also encourage you to <strong>upload relevant documents,</strong> such as your SCHUFA, to your application folder. Having these ready in your profile will help the process when an apartment become available. 🏡</p>",
-            "ctaText": "Go to Application folder",
-            "ctaUrl": "https://my.waitly.dk/profile?tab=application",
-            "checkboxLabel": "Don't show this again",
-            "trigger": "initial_visit",
-            "targetMarkets": [
-              "Germany"
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
     "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=bell%2Cbook-open%2Ccredit-card%2Cgraduation-cap%2Clist-bold%2Crocket-launch%2Cstar%2Cuser-circle",
     "json": {
       "prefix": "ph",
@@ -2455,6 +2434,27 @@
     }
   },
   {
+    "url": "https://graphql.datocms.com/",
+    "json": {
+      "data": {
+        "allInitialModals": [
+          {
+            "slug": "welcome-to-waitly",
+            "title": "Welcome to Waitly! 🎉",
+            "body": "<p>Please take a moment to <strong>update your User Profile</strong> with accurate and up-to-date information about you and your housing needs. This helps us match you with apartments.<br><br></p>\n<p>We also encourage you to <strong>upload relevant documents,</strong> such as your SCHUFA, to your application folder. Having these ready in your profile will help the process when an apartment become available. 🏡</p>",
+            "ctaText": "Go to Application folder",
+            "ctaUrl": "https://my.waitly.dk/profile?tab=application",
+            "checkboxLabel": "Don't show this again",
+            "trigger": "initial_visit",
+            "targetMarkets": [
+              "Germany"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "url": "https://app.waitly.dk/api/v2/consumer/notifications",
     "json": {
       "data": []
@@ -2472,7 +2472,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 381,
+          "placement": 382,
           "application": null,
           "created_at": "2026-01-02T21:12:27.000000Z",
           "end_date": null,
@@ -2480,23 +2480,23 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 473,
+            "subscribers": 476,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
                 {
                   "id": 1852,
                   "name": "Intern venteliste",
-                  "subscribers": 51,
+                  "subscribers": 52,
                   "passive_subscribers": 0,
-                  "active_subscribers": 51
+                  "active_subscribers": 52
                 },
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 473,
+                  "subscribers": 476,
                   "passive_subscribers": 51,
-                  "active_subscribers": 422
+                  "active_subscribers": 425
                 }
               ]
             },
@@ -2797,7 +2797,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 312,
+          "placement": 311,
           "application": null,
           "created_at": "2026-01-02T21:10:18.000000Z",
           "end_date": null,
@@ -2805,7 +2805,7 @@
             "id": 392,
             "name": "Ekstern venteliste",
             "full_name": "A/B Baghuset - Ekstern venteliste",
-            "subscribers": 325,
+            "subscribers": 324,
             "template": {
               "company_name": "A/B Baghuset",
               "lists": [
@@ -2819,9 +2819,9 @@
                 {
                   "id": 392,
                   "name": "Ekstern venteliste",
-                  "subscribers": 325,
+                  "subscribers": 324,
                   "passive_subscribers": 32,
-                  "active_subscribers": 293
+                  "active_subscribers": 292
                 }
               ]
             },
@@ -2971,7 +2971,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 749,
+            "subscribers": 753,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2985,9 +2985,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 749,
+                  "subscribers": 753,
                   "passive_subscribers": 61,
-                  "active_subscribers": 688
+                  "active_subscribers": 692
                 }
               ]
             },
@@ -3137,7 +3137,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 794,
+            "subscribers": 795,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -3151,9 +3151,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 794,
+                  "subscribers": 795,
                   "passive_subscribers": 46,
-                  "active_subscribers": 748
+                  "active_subscribers": 749
                 }
               ]
             },
