@@ -203,6 +203,7 @@
     "/da/foreninger/2200-koebenhavn-n/andelsboligforeningen-wesselsgade-15a-og-15b",
     "/da/foreninger/2200-koebenhavn-n/heimdalshus-andelsboligforening",
     "/da/foreninger/2300-kobenhavn-s/2029-ab-amagervold",
+    "/da/foreninger/2300-kobenhavn-s/2092-ab-gronlandsgarden",
     "/da/foreninger/2300-kobenhavn-s/2099-ab-telemarken",
     "/da/foreninger/2300-kobenhavn-s/ab-hveensborg",
     "/da/foreninger/2300-kobenhavn-s/ab-ungarnsgade-21-25-bulgariensgade-1",
@@ -299,5 +300,5 @@
     "/da/foreninger/2450-koebenhavn-sv/andelsboligforeningen-tjoernen-koebenhavn"
   ],
   "note": "Baseline initialized (or re-initialized) without alert.",
-  "updated_at": "2026-05-11T10:00:31+00:00"
+  "updated_at": "2026-05-12T09:12:53+00:00"
 }
