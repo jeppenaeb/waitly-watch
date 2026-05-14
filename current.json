@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-13T09:20:28+00:00",
+  "updated_at": "2026-05-14T09:10:07+00:00",
   "queues": [
     {
       "id": "1853",
@@ -13,7 +13,7 @@
       "moved": 49,
       "moved_pct": 11.37,
       "progress": {
-        "week": -1,
+        "week": 0,
         "month": 3
       }
     },
@@ -45,15 +45,15 @@
       "moved": 22,
       "moved_pct": 6.63,
       "progress": {
-        "week": 2,
-        "month": 4
+        "week": 1,
+        "month": 3
       }
     },
     {
       "id": "41",
       "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
       "position": 626,
-      "total": 755,
+      "total": 757,
       "active": false,
       "completed": true,
       "approved": true,
@@ -62,7 +62,7 @@
       "moved_pct": 4.43,
       "progress": {
         "week": 0,
-        "month": 2
+        "month": 1
       }
     },
     {
@@ -99,7 +99,7 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-05-13T09:20:15+00:00",
+    "updated_at": "2026-05-14T09:09:57+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": false,
     "total_urls": 296,
