@@ -800,14 +800,6 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/261f1e3d-b359-49de-9e78-506f1dc5f3c2.json",
-    "json": {
-      "id": "261f1e3d-b359-49de-9e78-506f1dc5f3c2",
-      "timestamp": 1778509141769,
-      "prerendered": []
-    }
-  },
-  {
     "url": "https://app.waitly.dk/api/login",
     "json": {
       "message": "loginEmailIsRequired (and 1 more error)",
@@ -833,6 +825,14 @@
       "lastModified": 1714973607,
       "width": 256,
       "height": 256
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/261f1e3d-b359-49de-9e78-506f1dc5f3c2.json",
+    "json": {
+      "id": "261f1e3d-b359-49de-9e78-506f1dc5f3c2",
+      "timestamp": 1778509141769,
+      "prerendered": []
     }
   },
   {
@@ -3319,7 +3319,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 240,
+          "placement": 239,
           "application": null,
           "created_at": "2026-01-01T19:22:17.000000Z",
           "end_date": null,
