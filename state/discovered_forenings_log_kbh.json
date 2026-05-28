@@ -88,5 +88,14 @@
     "slug": "2092-ab-gronlandsgarden",
     "source": "sitemap",
     "action_taken": false
+  },
+  {
+    "discovered_at": "2026-05-28T10:33:49+00:00",
+    "url": "/da/foreninger/2300-kobenhavn-s/2111-ab-poppelgarden",
+    "postcode": "2300",
+    "area": "København S",
+    "slug": "2111-ab-poppelgarden",
+    "source": "sitemap",
+    "action_taken": false
   }
 ]

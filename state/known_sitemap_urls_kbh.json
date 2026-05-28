@@ -205,6 +205,7 @@
     "/da/foreninger/2300-kobenhavn-s/2029-ab-amagervold",
     "/da/foreninger/2300-kobenhavn-s/2092-ab-gronlandsgarden",
     "/da/foreninger/2300-kobenhavn-s/2099-ab-telemarken",
+    "/da/foreninger/2300-kobenhavn-s/2111-ab-poppelgarden",
     "/da/foreninger/2300-kobenhavn-s/ab-hveensborg",
     "/da/foreninger/2300-kobenhavn-s/ab-ungarnsgade-21-25-bulgariensgade-1",
     "/da/foreninger/2300-kobenhavn-s/ab-wolterhus",
@@ -300,5 +301,5 @@
     "/da/foreninger/2450-koebenhavn-sv/andelsboligforeningen-tjoernen-koebenhavn"
   ],
   "note": "Baseline initialized (or re-initialized) without alert.",
-  "updated_at": "2026-05-26T10:18:45+00:00"
+  "updated_at": "2026-05-28T10:33:49+00:00"
 }

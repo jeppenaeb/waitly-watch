@@ -1,20 +1,20 @@
 {
-  "updated_at": "2026-05-26T10:18:56+00:00",
+  "updated_at": "2026-05-28T10:34:00+00:00",
   "queues": [
     {
       "id": "1853",
       "name": "A/B Amagervold - Ekstern venteliste",
-      "position": 382,
+      "position": 381,
       "total": 482,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 431,
-      "moved": 49,
-      "moved_pct": 11.37,
+      "moved": 50,
+      "moved_pct": 11.6,
       "progress": {
-        "week": 0,
-        "month": 3
+        "week": 1,
+        "month": 4
       }
     },
     {
@@ -36,24 +36,24 @@
     {
       "id": "392",
       "name": "A/B Baghuset - Ekstern venteliste",
-      "position": 309,
-      "total": 321,
+      "position": 308,
+      "total": 320,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 332,
-      "moved": 23,
-      "moved_pct": 6.93,
+      "moved": 24,
+      "moved_pct": 7.23,
       "progress": {
-        "week": 1,
-        "month": 3
+        "week": 2,
+        "month": 4
       }
     },
     {
       "id": "41",
       "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
       "position": 622,
-      "total": 762,
+      "total": 763,
       "active": false,
       "completed": true,
       "approved": true,
@@ -68,17 +68,17 @@
     {
       "id": "294",
       "name": "A/B Positiv - Ekstern venteliste",
-      "position": 738,
-      "total": 796,
+      "position": 737,
+      "total": 795,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 771,
-      "moved": 33,
-      "moved_pct": 4.28,
+      "moved": 34,
+      "moved_pct": 4.41,
       "progress": {
-        "week": 1,
-        "month": 2
+        "week": 2,
+        "month": 3
       }
     },
     {
@@ -99,11 +99,8 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-05-26T10:18:45+00:00",
+    "updated_at": "2026-05-28T10:33:49+00:00",
     "source": "https://waitly.eu/da/sitemap",
-    "initialized": false,
-    "total_urls": 296,
-    "new_count": 0,
-    "new": []
+    "error": "Missing env: WAITLY_SMTP_HOST"
   }
 }
