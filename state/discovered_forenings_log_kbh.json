@@ -97,5 +97,14 @@
     "slug": "2111-ab-poppelgarden",
     "source": "sitemap",
     "action_taken": false
+  },
+  {
+    "discovered_at": "2026-05-30T08:41:07+00:00",
+    "url": "/da/foreninger/2300-kobenhavn-s/2116-ab-sofienhojvej-5a-e-og-7",
+    "postcode": "2300",
+    "area": "København S",
+    "slug": "2116-ab-sofienhojvej-5a-e-og-7",
+    "source": "sitemap",
+    "action_taken": false
   }
 ]

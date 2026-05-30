@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-05-29T10:14:21+00:00",
+  "updated_at": "2026-05-30T08:41:18+00:00",
   "queues": [
     {
       "id": "1853",
       "name": "A/B Amagervold - Ekstern venteliste",
       "position": 381,
-      "total": 482,
+      "total": 481,
       "active": false,
       "completed": true,
       "approved": true,
@@ -14,14 +14,14 @@
       "moved_pct": 11.6,
       "progress": {
         "week": 1,
-        "month": 4
+        "month": 2
       }
     },
     {
       "id": "1737",
       "name": "A/B Buddingevej - Ekstern venteliste",
       "position": 50,
-      "total": 64,
+      "total": 65,
       "active": false,
       "completed": true,
       "approved": true,
@@ -61,7 +61,7 @@
       "moved": 33,
       "moved_pct": 5.04,
       "progress": {
-        "week": 2,
+        "week": 1,
         "month": 5
       }
     },
@@ -99,11 +99,8 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-05-29T10:14:10+00:00",
+    "updated_at": "2026-05-30T08:41:07+00:00",
     "source": "https://waitly.eu/da/sitemap",
-    "initialized": false,
-    "total_urls": 297,
-    "new_count": 0,
-    "new": []
+    "error": "Missing env: WAITLY_SMTP_HOST"
   }
 }
