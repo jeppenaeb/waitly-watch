@@ -806,18 +806,10 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/d8752fb1-bbed-4932-a169-348c1d37cb38.json",
-    "json": {
-      "id": "d8752fb1-bbed-4932-a169-348c1d37cb38",
-      "timestamp": 1780061523093,
-      "prerendered": []
-    }
-  },
-  {
     "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
     "json": {
       "prefix": "lucide",
-      "lastModified": 1779951028,
+      "lastModified": 1780116976,
       "aliases": {},
       "width": 24,
       "height": 24,
@@ -854,6 +846,14 @@
       "lastModified": 1714973607,
       "width": 256,
       "height": 256
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/d8752fb1-bbed-4932-a169-348c1d37cb38.json",
+    "json": {
+      "id": "d8752fb1-bbed-4932-a169-348c1d37cb38",
+      "timestamp": 1780061523093,
+      "prerendered": []
     }
   },
   {
@@ -1795,7 +1795,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 381,
+          "placement": 379,
           "application": null,
           "created_at": "2026-01-02T21:12:27.000000Z",
           "end_date": null,
@@ -1803,7 +1803,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 485,
+            "subscribers": 484,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -1817,9 +1817,9 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 485,
+                  "subscribers": 484,
                   "passive_subscribers": 49,
-                  "active_subscribers": 436
+                  "active_subscribers": 435
                 }
               ]
             },
@@ -2297,7 +2297,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 767,
+            "subscribers": 769,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2311,9 +2311,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 767,
+                  "subscribers": 769,
                   "passive_subscribers": 62,
-                  "active_subscribers": 705
+                  "active_subscribers": 707
                 }
               ]
             },
