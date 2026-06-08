@@ -821,6 +821,14 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/d8752fb1-bbed-4932-a169-348c1d37cb38.json",
+    "json": {
+      "id": "d8752fb1-bbed-4932-a169-348c1d37cb38",
+      "timestamp": 1780061523093,
+      "prerendered": []
+    }
+  },
+  {
     "url": "https://app.waitly.dk/api/login",
     "json": {
       "message": "loginEmailIsRequired (and 1 more error)",
@@ -835,11 +843,17 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/d8752fb1-bbed-4932-a169-348c1d37cb38.json",
+    "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=eye",
     "json": {
-      "id": "d8752fb1-bbed-4932-a169-348c1d37cb38",
-      "timestamp": 1780061523093,
-      "prerendered": []
+      "prefix": "ph",
+      "icons": {
+        "eye": {
+          "body": "<path fill=\"currentColor\" d=\"M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5M128 192c-30.78 0-57.67-11.19-79.93-33.25A133.5 133.5 0 0 1 25 128a133.3 133.3 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.5 133.5 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64m0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48m0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32\"/>"
+        }
+      },
+      "lastModified": 1714973607,
+      "width": 256,
+      "height": 256
     }
   },
   {
@@ -849,20 +863,6 @@
       "icons": {
         "exclamation-mark-fill": {
           "body": "<path fill=\"currentColor\" d=\"M200 24H56a16 16 0 0 0-16 16v176a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16V40a16 16 0 0 0-16-16m-72 136a12 12 0 1 1-12 12a12 12 0 0 1 12-12m-8-24V80a8 8 0 0 1 16 0v56a8 8 0 0 1-16 0\"/>"
-        }
-      },
-      "lastModified": 1714973607,
-      "width": 256,
-      "height": 256
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=eye",
-    "json": {
-      "prefix": "ph",
-      "icons": {
-        "eye": {
-          "body": "<path fill=\"currentColor\" d=\"M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5M128 192c-30.78 0-57.67-11.19-79.93-33.25A133.5 133.5 0 0 1 25 128a133.3 133.3 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.5 133.5 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64m0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48m0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32\"/>"
         }
       },
       "lastModified": 1714973607,
@@ -1722,27 +1722,6 @@
     }
   },
   {
-    "url": "https://graphql.datocms.com/",
-    "json": {
-      "data": {
-        "allInitialModals": [
-          {
-            "slug": "welcome-to-waitly",
-            "title": "Welcome to Waitly! 🎉",
-            "body": "<p>Please take a moment to <strong>update your User Profile</strong> with accurate and up-to-date information about you and your housing needs. This helps us match you with apartments.<br><br></p>\n<p>We also encourage you to <strong>upload relevant documents,</strong> such as your SCHUFA, to your application folder. Having these ready in your profile will help the process when an apartment become available. 🏡</p>",
-            "ctaText": "Go to Application folder",
-            "ctaUrl": "https://my.waitly.dk/profile?tab=application",
-            "checkboxLabel": "Don't show this again",
-            "trigger": "initial_visit",
-            "targetMarkets": [
-              "Germany"
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
     "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=bell%2Cbook-open%2Ccredit-card%2Cgraduation-cap%2Clist-bold%2Crocket-launch%2Cstar%2Cuser-circle",
     "json": {
       "prefix": "ph",
@@ -1778,6 +1757,27 @@
     }
   },
   {
+    "url": "https://graphql.datocms.com/",
+    "json": {
+      "data": {
+        "allInitialModals": [
+          {
+            "slug": "welcome-to-waitly",
+            "title": "Welcome to Waitly! 🎉",
+            "body": "<p>Please take a moment to <strong>update your User Profile</strong> with accurate and up-to-date information about you and your housing needs. This helps us match you with apartments.<br><br></p>\n<p>We also encourage you to <strong>upload relevant documents,</strong> such as your SCHUFA, to your application folder. Having these ready in your profile will help the process when an apartment become available. 🏡</p>",
+            "ctaText": "Go to Application folder",
+            "ctaUrl": "https://my.waitly.dk/profile?tab=application",
+            "checkboxLabel": "Don't show this again",
+            "trigger": "initial_visit",
+            "targetMarkets": [
+              "Germany"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "url": "https://app.waitly.dk/api/v2/consumer/notifications",
     "json": {
       "data": []
@@ -1803,7 +1803,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 494,
+            "subscribers": 497,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -1817,9 +1817,9 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 494,
+                  "subscribers": 497,
                   "passive_subscribers": 51,
-                  "active_subscribers": 443
+                  "active_subscribers": 446
                 }
               ]
             },
@@ -2297,7 +2297,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 773,
+            "subscribers": 775,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2311,9 +2311,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 773,
+                  "subscribers": 775,
                   "passive_subscribers": 62,
-                  "active_subscribers": 711
+                  "active_subscribers": 713
                 }
               ]
             },
@@ -2464,7 +2464,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 792,
+            "subscribers": 795,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -2478,9 +2478,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 792,
+                  "subscribers": 795,
                   "passive_subscribers": 45,
-                  "active_subscribers": 747
+                  "active_subscribers": 750
                 }
               ]
             },
@@ -2631,7 +2631,7 @@
             "id": 966,
             "name": "Ekstern venteliste",
             "full_name": "A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste",
-            "subscribers": 250,
+            "subscribers": 249,
             "template": {
               "company_name": "A/B Vesterbrogade 176 / Kochsvej 44-46",
               "lists": [
@@ -2645,9 +2645,9 @@
                 {
                   "id": 966,
                   "name": "Ekstern venteliste",
-                  "subscribers": 250,
+                  "subscribers": 249,
                   "passive_subscribers": 12,
-                  "active_subscribers": 238
+                  "active_subscribers": 237
                 }
               ]
             },
