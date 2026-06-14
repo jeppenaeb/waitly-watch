@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-13T09:35:25+00:00",
+  "updated_at": "2026-06-14T09:56:48+00:00",
   "queues": [
     {
       "id": "1853",
@@ -21,7 +21,7 @@
       "id": "1737",
       "name": "A/B Buddingevej - Ekstern venteliste",
       "position": 50,
-      "total": 65,
+      "total": 66,
       "active": false,
       "completed": true,
       "approved": true,
@@ -45,7 +45,7 @@
       "moved": 26,
       "moved_pct": 7.83,
       "progress": {
-        "week": 2,
+        "week": 1,
         "month": 4
       }
     },
@@ -53,7 +53,7 @@
       "id": "41",
       "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
       "position": 618,
-      "total": 783,
+      "total": 784,
       "active": false,
       "completed": true,
       "approved": true,
@@ -61,7 +61,7 @@
       "moved": 37,
       "moved_pct": 5.65,
       "progress": {
-        "week": 3,
+        "week": 0,
         "month": 8
       }
     },
@@ -77,7 +77,7 @@
       "moved": 39,
       "moved_pct": 5.06,
       "progress": {
-        "week": 3,
+        "week": 2,
         "month": 8
       }
     },
@@ -99,7 +99,7 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-06-13T09:35:13+00:00",
+    "updated_at": "2026-06-14T09:56:35+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": false,
     "total_urls": 297,
