@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-14T09:56:48+00:00",
+  "updated_at": "2026-06-15T12:43:36+00:00",
   "queues": [
     {
       "id": "1853",
@@ -21,7 +21,7 @@
       "id": "1737",
       "name": "A/B Buddingevej - Ekstern venteliste",
       "position": 50,
-      "total": 66,
+      "total": 67,
       "active": false,
       "completed": true,
       "approved": true,
@@ -69,7 +69,7 @@
       "id": "294",
       "name": "A/B Positiv - Ekstern venteliste",
       "position": 732,
-      "total": 794,
+      "total": 795,
       "active": false,
       "completed": true,
       "approved": true,
@@ -99,7 +99,7 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-06-14T09:56:35+00:00",
+    "updated_at": "2026-06-15T12:43:24+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": false,
     "total_urls": 297,
