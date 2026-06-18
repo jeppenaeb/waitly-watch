@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-16T11:35:34+00:00",
+  "updated_at": "2026-06-18T10:48:59+00:00",
   "queues": [
     {
       "id": "1853",
@@ -20,17 +20,17 @@
     {
       "id": "1737",
       "name": "A/B Buddingevej - Ekstern venteliste",
-      "position": 50,
+      "position": 49,
       "total": 67,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 53,
-      "moved": 3,
-      "moved_pct": 5.66,
+      "moved": 4,
+      "moved_pct": 7.55,
       "progress": {
-        "week": 0,
-        "month": 0
+        "week": 1,
+        "month": 1
       }
     },
     {
@@ -52,17 +52,17 @@
     {
       "id": "41",
       "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-      "position": 618,
-      "total": 785,
+      "position": 616,
+      "total": 786,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 655,
-      "moved": 37,
-      "moved_pct": 5.65,
+      "moved": 39,
+      "moved_pct": 5.95,
       "progress": {
-        "week": 0,
-        "month": 7
+        "week": 2,
+        "month": 9
       }
     },
     {
@@ -77,29 +77,29 @@
       "moved": 39,
       "moved_pct": 5.06,
       "progress": {
-        "week": 2,
+        "week": 1,
         "month": 7
       }
     },
     {
       "id": "966",
       "name": "A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste",
-      "position": 238,
-      "total": 250,
+      "position": 237,
+      "total": 249,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 249,
-      "moved": 11,
-      "moved_pct": 4.42,
+      "moved": 12,
+      "moved_pct": 4.82,
       "progress": {
-        "week": 0,
-        "month": 2
+        "week": 1,
+        "month": 3
       }
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-06-16T11:35:25+00:00",
+    "updated_at": "2026-06-18T10:48:47+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": false,
     "total_urls": 297,
