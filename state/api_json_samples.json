@@ -973,6 +973,93 @@
     }
   },
   {
+    "url": "https://ekr.zdassets.com/compose/53e3e1db-9757-4f59-836a-5e768bacfa1a",
+    "json": {
+      "products": [
+        {
+          "name": "web_widget",
+          "id": "waitly.zendesk.com",
+          "bootstrap": {
+            "config": {
+              "features": {
+                "endUserConversations": true,
+                "internalAnalyticsEnabled": true,
+                "conversationTranscript": true,
+                "updateSuncoMetadata": true,
+                "multiConvoEnabled": true,
+                "conversationTicketMetadata": true,
+                "articleViewer": true,
+                "displayAcWaitTimeCapsule": true,
+                "conversationTranscriptGlobal": true
+              },
+              "messenger": {
+                "reopenConversationDisabled": false,
+                "canUserCreateMoreConversations": true,
+                "color": {
+                  "message": "#d0acfc",
+                  "action": "#d0acfc",
+                  "primary": "#d0acfc"
+                },
+                "description": "",
+                "title": "Waitly Support",
+                "conversationTranscriptEnabled": false,
+                "canUserSeeConversationList": true,
+                "conversationHistory": "forget",
+                "appId": "6756fc1ce25bb9177c03a5e2",
+                "soundNotificationEnabled": true,
+                "endSessionEnabled": false,
+                "multiConvoEnabled": false,
+                "integrationId": "67d215397a56b5c64188238e",
+                "attachmentsEnabled": true,
+                "privacyNoticeEnabled": false,
+                "avatar": "https://waitly.zendesk.com/embeddable/avatars/22379897147292",
+                "positionOffset": {
+                  "mobile": {
+                    "horizontal": "16",
+                    "vertical": "16"
+                  },
+                  "web": {
+                    "horizontal": "16",
+                    "vertical": "16"
+                  }
+                },
+                "showZendeskLogo": true,
+                "baseUrl": "https://waitly.zendesk.com/sc/sdk",
+                "waitConfig": {
+                  "queuePollingInterval": 60.0,
+                  "queuePositionEnabled": false,
+                  "onlyDecreasingQueue": false,
+                  "waitTimeEnabled": false
+                },
+                "channelLinkingEnabled": false,
+                "frameBorderRadius": "20",
+                "privacyNoticeUrl": null,
+                "aiDisclaimerEnabled": true,
+                "position": "right",
+                "proactiveMessagingEnabled": false,
+                "launcher": {
+                  "shapeSettings": null,
+                  "showTextInMobile": false,
+                  "text": "",
+                  "shape": "circle"
+                }
+              }
+            }
+          },
+          "features": [],
+          "url": "https://ekr.zendesk.com/compose_product/web_widget/71f45fc5b56e80ba8bb7bc78271dad0cacf29e39?features%5B%5D",
+          "assets": {
+            "scripts": [
+              {
+                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-71f45fc.js"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
     "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
     "json": {
       "prefix": "lucide",
@@ -993,6 +1080,74 @@
       "id": "f5f30cbc-6617-4704-93d3-c7cc107b8b5e",
       "timestamp": 1781275143994,
       "prerendered": []
+    }
+  },
+  {
+    "url": "https://waitly.zendesk.com/embeddable/config",
+    "json": {
+      "features": {
+        "conversationTicketMetadata": true,
+        "displayAcWaitTimeCapsule": true,
+        "multiConvoEnabled": true,
+        "internalAnalyticsEnabled": true,
+        "updateSuncoMetadata": true,
+        "endUserConversations": true,
+        "conversationTranscript": true,
+        "conversationTranscriptGlobal": true,
+        "articleViewer": true
+      },
+      "messenger": {
+        "integrationId": "67d215397a56b5c64188238e",
+        "appId": "6756fc1ce25bb9177c03a5e2",
+        "position": "right",
+        "conversationHistory": "forget",
+        "color": {
+          "primary": "#d0acfc",
+          "action": "#d0acfc",
+          "message": "#d0acfc"
+        },
+        "title": "Waitly Support",
+        "description": "",
+        "avatar": "https://waitly.zendesk.com/embeddable/avatars/22379897147292",
+        "launcher": {
+          "text": "",
+          "showTextInMobile": false,
+          "shape": "circle",
+          "shapeSettings": null
+        },
+        "baseUrl": "https://waitly.zendesk.com/sc/sdk",
+        "channelLinkingEnabled": false,
+        "showZendeskLogo": true,
+        "attachmentsEnabled": true,
+        "canUserCreateMoreConversations": true,
+        "canUserSeeConversationList": true,
+        "aiDisclaimerEnabled": true,
+        "frameBorderRadius": "20",
+        "proactiveMessagingEnabled": false,
+        "soundNotificationEnabled": true,
+        "positionOffset": {
+          "web": {
+            "vertical": "16",
+            "horizontal": "16"
+          },
+          "mobile": {
+            "vertical": "16",
+            "horizontal": "16"
+          }
+        },
+        "privacyNoticeEnabled": false,
+        "conversationTranscriptEnabled": false,
+        "privacyNoticeUrl": null,
+        "waitConfig": {
+          "waitTimeEnabled": false,
+          "queuePositionEnabled": false,
+          "onlyDecreasingQueue": false,
+          "queuePollingInterval": 60
+        },
+        "endSessionEnabled": false,
+        "reopenConversationDisabled": false,
+        "multiConvoEnabled": false
+      }
     }
   },
   {
@@ -2058,27 +2213,6 @@
     }
   },
   {
-    "url": "https://graphql.datocms.com/",
-    "json": {
-      "data": {
-        "allInitialModals": [
-          {
-            "slug": "welcome-to-waitly",
-            "title": "Welcome to Waitly! 🎉",
-            "body": "<p>Please take a moment to <strong>update your User Profile</strong> with accurate and up-to-date information about you and your housing needs. This helps us match you with apartments.<br><br></p>\n<p>We also encourage you to <strong>upload relevant documents,</strong> such as your SCHUFA, to your application folder. Having these ready in your profile will help the process when an apartment become available. 🏡</p>",
-            "ctaText": "Go to Application folder",
-            "ctaUrl": "https://my.waitly.dk/profile?tab=application",
-            "checkboxLabel": "Don't show this again",
-            "trigger": "initial_visit",
-            "targetMarkets": [
-              "Germany"
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
     "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=bell%2Cbook-open%2Ccredit-card%2Cgraduation-cap%2Clist-bold%2Crocket-launch%2Cstar%2Cuser-circle",
     "json": {
       "prefix": "ph",
@@ -2115,6 +2249,27 @@
     }
   },
   {
+    "url": "https://graphql.datocms.com/",
+    "json": {
+      "data": {
+        "allInitialModals": [
+          {
+            "slug": "welcome-to-waitly",
+            "title": "Welcome to Waitly! 🎉",
+            "body": "<p>Please take a moment to <strong>update your User Profile</strong> with accurate and up-to-date information about you and your housing needs. This helps us match you with apartments.<br><br></p>\n<p>We also encourage you to <strong>upload relevant documents,</strong> such as your SCHUFA, to your application folder. Having these ready in your profile will help the process when an apartment become available. 🏡</p>",
+            "ctaText": "Go to Application folder",
+            "ctaUrl": "https://my.waitly.dk/profile?tab=application",
+            "checkboxLabel": "Don't show this again",
+            "trigger": "initial_visit",
+            "targetMarkets": [
+              "Germany"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "url": "https://app.waitly.dk/api/v2/consumer/notifications",
     "json": {
       "data": []
@@ -2132,7 +2287,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 387,
+          "placement": 386,
           "application": null,
           "created_at": "2026-01-02T21:12:27.000000Z",
           "end_date": null,
@@ -2140,7 +2295,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 496,
+            "subscribers": 495,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -2154,9 +2309,9 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 496,
+                  "subscribers": 495,
                   "passive_subscribers": 51,
-                  "active_subscribers": 445
+                  "active_subscribers": 444
                 }
               ]
             },
@@ -2634,7 +2789,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 786,
+            "subscribers": 788,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2648,9 +2803,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 786,
+                  "subscribers": 788,
                   "passive_subscribers": 64,
-                  "active_subscribers": 722
+                  "active_subscribers": 724
                 }
               ]
             },
