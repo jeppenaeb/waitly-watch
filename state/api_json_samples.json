@@ -1076,6 +1076,14 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/41baf143-29f2-4bc9-a71c-c6d1a1e49466.json",
+    "json": {
+      "id": "41baf143-29f2-4bc9-a71c-c6d1a1e49466",
+      "timestamp": 1782197187058,
+      "prerendered": []
+    }
+  },
+  {
     "url": "https://waitly.zendesk.com/embeddable/config",
     "json": {
       "features": {
@@ -1141,14 +1149,6 @@
         "reopenConversationDisabled": false,
         "multiConvoEnabled": false
       }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/41baf143-29f2-4bc9-a71c-c6d1a1e49466.json",
-    "json": {
-      "id": "41baf143-29f2-4bc9-a71c-c6d1a1e49466",
-      "timestamp": 1782197187058,
-      "prerendered": []
     }
   },
   {
@@ -2215,27 +2215,6 @@
     }
   },
   {
-    "url": "https://graphql.datocms.com/",
-    "json": {
-      "data": {
-        "allInitialModals": [
-          {
-            "slug": "welcome-to-waitly",
-            "title": "Welcome to Waitly! 🎉",
-            "body": "<p>Please take a moment to <strong>update your User Profile</strong> with accurate and up-to-date information about you and your housing needs. This helps us match you with apartments.<br><br></p>\n<p>We also encourage you to <strong>upload relevant documents,</strong> such as your SCHUFA, to your application folder. Having these ready in your profile will help the process when an apartment become available. 🏡</p>",
-            "ctaText": "Go to Application folder",
-            "ctaUrl": "https://my.waitly.dk/profile?tab=application",
-            "checkboxLabel": "Don't show this again",
-            "trigger": "initial_visit",
-            "targetMarkets": [
-              "Germany"
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
     "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=bell%2Cbook-open%2Ccredit-card%2Cgraduation-cap%2Clist-bold%2Crocket-launch%2Cstar%2Cuser-circle",
     "json": {
       "prefix": "ph",
@@ -2268,6 +2247,27 @@
         "user-circle": {
           "body": "<path fill=\"currentColor\" d=\"M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24M74.08 197.5a64 64 0 0 1 107.84 0a87.83 87.83 0 0 1-107.84 0M96 120a32 32 0 1 1 32 32a32 32 0 0 1-32-32m97.76 66.41a79.66 79.66 0 0 0-36.06-28.75a48 48 0 1 0-59.4 0a79.66 79.66 0 0 0-36.06 28.75a88 88 0 1 1 131.52 0\"/>"
         }
+      }
+    }
+  },
+  {
+    "url": "https://graphql.datocms.com/",
+    "json": {
+      "data": {
+        "allInitialModals": [
+          {
+            "slug": "welcome-to-waitly",
+            "title": "Welcome to Waitly! 🎉",
+            "body": "<p>Please take a moment to <strong>update your User Profile</strong> with accurate and up-to-date information about you and your housing needs. This helps us match you with apartments.<br><br></p>\n<p>We also encourage you to <strong>upload relevant documents,</strong> such as your SCHUFA, to your application folder. Having these ready in your profile will help the process when an apartment become available. 🏡</p>",
+            "ctaText": "Go to Application folder",
+            "ctaUrl": "https://my.waitly.dk/profile?tab=application",
+            "checkboxLabel": "Don't show this again",
+            "trigger": "initial_visit",
+            "targetMarkets": [
+              "Germany"
+            ]
+          }
+        ]
       }
     }
   },
@@ -2950,7 +2950,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 731,
+          "placement": 730,
           "application": null,
           "created_at": "2026-01-02T21:07:26.000000Z",
           "end_date": null,
@@ -2958,7 +2958,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 797,
+            "subscribers": 796,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -2972,9 +2972,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 797,
+                  "subscribers": 796,
                   "passive_subscribers": 45,
-                  "active_subscribers": 752
+                  "active_subscribers": 751
                 }
               ]
             },
