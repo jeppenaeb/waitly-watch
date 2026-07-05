@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-07-03T09:36:55+00:00",
+  "updated_at": "2026-07-05T09:24:10+00:00",
   "queues": [
     {
       "id": "1853",
       "name": "A/B Amagervold - Ekstern venteliste",
       "position": 386,
-      "total": 498,
+      "total": 499,
       "active": false,
       "completed": true,
       "approved": true,
@@ -14,7 +14,7 @@
       "moved_pct": 10.44,
       "progress": {
         "week": 0,
-        "month": -5
+        "month": -7
       }
     },
     {
@@ -68,17 +68,17 @@
     {
       "id": "294",
       "name": "A/B Positiv - Ekstern venteliste",
-      "position": 728,
-      "total": 796,
+      "position": 727,
+      "total": 795,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 771,
-      "moved": 43,
-      "moved_pct": 5.58,
+      "moved": 44,
+      "moved_pct": 5.71,
       "progress": {
         "week": 3,
-        "month": 8
+        "month": 9
       }
     },
     {
@@ -99,7 +99,7 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-07-03T09:36:02+00:00",
+    "updated_at": "2026-07-05T09:23:17+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": false,
     "total_urls": 296,
