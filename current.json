@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-07T10:02:10+00:00",
+  "updated_at": "2026-07-08T08:45:38+00:00",
   "queues": [
     {
       "id": "1853",
@@ -45,7 +45,7 @@
       "moved": 27,
       "moved_pct": 8.13,
       "progress": {
-        "week": 1,
+        "week": 0,
         "month": 2
       }
     },
@@ -69,7 +69,7 @@
       "id": "294",
       "name": "A/B Positiv - Ekstern venteliste",
       "position": 725,
-      "total": 794,
+      "total": 796,
       "active": false,
       "completed": true,
       "approved": true,
@@ -99,7 +99,7 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-07-07T10:01:17+00:00",
+    "updated_at": "2026-07-08T08:44:45+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": false,
     "total_urls": 296,
