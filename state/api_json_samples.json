@@ -1055,11 +1055,11 @@
             }
           },
           "features": [],
-          "url": "https://ekr.zendesk.com/compose_product/web_widget/fe724c55e060c7f99eea7da54d3bfd75c3ed8f55?features%5B%5D",
+          "url": "https://ekr.zendesk.com/compose_product/web_widget/dc31066d32002ac5a5471ee9f5751ef0e0dcd4f7?features%5B%5D",
           "assets": {
             "scripts": [
               {
-                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-fe724c5.js"
+                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-dc31066.js"
               }
             ]
           }
@@ -2311,7 +2311,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 499,
+            "subscribers": 500,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -2325,9 +2325,9 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 499,
+                  "subscribers": 500,
                   "passive_subscribers": 51,
-                  "active_subscribers": 448
+                  "active_subscribers": 449
                 }
               ]
             },
@@ -2471,7 +2471,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 46,
+          "placement": 45,
           "application": null,
           "created_at": "2026-01-02T21:11:18.000000Z",
           "end_date": null,
@@ -2479,16 +2479,16 @@
             "id": 1737,
             "name": "Ekstern venteliste",
             "full_name": "A/B Buddingevej - Ekstern venteliste",
-            "subscribers": 63,
+            "subscribers": 62,
             "template": {
               "company_name": "A/B Buddingevej",
               "lists": [
                 {
                   "id": 1737,
                   "name": "Ekstern venteliste",
-                  "subscribers": 63,
+                  "subscribers": 62,
                   "passive_subscribers": 4,
-                  "active_subscribers": 59
+                  "active_subscribers": 58
                 }
               ]
             },
@@ -2808,7 +2808,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 794,
+            "subscribers": 795,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2822,9 +2822,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 794,
+                  "subscribers": 795,
                   "passive_subscribers": 65,
-                  "active_subscribers": 729
+                  "active_subscribers": 730
                 }
               ]
             },
@@ -2976,7 +2976,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 798,
+            "subscribers": 797,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -2990,9 +2990,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 798,
+                  "subscribers": 797,
                   "passive_subscribers": 46,
-                  "active_subscribers": 752
+                  "active_subscribers": 751
                 }
               ]
             },
