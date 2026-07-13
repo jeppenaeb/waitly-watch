@@ -1068,6 +1068,29 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
+    "json": {
+      "prefix": "lucide",
+      "lastModified": 1783058376,
+      "aliases": {},
+      "width": 24,
+      "height": 24,
+      "icons": {
+        "loader-circle": {
+          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
+        }
+      }
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/ab826c9b-9903-45b2-a1c0-f092c4790f57.json",
+    "json": {
+      "id": "ab826c9b-9903-45b2-a1c0-f092c4790f57",
+      "timestamp": 1783515580898,
+      "prerendered": []
+    }
+  },
+  {
     "url": "https://waitly.zendesk.com/embeddable/config",
     "json": {
       "features": {
@@ -1136,44 +1159,6 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
-    "json": {
-      "prefix": "lucide",
-      "lastModified": 1783058376,
-      "aliases": {},
-      "width": 24,
-      "height": 24,
-      "icons": {
-        "loader-circle": {
-          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
-        }
-      }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/ab826c9b-9903-45b2-a1c0-f092c4790f57.json",
-    "json": {
-      "id": "ab826c9b-9903-45b2-a1c0-f092c4790f57",
-      "timestamp": 1783515580898,
-      "prerendered": []
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=eye",
-    "json": {
-      "prefix": "ph",
-      "lastModified": 1714973607,
-      "aliases": {},
-      "width": 256,
-      "height": 256,
-      "icons": {
-        "eye": {
-          "body": "<path fill=\"currentColor\" d=\"M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5M128 192c-30.78 0-57.67-11.19-79.93-33.25A133.5 133.5 0 0 1 25 128a133.3 133.3 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.5 133.5 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64m0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48m0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32\"/>"
-        }
-      }
-    }
-  },
-  {
     "url": "https://app.waitly.dk/api/login",
     "json": {
       "message": "loginEmailIsRequired (and 1 more error)",
@@ -1198,6 +1183,21 @@
       "icons": {
         "exclamation-mark-fill": {
           "body": "<path fill=\"currentColor\" d=\"M200 24H56a16 16 0 0 0-16 16v176a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16V40a16 16 0 0 0-16-16m-72 136a12 12 0 1 1-12 12a12 12 0 0 1 12-12m-8-24V80a8 8 0 0 1 16 0v56a8 8 0 0 1-16 0\"/>"
+        }
+      }
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=eye",
+    "json": {
+      "prefix": "ph",
+      "lastModified": 1714973607,
+      "aliases": {},
+      "width": 256,
+      "height": 256,
+      "icons": {
+        "eye": {
+          "body": "<path fill=\"currentColor\" d=\"M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5M128 192c-30.78 0-57.67-11.19-79.93-33.25A133.5 133.5 0 0 1 25 128a133.3 133.3 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.5 133.5 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64m0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48m0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32\"/>"
         }
       }
     }
@@ -2303,7 +2303,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 386,
+          "placement": 385,
           "application": null,
           "created_at": "2026-01-02T21:12:27.000000Z",
           "end_date": null,
@@ -2318,9 +2318,9 @@
                 {
                   "id": 1852,
                   "name": "Intern venteliste",
-                  "subscribers": 53,
+                  "subscribers": 54,
                   "passive_subscribers": 0,
-                  "active_subscribers": 53
+                  "active_subscribers": 54
                 },
                 {
                   "id": 1853,
@@ -2800,7 +2800,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 615,
+          "placement": 613,
           "application": null,
           "created_at": "2026-01-02T21:08:33.000000Z",
           "end_date": null,
@@ -2808,7 +2808,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 796,
+            "subscribers": 794,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2822,9 +2822,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 796,
+                  "subscribers": 794,
                   "passive_subscribers": 65,
-                  "active_subscribers": 731
+                  "active_subscribers": 729
                 }
               ]
             },
@@ -2968,7 +2968,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 724,
+          "placement": 723,
           "application": null,
           "created_at": "2026-01-02T21:07:26.000000Z",
           "end_date": null,
