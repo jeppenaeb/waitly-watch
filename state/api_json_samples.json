@@ -1068,6 +1068,14 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/ab826c9b-9903-45b2-a1c0-f092c4790f57.json",
+    "json": {
+      "id": "ab826c9b-9903-45b2-a1c0-f092c4790f57",
+      "timestamp": 1783515580898,
+      "prerendered": []
+    }
+  },
+  {
     "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
     "json": {
       "prefix": "lucide",
@@ -1080,14 +1088,6 @@
           "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
         }
       }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/ab826c9b-9903-45b2-a1c0-f092c4790f57.json",
-    "json": {
-      "id": "ab826c9b-9903-45b2-a1c0-f092c4790f57",
-      "timestamp": 1783515580898,
-      "prerendered": []
     }
   },
   {
@@ -2479,16 +2479,16 @@
             "id": 1737,
             "name": "Ekstern venteliste",
             "full_name": "A/B Buddingevej - Ekstern venteliste",
-            "subscribers": 62,
+            "subscribers": 63,
             "template": {
               "company_name": "A/B Buddingevej",
               "lists": [
                 {
                   "id": 1737,
                   "name": "Ekstern venteliste",
-                  "subscribers": 62,
+                  "subscribers": 63,
                   "passive_subscribers": 4,
-                  "active_subscribers": 58
+                  "active_subscribers": 59
                 }
               ]
             },
@@ -2632,7 +2632,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 305,
+          "placement": 304,
           "application": null,
           "created_at": "2026-01-02T21:10:18.000000Z",
           "end_date": null,
@@ -2640,7 +2640,7 @@
             "id": 392,
             "name": "Ekstern venteliste",
             "full_name": "A/B Baghuset - Ekstern venteliste",
-            "subscribers": 317,
+            "subscribers": 316,
             "template": {
               "company_name": "A/B Baghuset",
               "lists": [
@@ -2654,8 +2654,8 @@
                 {
                   "id": 392,
                   "name": "Ekstern venteliste",
-                  "subscribers": 317,
-                  "passive_subscribers": 31,
+                  "subscribers": 316,
+                  "passive_subscribers": 30,
                   "active_subscribers": 286
                 }
               ]
@@ -2808,7 +2808,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 794,
+            "subscribers": 795,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2822,9 +2822,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 794,
-                  "passive_subscribers": 65,
-                  "active_subscribers": 729
+                  "subscribers": 795,
+                  "passive_subscribers": 64,
+                  "active_subscribers": 731
                 }
               ]
             },
