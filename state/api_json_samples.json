@@ -1055,24 +1055,16 @@
             }
           },
           "features": [],
-          "url": "https://ekr.zendesk.com/compose_product/web_widget/dc31066d32002ac5a5471ee9f5751ef0e0dcd4f7?features%5B%5D",
+          "url": "https://ekr.zendesk.com/compose_product/web_widget/631176d00d027e12629da4d451b65375c93ee007?features%5B%5D",
           "assets": {
             "scripts": [
               {
-                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-dc31066.js"
+                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-631176d.js"
               }
             ]
           }
         }
       ]
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/ab826c9b-9903-45b2-a1c0-f092c4790f57.json",
-    "json": {
-      "id": "ab826c9b-9903-45b2-a1c0-f092c4790f57",
-      "timestamp": 1783515580898,
-      "prerendered": []
     }
   },
   {
@@ -1088,6 +1080,14 @@
           "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
         }
       }
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/ab826c9b-9903-45b2-a1c0-f092c4790f57.json",
+    "json": {
+      "id": "ab826c9b-9903-45b2-a1c0-f092c4790f57",
+      "timestamp": 1783515580898,
+      "prerendered": []
     }
   },
   {
@@ -2647,9 +2647,9 @@
                 {
                   "id": 391,
                   "name": "Intern venteliste",
-                  "subscribers": 23,
+                  "subscribers": 24,
                   "passive_subscribers": 1,
-                  "active_subscribers": 22
+                  "active_subscribers": 23
                 },
                 {
                   "id": 392,
