@@ -981,6 +981,58 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
+    "json": {
+      "prefix": "lucide",
+      "lastModified": 1783920389,
+      "aliases": {},
+      "width": 24,
+      "height": 24,
+      "icons": {
+        "loader-circle": {
+          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
+        }
+      }
+    }
+  },
+  {
+    "url": "https://app.waitly.dk/api/login",
+    "json": {
+      "message": "loginEmailIsRequired (and 1 more error)",
+      "errors": {
+        "email": [
+          "loginEmailIsRequired"
+        ],
+        "password": [
+          "loginPasswordIsRequired"
+        ]
+      }
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=exclamation-mark-fill",
+    "json": {
+      "prefix": "ph",
+      "lastModified": 1714973607,
+      "aliases": {},
+      "width": 256,
+      "height": 256,
+      "icons": {
+        "exclamation-mark-fill": {
+          "body": "<path fill=\"currentColor\" d=\"M200 24H56a16 16 0 0 0-16 16v176a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16V40a16 16 0 0 0-16-16m-72 136a12 12 0 1 1-12 12a12 12 0 0 1 12-12m-8-24V80a8 8 0 0 1 16 0v56a8 8 0 0 1-16 0\"/>"
+        }
+      }
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/ab826c9b-9903-45b2-a1c0-f092c4790f57.json",
+    "json": {
+      "id": "ab826c9b-9903-45b2-a1c0-f092c4790f57",
+      "timestamp": 1783515580898,
+      "prerendered": []
+    }
+  },
+  {
     "url": "https://ekr.zdassets.com/compose/53e3e1db-9757-4f59-836a-5e768bacfa1a",
     "json": {
       "products": [
@@ -1055,31 +1107,16 @@
             }
           },
           "features": [],
-          "url": "https://ekr.zendesk.com/compose_product/web_widget/6328530d6b0eb12d151895eda8ce5152ad787e9d?features%5B%5D",
+          "url": "https://ekr.zendesk.com/compose_product/web_widget/1b869ffa0e9884b2eeba8697012cdc7e9103329f?features%5B%5D",
           "assets": {
             "scripts": [
               {
-                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-6328530.js"
+                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-1b869ff.js"
               }
             ]
           }
         }
       ]
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
-    "json": {
-      "prefix": "lucide",
-      "lastModified": 1783920389,
-      "aliases": {},
-      "width": 24,
-      "height": 24,
-      "icons": {
-        "loader-circle": {
-          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
-        }
-      }
     }
   },
   {
@@ -1147,43 +1184,6 @@
         "endSessionEnabled": false,
         "reopenConversationDisabled": false,
         "multiConvoEnabled": false
-      }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/ab826c9b-9903-45b2-a1c0-f092c4790f57.json",
-    "json": {
-      "id": "ab826c9b-9903-45b2-a1c0-f092c4790f57",
-      "timestamp": 1783515580898,
-      "prerendered": []
-    }
-  },
-  {
-    "url": "https://app.waitly.dk/api/login",
-    "json": {
-      "message": "loginEmailIsRequired (and 1 more error)",
-      "errors": {
-        "email": [
-          "loginEmailIsRequired"
-        ],
-        "password": [
-          "loginPasswordIsRequired"
-        ]
-      }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=exclamation-mark-fill",
-    "json": {
-      "prefix": "ph",
-      "lastModified": 1714973607,
-      "aliases": {},
-      "width": 256,
-      "height": 256,
-      "icons": {
-        "exclamation-mark-fill": {
-          "body": "<path fill=\"currentColor\" d=\"M200 24H56a16 16 0 0 0-16 16v176a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16V40a16 16 0 0 0-16-16m-72 136a12 12 0 1 1-12 12a12 12 0 0 1 12-12m-8-24V80a8 8 0 0 1 16 0v56a8 8 0 0 1-16 0\"/>"
-        }
       }
     }
   },
