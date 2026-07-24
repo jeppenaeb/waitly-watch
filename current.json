@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-23T08:45:52+00:00",
+  "updated_at": "2026-07-24T08:44:42+00:00",
   "queues": [
     {
       "id": "1853",
@@ -36,24 +36,24 @@
     {
       "id": "392",
       "name": "A/B Baghuset - Ekstern venteliste",
-      "position": 304,
-      "total": 316,
+      "position": 303,
+      "total": 315,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 332,
-      "moved": 28,
-      "moved_pct": 8.43,
+      "moved": 29,
+      "moved_pct": 8.73,
       "progress": {
-        "week": 0,
-        "month": 2
+        "week": 1,
+        "month": 3
       }
     },
     {
       "id": "41",
       "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
       "position": 612,
-      "total": 798,
+      "total": 799,
       "active": false,
       "completed": true,
       "approved": true,
@@ -69,7 +69,7 @@
       "id": "294",
       "name": "A/B Positiv - Ekstern venteliste",
       "position": 723,
-      "total": 797,
+      "total": 798,
       "active": false,
       "completed": true,
       "approved": true,
@@ -99,7 +99,7 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-07-23T08:44:59+00:00",
+    "updated_at": "2026-07-24T08:43:48+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": false,
     "total_urls": 296,
