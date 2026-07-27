@@ -1071,21 +1071,6 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
-    "json": {
-      "prefix": "lucide",
-      "lastModified": 1784868735,
-      "aliases": {},
-      "width": 24,
-      "height": 24,
-      "icons": {
-        "loader-circle": {
-          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
-        }
-      }
-    }
-  },
-  {
     "url": "https://my.waitly.dk/_nuxt/builds/meta/2eb9e8bc-4b7e-45d3-b5da-86c6a2513d14.json",
     "json": {
       "id": "2eb9e8bc-4b7e-45d3-b5da-86c6a2513d14",
@@ -1161,6 +1146,21 @@
         "multiConvoEnabled": false,
         "ticketSubmissionForm": {
           "enabled": false
+        }
+      }
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
+    "json": {
+      "prefix": "lucide",
+      "lastModified": 1784868735,
+      "aliases": {},
+      "width": 24,
+      "height": 24,
+      "icons": {
+        "loader-circle": {
+          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
         }
       }
     }
@@ -2332,8 +2332,8 @@
                   "id": 1853,
                   "name": "Ekstern venteliste",
                   "subscribers": 508,
-                  "passive_subscribers": 51,
-                  "active_subscribers": 457
+                  "passive_subscribers": 50,
+                  "active_subscribers": 458
                 }
               ]
             },
@@ -2653,9 +2653,9 @@
                 {
                   "id": 391,
                   "name": "Intern venteliste",
-                  "subscribers": 24,
+                  "subscribers": 25,
                   "passive_subscribers": 1,
-                  "active_subscribers": 23
+                  "active_subscribers": 24
                 },
                 {
                   "id": 392,
@@ -2806,7 +2806,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 612,
+          "placement": 611,
           "application": null,
           "created_at": "2026-01-02T21:08:33.000000Z",
           "end_date": null,
@@ -2814,7 +2814,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 801,
+            "subscribers": 802,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2828,9 +2828,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 801,
+                  "subscribers": 802,
                   "passive_subscribers": 65,
-                  "active_subscribers": 736
+                  "active_subscribers": 737
                 }
               ]
             },
@@ -2982,7 +2982,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 801,
+            "subscribers": 802,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -2996,9 +2996,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 801,
+                  "subscribers": 802,
                   "passive_subscribers": 45,
-                  "active_subscribers": 756
+                  "active_subscribers": 757
                 }
               ]
             },
