@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-01T08:35:24+00:00",
+  "updated_at": "2026-08-02T08:38:21+00:00",
   "queues": [
     {
       "id": "1853",
@@ -20,17 +20,17 @@
     {
       "id": "1737",
       "name": "A/B Buddingevej - Ekstern venteliste",
-      "position": 44,
-      "total": 60,
+      "position": 43,
+      "total": 59,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 53,
-      "moved": 9,
-      "moved_pct": 16.98,
+      "moved": 10,
+      "moved_pct": 18.87,
       "progress": {
-        "week": 0,
-        "month": 2
+        "week": 1,
+        "month": 3
       }
     },
     {
@@ -84,22 +84,22 @@
     {
       "id": "966",
       "name": "A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste",
-      "position": 237,
-      "total": 250,
+      "position": 236,
+      "total": 249,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 249,
-      "moved": 12,
-      "moved_pct": 4.82,
+      "moved": 13,
+      "moved_pct": 5.22,
       "progress": {
-        "week": 0,
-        "month": 0
+        "week": 1,
+        "month": 1
       }
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-08-01T08:34:31+00:00",
+    "updated_at": "2026-08-02T08:37:28+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": true,
     "total_urls": 0,

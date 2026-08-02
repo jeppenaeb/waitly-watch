@@ -1090,6 +1090,29 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/a53ee0df-4cf9-401d-b2c6-77096697e490.json",
+    "json": {
+      "id": "a53ee0df-4cf9-401d-b2c6-77096697e490",
+      "timestamp": 1785422271876,
+      "prerendered": []
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
+    "json": {
+      "prefix": "lucide",
+      "lastModified": 1785042701,
+      "aliases": {},
+      "width": 24,
+      "height": 24,
+      "icons": {
+        "loader-circle": {
+          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
+        }
+      }
+    }
+  },
+  {
     "url": "https://waitly.zendesk.com/embeddable/config",
     "json": {
       "features": {
@@ -1157,29 +1180,6 @@
         "multiConvoEnabled": false,
         "ticketSubmissionForm": {
           "enabled": false
-        }
-      }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/a53ee0df-4cf9-401d-b2c6-77096697e490.json",
-    "json": {
-      "id": "a53ee0df-4cf9-401d-b2c6-77096697e490",
-      "timestamp": 1785422271876,
-      "prerendered": []
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
-    "json": {
-      "prefix": "lucide",
-      "lastModified": 1785042701,
-      "aliases": {},
-      "width": 24,
-      "height": 24,
-      "icons": {
-        "loader-circle": {
-          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
         }
       }
     }
@@ -2497,7 +2497,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 44,
+          "placement": 43,
           "application": null,
           "created_at": "2026-01-02T21:11:18.000000Z",
           "end_date": null,
@@ -2505,16 +2505,16 @@
             "id": 1737,
             "name": "Ekstern venteliste",
             "full_name": "A/B Buddingevej - Ekstern venteliste",
-            "subscribers": 60,
+            "subscribers": 59,
             "template": {
               "company_name": "A/B Buddingevej",
               "lists": [
                 {
                   "id": 1737,
                   "name": "Ekstern venteliste",
-                  "subscribers": 60,
+                  "subscribers": 59,
                   "passive_subscribers": 4,
-                  "active_subscribers": 56
+                  "active_subscribers": 55
                 }
               ]
             },
@@ -3162,7 +3162,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 237,
+          "placement": 236,
           "application": null,
           "created_at": "2026-01-01T19:22:17.000000Z",
           "end_date": null,
@@ -3170,7 +3170,7 @@
             "id": 966,
             "name": "Ekstern venteliste",
             "full_name": "A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste",
-            "subscribers": 250,
+            "subscribers": 249,
             "template": {
               "company_name": "A/B Vesterbrogade 176 / Kochsvej 44-46",
               "lists": [
@@ -3184,9 +3184,9 @@
                 {
                   "id": 966,
                   "name": "Ekstern venteliste",
-                  "subscribers": 250,
+                  "subscribers": 249,
                   "passive_subscribers": 13,
-                  "active_subscribers": 237
+                  "active_subscribers": 236
                 }
               ]
             },
