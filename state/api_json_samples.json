@@ -1015,6 +1015,7 @@
                 "updateSuncoMetadata": true,
                 "multiConvoEnabled": true,
                 "conversationTicketMetadata": true,
+                "sourcesCitied": true,
                 "articleViewer": true,
                 "displayAcWaitTimeCapsule": true,
                 "conversationTranscriptGlobal": true
@@ -1090,14 +1091,6 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/a53ee0df-4cf9-401d-b2c6-77096697e490.json",
-    "json": {
-      "id": "a53ee0df-4cf9-401d-b2c6-77096697e490",
-      "timestamp": 1785422271876,
-      "prerendered": []
-    }
-  },
-  {
     "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
     "json": {
       "prefix": "lucide",
@@ -1113,6 +1106,14 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/a53ee0df-4cf9-401d-b2c6-77096697e490.json",
+    "json": {
+      "id": "a53ee0df-4cf9-401d-b2c6-77096697e490",
+      "timestamp": 1785422271876,
+      "prerendered": []
+    }
+  },
+  {
     "url": "https://waitly.zendesk.com/embeddable/config",
     "json": {
       "features": {
@@ -1121,6 +1122,7 @@
         "multiConvoEnabled": true,
         "internalAnalyticsEnabled": true,
         "updateSuncoMetadata": true,
+        "sourcesCitied": true,
         "endUserConversations": true,
         "conversationTranscript": true,
         "mobileSdkConversationTranscript": true,
@@ -1185,20 +1187,6 @@
     }
   },
   {
-    "url": "https://app.waitly.dk/api/login",
-    "json": {
-      "message": "loginEmailIsRequired (and 1 more error)",
-      "errors": {
-        "email": [
-          "loginEmailIsRequired"
-        ],
-        "password": [
-          "loginPasswordIsRequired"
-        ]
-      }
-    }
-  },
-  {
     "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=eye",
     "json": {
       "prefix": "ph",
@@ -1209,21 +1197,6 @@
       "icons": {
         "eye": {
           "body": "<path fill=\"currentColor\" d=\"M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5M128 192c-30.78 0-57.67-11.19-79.93-33.25A133.5 133.5 0 0 1 25 128a133.3 133.3 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.5 133.5 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64m0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48m0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32\"/>"
-        }
-      }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=exclamation-mark-fill",
-    "json": {
-      "prefix": "ph",
-      "lastModified": 1714973607,
-      "aliases": {},
-      "width": 256,
-      "height": 256,
-      "icons": {
-        "exclamation-mark-fill": {
-          "body": "<path fill=\"currentColor\" d=\"M200 24H56a16 16 0 0 0-16 16v176a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16V40a16 16 0 0 0-16-16m-72 136a12 12 0 1 1-12 12a12 12 0 0 1 12-12m-8-24V80a8 8 0 0 1 16 0v56a8 8 0 0 1-16 0\"/>"
         }
       }
     }
@@ -2255,6 +2228,12 @@
     }
   },
   {
+    "url": "https://app.waitly.dk/api/login",
+    "json": {
+      "message": "Already authenticated."
+    }
+  },
+  {
     "url": "https://graphql.datocms.com/",
     "json": {
       "data": {
@@ -2315,6 +2294,87 @@
     "url": "https://app.waitly.dk/api/v2/consumer/notifications",
     "json": {
       "data": []
+    }
+  },
+  {
+    "url": "https://app.waitly.dk/api/v2/consumer/user",
+    "json": {
+      "data": {
+        "id": 122316,
+        "hashed_id": "769f71168cde2e5956c5d73d29ce14287ce02aad987f001f6c3420c3040b7b1e",
+        "name": "Luna Yoon Kurland",
+        "email": "lunayoonkurland@gmail.com",
+        "address": {
+          "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
+          "full_address": "Bæverstien 5, 2880 Bagsværd",
+          "address_line": "Bæverstien 5",
+          "street": "Bæverstien",
+          "house_number": "5",
+          "floor": null,
+          "door": null,
+          "city": "Bagsværd",
+          "sub_city": null,
+          "zip": "2880",
+          "country": "Danmark",
+          "country_code": "DK",
+          "latitude": 55.75135006,
+          "longitude": 12.46684212
+        },
+        "phone": "´+4561307111",
+        "birthday": "2017-05-04",
+        "avatar": null,
+        "country": {
+          "id": 46,
+          "name": "Denmark",
+          "code": "DK",
+          "market": "Denmark"
+        },
+        "created_at": "2026-01-01T18:32:46.000000Z",
+        "updated_at": "2026-01-01T19:22:18.000000Z",
+        "waitlyplus": false,
+        "waitlyplus_end_date": null,
+        "waitlyplus_id": null,
+        "markets": [
+          {
+            "name": "Denmark",
+            "description": "Denmark",
+            "vat_rate": 25,
+            "currency": "DKK",
+            "support_mail": "support@waitly.dk",
+            "locale": "da"
+          }
+        ],
+        "language": "en",
+        "profile": {
+          "status": "silver",
+          "points": 9,
+          "total": 13,
+          "point_types": {
+            "personal": {
+              "current": 4,
+              "total": 4
+            },
+            "status": {
+              "current": 4,
+              "total": 4
+            },
+            "interests": {
+              "current": 1,
+              "total": 1
+            },
+            "work": {
+              "current": 0,
+              "total": 4
+            },
+            "application": {
+              "current": 0,
+              "total": 4
+            }
+          }
+        },
+        "role": "consumer",
+        "impersonated": false
+      }
     }
   },
   {
@@ -3162,7 +3222,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 236,
+          "placement": 235,
           "application": null,
           "created_at": "2026-01-01T19:22:17.000000Z",
           "end_date": null,
