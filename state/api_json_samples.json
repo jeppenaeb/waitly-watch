@@ -1078,11 +1078,11 @@
             }
           },
           "features": [],
-          "url": "https://ekr.zendesk.com/compose_product/web_widget/b4918943b8439387a7d1cdd48e02f46f156d00d7?features%5B%5D",
+          "url": "https://ekr.zendesk.com/compose_product/web_widget/d1a415e1867ddec921bfdae0cb7e3295415fb03c?features%5B%5D",
           "assets": {
             "scripts": [
               {
-                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-b491894.js"
+                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-d1a415e.js"
               }
             ]
           }
@@ -1182,6 +1182,35 @@
         "multiConvoEnabled": false,
         "ticketSubmissionForm": {
           "enabled": false
+        }
+      }
+    }
+  },
+  {
+    "url": "https://app.waitly.dk/api/login",
+    "json": {
+      "message": "loginEmailIsRequired (and 1 more error)",
+      "errors": {
+        "email": [
+          "loginEmailIsRequired"
+        ],
+        "password": [
+          "loginPasswordIsRequired"
+        ]
+      }
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=exclamation-mark-fill",
+    "json": {
+      "prefix": "ph",
+      "lastModified": 1714973607,
+      "aliases": {},
+      "width": 256,
+      "height": 256,
+      "icons": {
+        "exclamation-mark-fill": {
+          "body": "<path fill=\"currentColor\" d=\"M200 24H56a16 16 0 0 0-16 16v176a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16V40a16 16 0 0 0-16-16m-72 136a12 12 0 1 1-12 12a12 12 0 0 1 12-12m-8-24V80a8 8 0 0 1 16 0v56a8 8 0 0 1-16 0\"/>"
         }
       }
     }
@@ -2228,12 +2257,6 @@
     }
   },
   {
-    "url": "https://app.waitly.dk/api/login",
-    "json": {
-      "message": "Already authenticated."
-    }
-  },
-  {
     "url": "https://graphql.datocms.com/",
     "json": {
       "data": {
@@ -2297,87 +2320,6 @@
     }
   },
   {
-    "url": "https://app.waitly.dk/api/v2/consumer/user",
-    "json": {
-      "data": {
-        "id": 122316,
-        "hashed_id": "769f71168cde2e5956c5d73d29ce14287ce02aad987f001f6c3420c3040b7b1e",
-        "name": "Luna Yoon Kurland",
-        "email": "lunayoonkurland@gmail.com",
-        "address": {
-          "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
-          "full_address": "Bæverstien 5, 2880 Bagsværd",
-          "address_line": "Bæverstien 5",
-          "street": "Bæverstien",
-          "house_number": "5",
-          "floor": null,
-          "door": null,
-          "city": "Bagsværd",
-          "sub_city": null,
-          "zip": "2880",
-          "country": "Danmark",
-          "country_code": "DK",
-          "latitude": 55.75135006,
-          "longitude": 12.46684212
-        },
-        "phone": "´+4561307111",
-        "birthday": "2017-05-04",
-        "avatar": null,
-        "country": {
-          "id": 46,
-          "name": "Denmark",
-          "code": "DK",
-          "market": "Denmark"
-        },
-        "created_at": "2026-01-01T18:32:46.000000Z",
-        "updated_at": "2026-01-01T19:22:18.000000Z",
-        "waitlyplus": false,
-        "waitlyplus_end_date": null,
-        "waitlyplus_id": null,
-        "markets": [
-          {
-            "name": "Denmark",
-            "description": "Denmark",
-            "vat_rate": 25,
-            "currency": "DKK",
-            "support_mail": "support@waitly.dk",
-            "locale": "da"
-          }
-        ],
-        "language": "en",
-        "profile": {
-          "status": "silver",
-          "points": 9,
-          "total": 13,
-          "point_types": {
-            "personal": {
-              "current": 4,
-              "total": 4
-            },
-            "status": {
-              "current": 4,
-              "total": 4
-            },
-            "interests": {
-              "current": 1,
-              "total": 1
-            },
-            "work": {
-              "current": 0,
-              "total": 4
-            },
-            "application": {
-              "current": 0,
-              "total": 4
-            }
-          }
-        },
-        "role": "consumer",
-        "impersonated": false
-      }
-    }
-  },
-  {
     "url": "https://app.waitly.dk/api/v2/consumer/users/122316/subscriptions",
     "json": {
       "data": [
@@ -2389,7 +2331,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 384,
+          "placement": 383,
           "application": null,
           "created_at": "2026-01-02T21:12:27.000000Z",
           "end_date": null,
@@ -2886,7 +2828,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 611,
+          "placement": 610,
           "application": null,
           "created_at": "2026-01-02T21:08:33.000000Z",
           "end_date": null,
@@ -2894,7 +2836,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 812,
+            "subscribers": 811,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2908,9 +2850,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 812,
+                  "subscribers": 811,
                   "passive_subscribers": 64,
-                  "active_subscribers": 748
+                  "active_subscribers": 747
                 }
               ]
             },
@@ -3062,7 +3004,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 805,
+            "subscribers": 806,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -3076,9 +3018,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 805,
+                  "subscribers": 806,
                   "passive_subscribers": 46,
-                  "active_subscribers": 759
+                  "active_subscribers": 760
                 }
               ]
             },
