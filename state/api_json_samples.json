@@ -999,6 +999,14 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/a53ee0df-4cf9-401d-b2c6-77096697e490.json",
+    "json": {
+      "id": "a53ee0df-4cf9-401d-b2c6-77096697e490",
+      "timestamp": 1785422271876,
+      "prerendered": []
+    }
+  },
+  {
     "url": "https://ekr.zdassets.com/compose/53e3e1db-9757-4f59-836a-5e768bacfa1a",
     "json": {
       "products": [
@@ -1092,14 +1100,6 @@
           }
         }
       ]
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/a53ee0df-4cf9-401d-b2c6-77096697e490.json",
-    "json": {
-      "id": "a53ee0df-4cf9-401d-b2c6-77096697e490",
-      "timestamp": 1785422271876,
-      "prerendered": []
     }
   },
   {
@@ -3012,7 +3012,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 806,
+            "subscribers": 807,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -3026,9 +3026,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 806,
+                  "subscribers": 807,
                   "passive_subscribers": 47,
-                  "active_subscribers": 759
+                  "active_subscribers": 760
                 }
               ]
             },
