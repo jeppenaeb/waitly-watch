@@ -999,14 +999,6 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/a53ee0df-4cf9-401d-b2c6-77096697e490.json",
-    "json": {
-      "id": "a53ee0df-4cf9-401d-b2c6-77096697e490",
-      "timestamp": 1785422271876,
-      "prerendered": []
-    }
-  },
-  {
     "url": "https://ekr.zdassets.com/compose/53e3e1db-9757-4f59-836a-5e768bacfa1a",
     "json": {
       "products": [
@@ -1100,6 +1092,14 @@
           }
         }
       ]
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/a53ee0df-4cf9-401d-b2c6-77096697e490.json",
+    "json": {
+      "id": "a53ee0df-4cf9-401d-b2c6-77096697e490",
+      "timestamp": 1785422271876,
+      "prerendered": []
     }
   },
   {
@@ -2362,8 +2362,8 @@
                   "id": 1853,
                   "name": "Ekstern venteliste",
                   "subscribers": 510,
-                  "passive_subscribers": 50,
-                  "active_subscribers": 460
+                  "passive_subscribers": 51,
+                  "active_subscribers": 459
                 }
               ]
             },
@@ -2836,7 +2836,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 606,
+          "placement": 604,
           "application": null,
           "created_at": "2026-01-02T21:08:33.000000Z",
           "end_date": null,
