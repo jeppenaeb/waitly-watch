@@ -3004,7 +3004,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 718,
+          "placement": 717,
           "application": null,
           "created_at": "2026-01-02T21:07:26.000000Z",
           "end_date": null,
@@ -3012,7 +3012,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 805,
+            "subscribers": 806,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -3026,9 +3026,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 805,
+                  "subscribers": 806,
                   "passive_subscribers": 47,
-                  "active_subscribers": 758
+                  "active_subscribers": 759
                 }
               ]
             },
