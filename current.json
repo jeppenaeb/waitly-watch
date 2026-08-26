@@ -1,20 +1,20 @@
 {
-  "updated_at": "2026-08-25T07:10:37+00:00",
+  "updated_at": "2026-08-26T07:11:02+00:00",
   "queues": [
     {
       "id": "1853",
       "name": "A/B Amagervold - Ekstern venteliste",
-      "position": 382,
-      "total": 511,
+      "position": 381,
+      "total": 510,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 431,
-      "moved": 49,
-      "moved_pct": 11.37,
+      "moved": 50,
+      "moved_pct": 11.6,
       "progress": {
-        "week": 0,
-        "month": 3
+        "week": 1,
+        "month": 4
       }
     },
     {
@@ -52,33 +52,33 @@
     {
       "id": "41",
       "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-      "position": 603,
-      "total": 825,
+      "position": 601,
+      "total": 824,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 655,
-      "moved": 52,
-      "moved_pct": 7.94,
+      "moved": 54,
+      "moved_pct": 8.24,
       "progress": {
-        "week": 1,
-        "month": 9
+        "week": 3,
+        "month": 11
       }
     },
     {
       "id": "294",
       "name": "A/B Positiv - Ekstern venteliste",
-      "position": 716,
+      "position": 715,
       "total": 805,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 771,
-      "moved": 55,
-      "moved_pct": 7.13,
+      "moved": 56,
+      "moved_pct": 7.26,
       "progress": {
-        "week": 4,
-        "month": 7
+        "week": 5,
+        "month": 8
       }
     },
     {
@@ -99,7 +99,7 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-08-25T07:09:43+00:00",
+    "updated_at": "2026-08-26T07:10:08+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": true,
     "total_urls": 0,

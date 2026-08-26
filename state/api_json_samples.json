@@ -1082,11 +1082,11 @@
             }
           },
           "features": [],
-          "url": "https://ekr.zendesk.com/compose_product/web_widget/ba169b187c4178b0bd548b773e4867f1b842dfa2?features%5B%5D",
+          "url": "https://ekr.zendesk.com/compose_product/web_widget/085e886261f0d12023628909f07df30b795b5d7b?features%5B%5D",
           "assets": {
             "scripts": [
               {
-                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-ba169b1.js"
+                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-085e886.js"
               }
             ]
           }
@@ -1095,18 +1095,10 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/a53ee0df-4cf9-401d-b2c6-77096697e490.json",
-    "json": {
-      "id": "a53ee0df-4cf9-401d-b2c6-77096697e490",
-      "timestamp": 1785422271876,
-      "prerendered": []
-    }
-  },
-  {
     "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
     "json": {
       "prefix": "lucide",
-      "lastModified": 1787067480,
+      "lastModified": 1787576027,
       "aliases": {},
       "width": 24,
       "height": 24,
@@ -1115,6 +1107,14 @@
           "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
         }
       }
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/a53ee0df-4cf9-401d-b2c6-77096697e490.json",
+    "json": {
+      "id": "a53ee0df-4cf9-401d-b2c6-77096697e490",
+      "timestamp": 1785422271876,
+      "prerendered": []
     }
   },
   {
@@ -1195,20 +1195,6 @@
     }
   },
   {
-    "url": "https://app.waitly.dk/api/login",
-    "json": {
-      "message": "loginEmailIsRequired (and 1 more error)",
-      "errors": {
-        "email": [
-          "loginEmailIsRequired"
-        ],
-        "password": [
-          "loginPasswordIsRequired"
-        ]
-      }
-    }
-  },
-  {
     "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=eye",
     "json": {
       "prefix": "ph",
@@ -1220,6 +1206,20 @@
         "eye": {
           "body": "<path fill=\"currentColor\" d=\"M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5M128 192c-30.78 0-57.67-11.19-79.93-33.25A133.5 133.5 0 0 1 25 128a133.3 133.3 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.5 133.5 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64m0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48m0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32\"/>"
         }
+      }
+    }
+  },
+  {
+    "url": "https://app.waitly.dk/api/login",
+    "json": {
+      "message": "loginEmailIsRequired (and 1 more error)",
+      "errors": {
+        "email": [
+          "loginEmailIsRequired"
+        ],
+        "password": [
+          "loginPasswordIsRequired"
+        ]
       }
     }
   },
@@ -2265,27 +2265,6 @@
     }
   },
   {
-    "url": "https://graphql.datocms.com/",
-    "json": {
-      "data": {
-        "allInitialModals": [
-          {
-            "slug": "welcome-to-waitly",
-            "title": "Welcome to Waitly! 🎉",
-            "body": "<p>Please take a moment to <strong>update your User Profile</strong> with accurate and up-to-date information about you and your housing needs. This helps us match you with apartments.<br><br></p>\n<p>We also encourage you to <strong>upload relevant documents,</strong> such as your SCHUFA, to your application folder. Having these ready in your profile will help the process when an apartment become available. 🏡</p>",
-            "ctaText": "Go to Application folder",
-            "ctaUrl": "https://my.waitly.dk/profile?tab=application",
-            "checkboxLabel": "Don't show this again",
-            "trigger": "initial_visit",
-            "targetMarkets": [
-              "Germany"
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
     "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=bell%2Cbook-open%2Ccredit-card%2Cgraduation-cap%2Clist-bold%2Crocket-launch%2Cstar%2Cuser-circle",
     "json": {
       "prefix": "ph",
@@ -2322,6 +2301,27 @@
     }
   },
   {
+    "url": "https://graphql.datocms.com/",
+    "json": {
+      "data": {
+        "allInitialModals": [
+          {
+            "slug": "welcome-to-waitly",
+            "title": "Welcome to Waitly! 🎉",
+            "body": "<p>Please take a moment to <strong>update your User Profile</strong> with accurate and up-to-date information about you and your housing needs. This helps us match you with apartments.<br><br></p>\n<p>We also encourage you to <strong>upload relevant documents,</strong> such as your SCHUFA, to your application folder. Having these ready in your profile will help the process when an apartment become available. 🏡</p>",
+            "ctaText": "Go to Application folder",
+            "ctaUrl": "https://my.waitly.dk/profile?tab=application",
+            "checkboxLabel": "Don't show this again",
+            "trigger": "initial_visit",
+            "targetMarkets": [
+              "Germany"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "url": "https://app.waitly.dk/api/v2/consumer/notifications",
     "json": {
       "data": []
@@ -2339,7 +2339,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 382,
+          "placement": 381,
           "application": null,
           "created_at": "2026-01-02T21:12:27.000000Z",
           "end_date": null,
@@ -2347,7 +2347,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 511,
+            "subscribers": 510,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -2361,9 +2361,9 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 511,
+                  "subscribers": 510,
                   "passive_subscribers": 52,
-                  "active_subscribers": 459
+                  "active_subscribers": 458
                 }
               ]
             },
@@ -2836,7 +2836,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 603,
+          "placement": 601,
           "application": null,
           "created_at": "2026-01-02T21:08:33.000000Z",
           "end_date": null,
@@ -2844,7 +2844,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 825,
+            "subscribers": 824,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2858,9 +2858,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 825,
+                  "subscribers": 824,
                   "passive_subscribers": 65,
-                  "active_subscribers": 760
+                  "active_subscribers": 759
                 }
               ]
             },
@@ -3004,7 +3004,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 716,
+          "placement": 715,
           "application": null,
           "created_at": "2026-01-02T21:07:26.000000Z",
           "end_date": null,
@@ -3195,8 +3195,8 @@
                   "id": 966,
                   "name": "Ekstern venteliste",
                   "subscribers": 250,
-                  "passive_subscribers": 14,
-                  "active_subscribers": 236
+                  "passive_subscribers": 15,
+                  "active_subscribers": 235
                 }
               ]
             },
