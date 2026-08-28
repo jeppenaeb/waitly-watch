@@ -2838,7 +2838,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 824,
+            "subscribers": 825,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2852,9 +2852,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 824,
+                  "subscribers": 825,
                   "passive_subscribers": 65,
-                  "active_subscribers": 759
+                  "active_subscribers": 760
                 }
               ]
             },
