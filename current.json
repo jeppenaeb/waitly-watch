@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-29T12:43:28+00:00",
+  "updated_at": "2026-08-30T11:58:17+00:00",
   "queues": [
     {
       "id": "1853",
@@ -77,7 +77,7 @@
       "moved": 57,
       "moved_pct": 7.39,
       "progress": {
-        "week": 4,
+        "week": 3,
         "month": 9
       }
     },
@@ -99,7 +99,7 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-08-29T12:42:35+00:00",
+    "updated_at": "2026-08-30T11:57:23+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": true,
     "total_urls": 0,
