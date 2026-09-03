@@ -1027,6 +1027,14 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/d62fc931-336a-4ca2-b76e-f7bad5c022b4.json",
+    "json": {
+      "id": "d62fc931-336a-4ca2-b76e-f7bad5c022b4",
+      "timestamp": 1788156640979,
+      "prerendered": []
+    }
+  },
+  {
     "url": "https://ekr.zdassets.com/compose/53e3e1db-9757-4f59-836a-5e768bacfa1a",
     "json": {
       "products": [
@@ -1107,11 +1115,11 @@
             }
           },
           "features": [],
-          "url": "https://ekr.zendesk.com/compose_product/web_widget/0da26095c26c43ca3fd757d89777c986c0ba52a4?features%5B%5D",
+          "url": "https://ekr.zendesk.com/compose_product/web_widget/b3ae9d4b804a90ae9eb3784adf335b97bbcc7203?features%5B%5D",
           "assets": {
             "scripts": [
               {
-                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-0da2609.js"
+                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-b3ae9d4.js"
               }
             ]
           }
@@ -1132,14 +1140,6 @@
           "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
         }
       }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/d62fc931-336a-4ca2-b76e-f7bad5c022b4.json",
-    "json": {
-      "id": "d62fc931-336a-4ca2-b76e-f7bad5c022b4",
-      "timestamp": 1788156640979,
-      "prerendered": []
     }
   },
   {
@@ -3062,7 +3062,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 804,
+            "subscribers": 805,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -3076,9 +3076,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 804,
+                  "subscribers": 805,
                   "passive_subscribers": 46,
-                  "active_subscribers": 758
+                  "active_subscribers": 759
                 }
               ]
             },
@@ -3222,7 +3222,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 234,
+          "placement": 233,
           "application": null,
           "created_at": "2026-01-01T19:22:17.000000Z",
           "end_date": null,
@@ -3245,8 +3245,8 @@
                   "id": 966,
                   "name": "Ekstern venteliste",
                   "subscribers": 250,
-                  "passive_subscribers": 15,
-                  "active_subscribers": 235
+                  "passive_subscribers": 14,
+                  "active_subscribers": 236
                 }
               ]
             },
