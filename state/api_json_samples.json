@@ -1027,29 +1027,6 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
-    "json": {
-      "prefix": "lucide",
-      "lastModified": 1787982846,
-      "aliases": {},
-      "width": 24,
-      "height": 24,
-      "icons": {
-        "loader-circle": {
-          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
-        }
-      }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/d62fc931-336a-4ca2-b76e-f7bad5c022b4.json",
-    "json": {
-      "id": "d62fc931-336a-4ca2-b76e-f7bad5c022b4",
-      "timestamp": 1788156640979,
-      "prerendered": []
-    }
-  },
-  {
     "url": "https://ekr.zdassets.com/compose/53e3e1db-9757-4f59-836a-5e768bacfa1a",
     "json": {
       "products": [
@@ -1145,6 +1122,21 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
+    "json": {
+      "prefix": "lucide",
+      "lastModified": 1787982846,
+      "aliases": {},
+      "width": 24,
+      "height": 24,
+      "icons": {
+        "loader-circle": {
+          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
+        }
+      }
+    }
+  },
+  {
     "url": "https://waitly.zendesk.com/embeddable/config",
     "json": {
       "features": {
@@ -1218,6 +1210,14 @@
         "brandFilteringEnabled": false,
         "brandId": 360000631640
       }
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/d62fc931-336a-4ca2-b76e-f7bad5c022b4.json",
+    "json": {
+      "id": "d62fc931-336a-4ca2-b76e-f7bad5c022b4",
+      "timestamp": 1788156640979,
+      "prerendered": []
     }
   },
   {
@@ -2319,6 +2319,27 @@
     }
   },
   {
+    "url": "https://graphql.datocms.com/",
+    "json": {
+      "data": {
+        "allInitialModals": [
+          {
+            "slug": "welcome-to-waitly",
+            "title": "Welcome to Waitly! 🎉",
+            "body": "<p>Please take a moment to <strong>update your User Profile</strong> with accurate and up-to-date information about you and your housing needs. This helps us match you with apartments.<br><br></p>\n<p>We also encourage you to <strong>upload relevant documents,</strong> such as your SCHUFA, to your application folder. Having these ready in your profile will help the process when an apartment become available. 🏡</p>",
+            "ctaText": "Go to Application folder",
+            "ctaUrl": "https://my.waitly.dk/profile?tab=application",
+            "checkboxLabel": "Don't show this again",
+            "trigger": "initial_visit",
+            "targetMarkets": [
+              "Germany"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=bell%2Cbook-open%2Ccredit-card%2Cgraduation-cap%2Clist-bold%2Crocket-launch%2Cstar%2Cuser-circle",
     "json": {
       "prefix": "ph",
@@ -2351,27 +2372,6 @@
         "user-circle": {
           "body": "<path fill=\"currentColor\" d=\"M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24M74.08 197.5a64 64 0 0 1 107.84 0a87.83 87.83 0 0 1-107.84 0M96 120a32 32 0 1 1 32 32a32 32 0 0 1-32-32m97.76 66.41a79.66 79.66 0 0 0-36.06-28.75a48 48 0 1 0-59.4 0a79.66 79.66 0 0 0-36.06 28.75a88 88 0 1 1 131.52 0\"/>"
         }
-      }
-    }
-  },
-  {
-    "url": "https://graphql.datocms.com/",
-    "json": {
-      "data": {
-        "allInitialModals": [
-          {
-            "slug": "welcome-to-waitly",
-            "title": "Welcome to Waitly! 🎉",
-            "body": "<p>Please take a moment to <strong>update your User Profile</strong> with accurate and up-to-date information about you and your housing needs. This helps us match you with apartments.<br><br></p>\n<p>We also encourage you to <strong>upload relevant documents,</strong> such as your SCHUFA, to your application folder. Having these ready in your profile will help the process when an apartment become available. 🏡</p>",
-            "ctaText": "Go to Application folder",
-            "ctaUrl": "https://my.waitly.dk/profile?tab=application",
-            "checkboxLabel": "Don't show this again",
-            "trigger": "initial_visit",
-            "targetMarkets": [
-              "Germany"
-            ]
-          }
-        ]
       }
     }
   },
