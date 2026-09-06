@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-05T10:39:52+00:00",
+  "updated_at": "2026-09-06T11:01:53+00:00",
   "queues": [
     {
       "id": "1853",
@@ -36,16 +36,16 @@
     {
       "id": "392",
       "name": "A/B Baghuset - Ekstern venteliste",
-      "position": 299,
-      "total": 311,
+      "position": 298,
+      "total": 310,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 332,
-      "moved": 33,
-      "moved_pct": 9.94,
+      "moved": 34,
+      "moved_pct": 10.24,
       "progress": {
-        "week": 1,
+        "week": 2,
         "month": 3
       }
     },
@@ -62,7 +62,7 @@
       "moved_pct": 8.7,
       "progress": {
         "week": 3,
-        "month": 12
+        "month": 11
       }
     },
     {
@@ -99,7 +99,7 @@
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-09-05T10:38:58+00:00",
+    "updated_at": "2026-09-06T11:01:00+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": true,
     "total_urls": 0,
