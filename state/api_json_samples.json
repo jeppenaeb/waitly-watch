@@ -1038,16 +1038,18 @@
               "features": {
                 "endUserConversations": true,
                 "internalAnalyticsEnabled": true,
-                "updateSuncoMetadata": true,
                 "multiConvoEnabled": true,
                 "webviewContextApiEnabled": true,
+                "articleViewer": true,
+                "brandFiltering": true,
+                "displayAcWaitTimeCapsule": true,
+                "messageStreamingEnabled": true,
+                "updateSuncoMetadata": true,
                 "handshakeProtocolEnabled": true,
                 "conversationTicketMetadata": true,
                 "sourcesCitied": true,
-                "articleViewer": true,
                 "brandIsolation": true,
-                "brandFiltering": true,
-                "displayAcWaitTimeCapsule": true
+                "animationStreaming": true
               },
               "messenger": {
                 "reopenConversationDisabled": false,
@@ -1130,6 +1132,21 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
+    "json": {
+      "prefix": "lucide",
+      "lastModified": 1788365957,
+      "aliases": {},
+      "width": 24,
+      "height": 24,
+      "icons": {
+        "loader-circle": {
+          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
+        }
+      }
+    }
+  },
+  {
     "url": "https://waitly.zendesk.com/embeddable/config",
     "json": {
       "features": {
@@ -1141,8 +1158,10 @@
         "sourcesCitied": true,
         "endUserConversations": true,
         "articleViewer": true,
+        "messageStreamingEnabled": true,
         "brandIsolation": true,
         "brandFiltering": true,
+        "animationStreaming": true,
         "webviewContextApiEnabled": true,
         "handshakeProtocolEnabled": true
       },
@@ -1202,21 +1221,6 @@
         },
         "brandFilteringEnabled": false,
         "brandId": 360000631640
-      }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
-    "json": {
-      "prefix": "lucide",
-      "lastModified": 1787982846,
-      "aliases": {},
-      "width": 24,
-      "height": 24,
-      "icons": {
-        "loader-circle": {
-          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
-        }
       }
     }
   },
@@ -2401,7 +2405,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 512,
+            "subscribers": 514,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -2415,8 +2419,8 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 512,
-                  "passive_subscribers": 52,
+                  "subscribers": 514,
+                  "passive_subscribers": 54,
                   "active_subscribers": 460
                 }
               ]
@@ -2890,7 +2894,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 598,
+          "placement": 596,
           "application": null,
           "created_at": "2026-01-02T21:08:33.000000Z",
           "end_date": null,
@@ -2898,7 +2902,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 830,
+            "subscribers": 828,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2912,9 +2916,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 830,
-                  "passive_subscribers": 66,
-                  "active_subscribers": 764
+                  "subscribers": 828,
+                  "passive_subscribers": 65,
+                  "active_subscribers": 763
                 }
               ]
             },
