@@ -1027,6 +1027,14 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/d62fc931-336a-4ca2-b76e-f7bad5c022b4.json",
+    "json": {
+      "id": "d62fc931-336a-4ca2-b76e-f7bad5c022b4",
+      "timestamp": 1788156640979,
+      "prerendered": []
+    }
+  },
+  {
     "url": "https://ekr.zdassets.com/compose/53e3e1db-9757-4f59-836a-5e768bacfa1a",
     "json": {
       "products": [
@@ -1121,14 +1129,6 @@
           }
         }
       ]
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/d62fc931-336a-4ca2-b76e-f7bad5c022b4.json",
-    "json": {
-      "id": "d62fc931-336a-4ca2-b76e-f7bad5c022b4",
-      "timestamp": 1788156640979,
-      "prerendered": []
     }
   },
   {
@@ -2405,7 +2405,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 514,
+            "subscribers": 516,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -2419,9 +2419,9 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 514,
+                  "subscribers": 516,
                   "passive_subscribers": 54,
-                  "active_subscribers": 460
+                  "active_subscribers": 462
                 }
               ]
             },
@@ -3230,7 +3230,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 233,
+          "placement": 232,
           "application": null,
           "created_at": "2026-01-01T19:22:17.000000Z",
           "end_date": null,
