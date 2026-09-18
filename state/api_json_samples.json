@@ -1038,19 +1038,17 @@
             "config": {
               "features": {
                 "endUserConversations": true,
-                "internalAnalyticsEnabled": true,
-                "multiConvoEnabled": true,
-                "webviewContextApiEnabled": true,
-                "articleViewer": true,
-                "brandFiltering": true,
-                "displayAcWaitTimeCapsule": true,
                 "messageStreamingEnabled": true,
+                "internalAnalyticsEnabled": true,
                 "updateSuncoMetadata": true,
-                "handshakeProtocolEnabled": true,
+                "multiConvoEnabled": true,
                 "conversationTicketMetadata": true,
                 "sourcesCitied": true,
+                "articleViewer": true,
                 "brandIsolation": true,
-                "animationStreaming": true
+                "brandFiltering": true,
+                "animationStreaming": true,
+                "displayAcWaitTimeCapsule": true
               },
               "messenger": {
                 "reopenConversationDisabled": false,
@@ -1112,11 +1110,11 @@
             }
           },
           "features": [],
-          "url": "https://ekr.zendesk.com/compose_product/web_widget/7d884e220aa3272da00609bd935325a469a497d9?features%5B%5D",
+          "url": "https://ekr.zendesk.com/compose_product/web_widget/c5d3cb1ae01ca65e583b80c4b4d6e28d30194d68?features%5B%5D",
           "assets": {
             "scripts": [
               {
-                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-7d884e2.js"
+                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-c5d3cb1.js"
               }
             ]
           }
@@ -1140,6 +1138,14 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/_nuxt/builds/meta/33f35f24-03e2-4ac3-bb20-fd2cdeb5eee4.json",
+    "json": {
+      "id": "33f35f24-03e2-4ac3-bb20-fd2cdeb5eee4",
+      "timestamp": 1789366490645,
+      "prerendered": []
+    }
+  },
+  {
     "url": "https://waitly.zendesk.com/embeddable/config",
     "json": {
       "features": {
@@ -1154,9 +1160,7 @@
         "messageStreamingEnabled": true,
         "brandIsolation": true,
         "brandFiltering": true,
-        "animationStreaming": true,
-        "webviewContextApiEnabled": true,
-        "handshakeProtocolEnabled": true
+        "animationStreaming": true
       },
       "messenger": {
         "integrationId": "67d215397a56b5c64188238e",
@@ -1215,14 +1219,6 @@
         "brandFilteringEnabled": false,
         "brandId": 360000631640
       }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/_nuxt/builds/meta/33f35f24-03e2-4ac3-bb20-fd2cdeb5eee4.json",
-    "json": {
-      "id": "33f35f24-03e2-4ac3-bb20-fd2cdeb5eee4",
-      "timestamp": 1789366490645,
-      "prerendered": []
     }
   },
   {
@@ -2407,7 +2403,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 522,
+            "subscribers": 521,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -2421,9 +2417,9 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 522,
+                  "subscribers": 521,
                   "passive_subscribers": 55,
-                  "active_subscribers": 467
+                  "active_subscribers": 466
                 }
               ]
             },
@@ -2896,7 +2892,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 593,
+          "placement": 591,
           "application": null,
           "created_at": "2026-01-02T21:08:33.000000Z",
           "end_date": null,
@@ -2904,7 +2900,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 835,
+            "subscribers": 834,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2918,9 +2914,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 835,
+                  "subscribers": 834,
                   "passive_subscribers": 67,
-                  "active_subscribers": 768
+                  "active_subscribers": 767
                 }
               ]
             },
@@ -3064,7 +3060,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 711,
+          "placement": 710,
           "application": null,
           "created_at": "2026-01-02T21:07:26.000000Z",
           "end_date": null,
@@ -3232,7 +3228,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 232,
+          "placement": 231,
           "application": null,
           "created_at": "2026-01-01T19:22:17.000000Z",
           "end_date": null,
