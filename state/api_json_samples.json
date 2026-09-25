@@ -1028,6 +1028,21 @@
     }
   },
   {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
+    "json": {
+      "prefix": "lucide",
+      "lastModified": 1789727758,
+      "aliases": {},
+      "width": 24,
+      "height": 24,
+      "icons": {
+        "loader-circle": {
+          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
+        }
+      }
+    }
+  },
+  {
     "url": "https://my.waitly.dk/_nuxt/builds/meta/33f35f24-03e2-4ac3-bb20-fd2cdeb5eee4.json",
     "json": {
       "id": "33f35f24-03e2-4ac3-bb20-fd2cdeb5eee4",
@@ -1117,11 +1132,11 @@
             }
           },
           "features": [],
-          "url": "https://ekr.zendesk.com/compose_product/web_widget/99404f06b4c92ed30831dd005009f7e3172f92e5?features%5B%5D",
+          "url": "https://ekr.zendesk.com/compose_product/web_widget/80f16c928b3aa306bdb8a60f4514ab749293b893?features%5B%5D",
           "assets": {
             "scripts": [
               {
-                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-99404f0.js"
+                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-80f16c9.js"
               }
             ]
           }
@@ -1130,16 +1145,30 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
+    "url": "https://app.waitly.dk/api/login",
     "json": {
-      "prefix": "lucide",
-      "lastModified": 1789727758,
+      "message": "loginEmailIsRequired (and 1 more error)",
+      "errors": {
+        "email": [
+          "loginEmailIsRequired"
+        ],
+        "password": [
+          "loginPasswordIsRequired"
+        ]
+      }
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=exclamation-mark-fill",
+    "json": {
+      "prefix": "ph",
+      "lastModified": 1714973607,
       "aliases": {},
-      "width": 24,
-      "height": 24,
+      "width": 256,
+      "height": 256,
       "icons": {
-        "loader-circle": {
-          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
+        "exclamation-mark-fill": {
+          "body": "<path fill=\"currentColor\" d=\"M200 24H56a16 16 0 0 0-16 16v176a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16V40a16 16 0 0 0-16-16m-72 136a12 12 0 1 1-12 12a12 12 0 0 1 12-12m-8-24V80a8 8 0 0 1 16 0v56a8 8 0 0 1-16 0\"/>"
         }
       }
     }
@@ -1216,35 +1245,6 @@
         },
         "brandFilteringEnabled": false,
         "brandId": 360000631640
-      }
-    }
-  },
-  {
-    "url": "https://app.waitly.dk/api/login",
-    "json": {
-      "message": "loginEmailIsRequired (and 1 more error)",
-      "errors": {
-        "email": [
-          "loginEmailIsRequired"
-        ],
-        "password": [
-          "loginPasswordIsRequired"
-        ]
-      }
-    }
-  },
-  {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/ph.json?icons=exclamation-mark-fill",
-    "json": {
-      "prefix": "ph",
-      "lastModified": 1714973607,
-      "aliases": {},
-      "width": 256,
-      "height": 256,
-      "icons": {
-        "exclamation-mark-fill": {
-          "body": "<path fill=\"currentColor\" d=\"M200 24H56a16 16 0 0 0-16 16v176a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16V40a16 16 0 0 0-16-16m-72 136a12 12 0 1 1-12 12a12 12 0 0 1 12-12m-8-24V80a8 8 0 0 1 16 0v56a8 8 0 0 1-16 0\"/>"
-        }
       }
     }
   },
@@ -2401,7 +2401,7 @@
             "id": 1853,
             "name": "Ekstern venteliste",
             "full_name": "A/B Amagervold - Ekstern venteliste",
-            "subscribers": 520,
+            "subscribers": 521,
             "template": {
               "company_name": "A/B Amagervold",
               "lists": [
@@ -2415,9 +2415,9 @@
                 {
                   "id": 1853,
                   "name": "Ekstern venteliste",
-                  "subscribers": 520,
+                  "subscribers": 521,
                   "passive_subscribers": 54,
-                  "active_subscribers": 466
+                  "active_subscribers": 467
                 }
               ]
             },
@@ -2898,7 +2898,7 @@
             "id": 41,
             "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
             "full_name": "A/B Gl Kongevej 35 A - 37 A - A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-            "subscribers": 838,
+            "subscribers": 840,
             "template": {
               "company_name": "A/B Gl Kongevej 35 A - 37 A",
               "lists": [
@@ -2912,9 +2912,9 @@
                 {
                   "id": 41,
                   "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-                  "subscribers": 838,
+                  "subscribers": 840,
                   "passive_subscribers": 67,
-                  "active_subscribers": 771
+                  "active_subscribers": 773
                 }
               ]
             },
@@ -3058,7 +3058,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 710,
+          "placement": 709,
           "application": null,
           "created_at": "2026-01-02T21:07:26.000000Z",
           "end_date": null,
@@ -3066,7 +3066,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 814,
+            "subscribers": 813,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -3080,9 +3080,9 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 814,
+                  "subscribers": 813,
                   "passive_subscribers": 47,
-                  "active_subscribers": 767
+                  "active_subscribers": 766
                 }
               ]
             },
