@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-28T14:01:44+00:00",
+  "updated_at": "2026-09-29T12:58:20+00:00",
   "queues": [
     {
       "id": "1853",
@@ -29,7 +29,7 @@
       "moved": 12,
       "moved_pct": 22.64,
       "progress": {
-        "week": 1,
+        "week": 0,
         "month": 2
       }
     },
@@ -52,17 +52,17 @@
     {
       "id": "41",
       "name": "A/B Gl Kongevej 35 A - 37 A - Ekstern venteliste",
-      "position": 586,
-      "total": 843,
+      "position": 585,
+      "total": 842,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 655,
-      "moved": 69,
-      "moved_pct": 10.53,
+      "moved": 70,
+      "moved_pct": 10.69,
       "progress": {
         "week": 5,
-        "month": 15
+        "month": 16
       }
     },
     {
@@ -84,22 +84,22 @@
     {
       "id": "966",
       "name": "A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste",
-      "position": 231,
-      "total": 250,
+      "position": 230,
+      "total": 249,
       "active": false,
       "completed": true,
       "approved": true,
       "start_position": 249,
-      "moved": 18,
-      "moved_pct": 7.23,
+      "moved": 19,
+      "moved_pct": 7.63,
       "progress": {
-        "week": 0,
-        "month": 3
+        "week": 1,
+        "month": 4
       }
     }
   ],
   "sitemap_kbh": {
-    "updated_at": "2026-09-28T14:00:51+00:00",
+    "updated_at": "2026-09-29T12:57:26+00:00",
     "source": "https://waitly.eu/da/sitemap",
     "initialized": true,
     "total_urls": 0,
