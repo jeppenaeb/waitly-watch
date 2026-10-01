@@ -1109,16 +1109,31 @@
             }
           },
           "features": [],
-          "url": "https://ekr.zendesk.com/compose_product/web_widget/479f670679d50db7db4be8d3d2847d255e92135e?features%5B%5D",
+          "url": "https://ekr.zendesk.com/compose_product/web_widget/d8f4c5598e786aacab81a9dfbf6190bb101e0fbe?features%5B%5D",
           "assets": {
             "scripts": [
               {
-                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-479f670.js"
+                "src": "https://static.zdassets.com/web_widget/messenger/latest/web-widget-main-d8f4c55.js"
               }
             ]
           }
         }
       ]
+    }
+  },
+  {
+    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
+    "json": {
+      "prefix": "lucide",
+      "lastModified": 1790080172,
+      "aliases": {},
+      "width": 24,
+      "height": 24,
+      "icons": {
+        "loader-circle": {
+          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
+        }
+      }
     }
   },
   {
@@ -1205,17 +1220,16 @@
     }
   },
   {
-    "url": "https://my.waitly.dk/api/_nuxt_icon/lucide.json?icons=loader-circle",
+    "url": "https://app.waitly.dk/api/login",
     "json": {
-      "prefix": "lucide",
-      "lastModified": 1790080172,
-      "aliases": {},
-      "width": 24,
-      "height": 24,
-      "icons": {
-        "loader-circle": {
-          "body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M21 12a9 9 0 1 1-6.219-8.56\"/>"
-        }
+      "message": "loginEmailIsRequired (and 1 more error)",
+      "errors": {
+        "email": [
+          "loginEmailIsRequired"
+        ],
+        "password": [
+          "loginPasswordIsRequired"
+        ]
       }
     }
   },
@@ -1231,20 +1245,6 @@
         "eye": {
           "body": "<path fill=\"currentColor\" d=\"M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5M128 192c-30.78 0-57.67-11.19-79.93-33.25A133.5 133.5 0 0 1 25 128a133.3 133.3 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.5 133.5 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64m0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48m0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32\"/>"
         }
-      }
-    }
-  },
-  {
-    "url": "https://app.waitly.dk/api/login",
-    "json": {
-      "message": "loginEmailIsRequired (and 1 more error)",
-      "errors": {
-        "email": [
-          "loginEmailIsRequired"
-        ],
-        "password": [
-          "loginPasswordIsRequired"
-        ]
       }
     }
   },
@@ -1272,20 +1272,20 @@
         "name": "Luna Yoon Kurland",
         "email": "lunayoonkurland@gmail.com",
         "address": {
-          "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
-          "full_address": "Bæverstien 5, 2880 Bagsværd",
-          "address_line": "Bæverstien 5",
-          "street": "Bæverstien",
-          "house_number": "5",
-          "floor": null,
-          "door": null,
-          "city": "Bagsværd",
-          "sub_city": null,
-          "zip": "2880",
-          "country": "Danmark",
-          "country_code": "DK",
-          "latitude": 55.75135006,
-          "longitude": 12.46684212
+          "id": "",
+          "full_address": "",
+          "address_line": "",
+          "street": "",
+          "house_number": "",
+          "floor": "",
+          "door": "",
+          "city": "",
+          "sub_city": "",
+          "zip": "",
+          "country": "",
+          "country_code": "",
+          "latitude": "",
+          "longitude": ""
         },
         "phone": "´+4561307111",
         "birthday": "2017-05-04",
@@ -2469,20 +2469,20 @@
             "name": "Luna Yoon Kurland",
             "email": "lunayoonkurland@gmail.com",
             "address": {
-              "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
-              "full_address": "Bæverstien 5, 2880 Bagsværd",
-              "address_line": "Bæverstien 5",
-              "street": "Bæverstien",
-              "house_number": "5",
-              "floor": null,
-              "door": null,
-              "city": "Bagsværd",
-              "sub_city": null,
-              "zip": "2880",
-              "country": "Danmark",
-              "country_code": "DK",
-              "latitude": 55.75135006,
-              "longitude": 12.46684212
+              "id": "",
+              "full_address": "",
+              "address_line": "",
+              "street": "",
+              "house_number": "",
+              "floor": "",
+              "door": "",
+              "city": "",
+              "sub_city": "",
+              "zip": "",
+              "country": "",
+              "country_code": "",
+              "latitude": "",
+              "longitude": ""
             },
             "phone": "´+4561307111",
             "birthday": "2017-05-04",
@@ -2630,20 +2630,20 @@
             "name": "Luna Yoon Kurland",
             "email": "lunayoonkurland@gmail.com",
             "address": {
-              "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
-              "full_address": "Bæverstien 5, 2880 Bagsværd",
-              "address_line": "Bæverstien 5",
-              "street": "Bæverstien",
-              "house_number": "5",
-              "floor": null,
-              "door": null,
-              "city": "Bagsværd",
-              "sub_city": null,
-              "zip": "2880",
-              "country": "Danmark",
-              "country_code": "DK",
-              "latitude": 55.75135006,
-              "longitude": 12.46684212
+              "id": "",
+              "full_address": "",
+              "address_line": "",
+              "street": "",
+              "house_number": "",
+              "floor": "",
+              "door": "",
+              "city": "",
+              "sub_city": "",
+              "zip": "",
+              "country": "",
+              "country_code": "",
+              "latitude": "",
+              "longitude": ""
             },
             "phone": "´+4561307111",
             "birthday": "2017-05-04",
@@ -2798,20 +2798,20 @@
             "name": "Luna Yoon Kurland",
             "email": "lunayoonkurland@gmail.com",
             "address": {
-              "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
-              "full_address": "Bæverstien 5, 2880 Bagsværd",
-              "address_line": "Bæverstien 5",
-              "street": "Bæverstien",
-              "house_number": "5",
-              "floor": null,
-              "door": null,
-              "city": "Bagsværd",
-              "sub_city": null,
-              "zip": "2880",
-              "country": "Danmark",
-              "country_code": "DK",
-              "latitude": 55.75135006,
-              "longitude": 12.46684212
+              "id": "",
+              "full_address": "",
+              "address_line": "",
+              "street": "",
+              "house_number": "",
+              "floor": "",
+              "door": "",
+              "city": "",
+              "sub_city": "",
+              "zip": "",
+              "country": "",
+              "country_code": "",
+              "latitude": "",
+              "longitude": ""
             },
             "phone": "´+4561307111",
             "birthday": "2017-05-04",
@@ -2890,7 +2890,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 585,
+          "placement": 584,
           "application": null,
           "created_at": "2026-01-02T21:08:33.000000Z",
           "end_date": null,
@@ -2966,20 +2966,20 @@
             "name": "Luna Yoon Kurland",
             "email": "lunayoonkurland@gmail.com",
             "address": {
-              "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
-              "full_address": "Bæverstien 5, 2880 Bagsværd",
-              "address_line": "Bæverstien 5",
-              "street": "Bæverstien",
-              "house_number": "5",
-              "floor": null,
-              "door": null,
-              "city": "Bagsværd",
-              "sub_city": null,
-              "zip": "2880",
-              "country": "Danmark",
-              "country_code": "DK",
-              "latitude": 55.75135006,
-              "longitude": 12.46684212
+              "id": "",
+              "full_address": "",
+              "address_line": "",
+              "street": "",
+              "house_number": "",
+              "floor": "",
+              "door": "",
+              "city": "",
+              "sub_city": "",
+              "zip": "",
+              "country": "",
+              "country_code": "",
+              "latitude": "",
+              "longitude": ""
             },
             "phone": "´+4561307111",
             "birthday": "2017-05-04",
@@ -3058,7 +3058,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 708,
+          "placement": 707,
           "application": null,
           "created_at": "2026-01-02T21:07:26.000000Z",
           "end_date": null,
@@ -3066,7 +3066,7 @@
             "id": 294,
             "name": "Ekstern venteliste",
             "full_name": "A/B Positiv - Ekstern venteliste",
-            "subscribers": 813,
+            "subscribers": 814,
             "template": {
               "company_name": "A/B Positiv",
               "lists": [
@@ -3080,8 +3080,8 @@
                 {
                   "id": 294,
                   "name": "Ekstern venteliste",
-                  "subscribers": 813,
-                  "passive_subscribers": 47,
+                  "subscribers": 814,
+                  "passive_subscribers": 48,
                   "active_subscribers": 766
                 }
               ]
@@ -3134,20 +3134,20 @@
             "name": "Luna Yoon Kurland",
             "email": "lunayoonkurland@gmail.com",
             "address": {
-              "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
-              "full_address": "Bæverstien 5, 2880 Bagsværd",
-              "address_line": "Bæverstien 5",
-              "street": "Bæverstien",
-              "house_number": "5",
-              "floor": null,
-              "door": null,
-              "city": "Bagsværd",
-              "sub_city": null,
-              "zip": "2880",
-              "country": "Danmark",
-              "country_code": "DK",
-              "latitude": 55.75135006,
-              "longitude": 12.46684212
+              "id": "",
+              "full_address": "",
+              "address_line": "",
+              "street": "",
+              "house_number": "",
+              "floor": "",
+              "door": "",
+              "city": "",
+              "sub_city": "",
+              "zip": "",
+              "country": "",
+              "country_code": "",
+              "latitude": "",
+              "longitude": ""
             },
             "phone": "´+4561307111",
             "birthday": "2017-05-04",
@@ -3226,7 +3226,7 @@
           "active": false,
           "completed": true,
           "approved": true,
-          "placement": 230,
+          "placement": 229,
           "application": null,
           "created_at": "2026-01-01T19:22:17.000000Z",
           "end_date": null,
@@ -3234,7 +3234,7 @@
             "id": 966,
             "name": "Ekstern venteliste",
             "full_name": "A/B Vesterbrogade 176 / Kochsvej 44-46 - Ekstern venteliste",
-            "subscribers": 249,
+            "subscribers": 248,
             "template": {
               "company_name": "A/B Vesterbrogade 176 / Kochsvej 44-46",
               "lists": [
@@ -3248,9 +3248,9 @@
                 {
                   "id": 966,
                   "name": "Ekstern venteliste",
-                  "subscribers": 249,
+                  "subscribers": 248,
                   "passive_subscribers": 14,
-                  "active_subscribers": 235
+                  "active_subscribers": 234
                 }
               ]
             },
@@ -3302,20 +3302,20 @@
             "name": "Luna Yoon Kurland",
             "email": "lunayoonkurland@gmail.com",
             "address": {
-              "id": "54da8d2d689ab3b596af14d97ba4cfc08b324aaf9a88c230cae51937afa87c7b7fa1092584e35839194fc02160a89412",
-              "full_address": "Bæverstien 5, 2880 Bagsværd",
-              "address_line": "Bæverstien 5",
-              "street": "Bæverstien",
-              "house_number": "5",
-              "floor": null,
-              "door": null,
-              "city": "Bagsværd",
-              "sub_city": null,
-              "zip": "2880",
-              "country": "Danmark",
-              "country_code": "DK",
-              "latitude": 55.75135006,
-              "longitude": 12.46684212
+              "id": "",
+              "full_address": "",
+              "address_line": "",
+              "street": "",
+              "house_number": "",
+              "floor": "",
+              "door": "",
+              "city": "",
+              "sub_city": "",
+              "zip": "",
+              "country": "",
+              "country_code": "",
+              "latitude": "",
+              "longitude": ""
             },
             "phone": "´+4561307111",
             "birthday": "2017-05-04",
